@@ -3,7 +3,7 @@ import { Once, UseGuards } from "discord-nestjs";
 
 import { ready } from "./service/ready";
 
-import { DevGuard } from "common/dev.guard";
+import { DevGuard } from "api/common/dev.guard";
 
 @Injectable()
 @UseGuards(DevGuard)

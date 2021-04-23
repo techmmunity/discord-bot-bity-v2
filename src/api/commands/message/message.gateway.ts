@@ -4,7 +4,7 @@ import { Message } from "discord.js";
 
 import { emoji } from "./service/emoji";
 
-import { DevGuard } from "common/dev.guard";
+import { DevGuard } from "api/common/dev.guard";
 
 @Injectable()
 @UseGuards(DevGuard)

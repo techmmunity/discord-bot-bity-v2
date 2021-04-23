@@ -7,8 +7,8 @@ import { ping } from "./service/ping";
 import { qtd } from "./service/qtd";
 import { ram } from "./service/ram";
 
-import { DevGuard } from "common/dev.guard";
-import { TechTeamGuard } from "common/tech-team.guard";
+import { DevGuard } from "api/common/dev.guard";
+import { TechTeamGuard } from "api/common/tech-team.guard";
 
 @Injectable()
 @UseGuards(DevGuard)

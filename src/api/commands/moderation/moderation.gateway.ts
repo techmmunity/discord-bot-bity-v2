@@ -5,7 +5,7 @@ import { Message } from "discord.js";
 import { clear } from "./service/clear";
 import { register } from "./service/register";
 
-import { TechTeamGuard } from "common/tech-team.guard";
+import { TechTeamGuard } from "api/common/tech-team.guard";
 
 @Injectable()
 @UseGuards(TechTeamGuard)
