@@ -2,6 +2,7 @@ import { GuildEnum } from "./guilds";
 
 export const RolesEnum = {
 	[GuildEnum.PROGRAMMING]: {
+		STAFF: "785116737971683368",
 		PROGRAMMING: "796424366459060225",
 		GRAPHIC: "805834793752854528",
 		ROBOTIC: "805834912132759552",
@@ -15,6 +16,7 @@ export const RolesEnum = {
 		REGISTRED: "805836278972284999",
 	},
 	[GuildEnum.GRAPHIC]: {
+		STAFF: "",
 		PROGRAMMING: "808317347613507611",
 		GRAPHIC: "808317347613507610",
 		ROBOTIC: "808317347613507608",
@@ -28,6 +30,7 @@ export const RolesEnum = {
 		REGISTRED: "808317347282419729",
 	},
 	[GuildEnum.SOUND]: {
+		STAFF: "",
 		PROGRAMMING: "",
 		GRAPHIC: "",
 		ROBOTIC: "",
@@ -41,6 +44,7 @@ export const RolesEnum = {
 		REGISTRED: "",
 	},
 	[GuildEnum.ROBOTIC]: {
+		STAFF: "",
 		PROGRAMMING: "",
 		GRAPHIC: "",
 		ROBOTIC: "",
@@ -54,6 +58,7 @@ export const RolesEnum = {
 		REGISTRED: "",
 	},
 	[GuildEnum.MANAGEMENT]: {
+		STAFF: "",
 		PROGRAMMING: "",
 		GRAPHIC: "",
 		ROBOTIC: "",

@@ -6,6 +6,8 @@ import { getGuild } from "../helpers/get-guild";
 import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 
+import { Urls } from "config/url";
+
 import { Colors } from "assets/colors";
 import { Images } from "assets/images";
 
@@ -31,7 +33,7 @@ export const sendMessage = ({
 		.setDescription("That's right, chatting day!")
 		.setColor(Colors.blue)
 		.setThumbnail(Images.bityGif)
-		.addField("Join us on twitch!", "https://www.twitch.tv/techmmunity")
+		.addField("Join us on twitch!", Urls.TWITCH)
 		.addField("Or at the discord", `#${channelName}`);
 
 	await channel.send(embed);

@@ -9,18 +9,26 @@ export type keys =
 	| "MANAGEMENT";
 
 export const getRoles = (guildId: GuildEnum) => {
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore
-	const role = GuildEnum[guildId] as keys;
-
-	return [
+	const defaultRoles = [
 		RolesEnum[guildId].SENIORITY,
 		RolesEnum[guildId].HEADLINE,
 		RolesEnum[guildId].INTERESTS,
 		RolesEnum[guildId].ETC,
 		RolesEnum[guildId].REGISTRED,
-		RolesEnum[guildId][role],
 	];
+
+	switch (guildId) {
+		case GuildEnum.PROGRAMMING:
+			return [...defaultRoles, RolesEnum[guildId].PROGRAMMING];
+		case GuildEnum.GRAPHIC:
+			return [...defaultRoles, RolesEnum[guildId].GRAPHIC];
+		case GuildEnum.SOUND:
+			return [...defaultRoles, RolesEnum[guildId].SOUND];
+		case GuildEnum.ROBOTIC:
+			return [...defaultRoles, RolesEnum[guildId].ROBOTIC];
+		case GuildEnum.MANAGEMENT:
+			return [...defaultRoles, RolesEnum[guildId].MANAGEMENT];
+	}
 };
 
 export const getForeignRoles = (guildId: GuildEnum, flag: keys) => [

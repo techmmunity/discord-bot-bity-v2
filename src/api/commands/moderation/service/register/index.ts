@@ -21,15 +21,31 @@ export const register = async (message: Message) => {
 
 	const guildId = message.guild?.id as GuildEnum;
 
+	const promises: Array<Promise<any>> = [];
+
+	/**
+	 * Add Roles
+	 */
+
 	const addRolesPromises = Promise.all(
 		members.map(member => addRoles(member, guildId, flags)),
 	);
+	promises.push(addRolesPromises);
 
-	const sendWelcomeMessagesPromises = flags.silent
-		? null
-		: Promise.all(
-				members.map(member => sendWelcomeMessage(message, member, guildId)),
-		  );
+	/**
+	 * Send Welcome Message
+	 */
 
-	return Promise.all([addRolesPromises, sendWelcomeMessagesPromises]);
+	if (!flags.silent) {
+		const sendWelcomeMessagesPromises = Promise.all(
+			members.map(member => sendWelcomeMessage(message, member, guildId)),
+		);
+		promises.push(sendWelcomeMessagesPromises);
+	}
+
+	/**
+	 * Return Promises
+	 */
+
+	return Promise.all(promises);
 };

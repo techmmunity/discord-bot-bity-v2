@@ -1,6 +1,7 @@
 import { ClientProvider } from "discord-nestjs";
 
 import { BotStatus } from "config/bot-status";
+import { Urls } from "config/url";
 
 const getCurrentStatus = (DiscordClient: ClientProvider) => {
 	const currentActivity = DiscordClient.getClient().user?.presence
@@ -28,7 +29,7 @@ export const setStatus = (DiscordClient: ClientProvider) => async () => {
 		.user?.setActivity({
 			name: status,
 			type: "STREAMING",
-			url: "https://www.twitch.tv/techmmunity",
+			url: Urls.TWITCH,
 		})
 		.catch();
 };

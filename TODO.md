@@ -1,10 +1,13 @@
 # Todo
 
-## Service 1
+## Utils
 
-# Todo Upgrades
-
-## Service 1
+- [ ] Criar util para publicar eventos.
+  - Recebe os parametros:
+    - guild
+    - channelId
+    - embed
+  - Posta um embed no canal selecionado
 
 # Etc
 

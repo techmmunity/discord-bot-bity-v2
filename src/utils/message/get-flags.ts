@@ -51,6 +51,9 @@ const getFlagAndContinuosValue = (flag: string) => {
 	};
 };
 
+const getFlagKeyFormatted = (flagKey: string) =>
+	flagKey.slice(Config.flagPrefix.length);
+
 const formatFlags = (flags: RegExpMatchArray) =>
 	flags.reduce((acc, cur) => {
 		if (isFlagWithValue(cur)) {
@@ -65,14 +68,19 @@ const formatFlags = (flags: RegExpMatchArray) =>
 			return acc;
 		}
 
-		acc[cur] = true;
+		const formatFlagKey = getFlagKeyFormatted(cur);
+		acc[formatFlagKey] = true;
 		return acc;
 	}, {} as Flags);
 
 export const getFlags = (message: Message) => {
 	const messageContent = removePrefix(message.content);
 
-	const flags = messageContent.match(FLAGS_REGEX) as RegExpMatchArray;
+	const flags = messageContent.match(FLAGS_REGEX);
 
-	return formatFlags(flags);
+	if (flags) {
+		return formatFlags(flags);
+	}
+
+	return {} as Flags;
 };

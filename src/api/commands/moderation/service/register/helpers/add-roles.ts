@@ -32,7 +32,9 @@ export const addRoles = (
 ) => {
 	const roles = getMemberRoles(guildId, flags);
 
-	member.roles.add(
-		roles.map(roleId => member.guild.roles.cache.get(roleId) as Role),
+	const rolesToAdd = roles.map(
+		roleId => member.guild.roles.cache.get(roleId) as Role,
 	);
+
+	return member.roles.add(rolesToAdd);
 };

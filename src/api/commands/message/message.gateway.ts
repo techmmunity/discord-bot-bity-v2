@@ -1,9 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { DevGuard } from "common/dev.guard";
 import { OnCommand, UseGuards } from "discord-nestjs";
 import { Message } from "discord.js";
 
 import { emoji } from "./service/emoji";
+
+import { DevGuard } from "common/dev.guard";
 
 @Injectable()
 @UseGuards(DevGuard)

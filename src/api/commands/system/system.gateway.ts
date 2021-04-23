@@ -1,8 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { DevGuard } from "common/dev.guard";
 import { Once, UseGuards } from "discord-nestjs";
 
 import { ready } from "./service/ready";
+
+import { DevGuard } from "common/dev.guard";
 
 @Injectable()
 @UseGuards(DevGuard)

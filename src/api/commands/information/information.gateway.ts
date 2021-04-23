@@ -1,6 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import { DevGuard } from "common/dev.guard";
-import { TechTeamGuard } from "common/tech-team.guard";
 import { OnCommand, UseGuards } from "discord-nestjs";
 import { Message } from "discord.js";
 
@@ -8,6 +6,9 @@ import { counters } from "./service/counters";
 import { ping } from "./service/ping";
 import { qtd } from "./service/qtd";
 import { ram } from "./service/ram";
+
+import { DevGuard } from "common/dev.guard";
+import { TechTeamGuard } from "common/tech-team.guard";
 
 @Injectable()
 @UseGuards(DevGuard)

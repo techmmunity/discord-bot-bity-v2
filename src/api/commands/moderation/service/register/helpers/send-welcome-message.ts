@@ -37,5 +37,8 @@ export const sendWelcomeMessage = (
 		ChannelEnum[guildId].WELCOME_MESSAGE,
 	) as TextChannel;
 
-	return welcomeMessageChannel.send(embed);
+	return welcomeMessageChannel.send({
+		content: `<@${member.user.id}>`,
+		embed,
+	});
 };

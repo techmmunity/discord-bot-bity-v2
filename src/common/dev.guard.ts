@@ -1,7 +1,8 @@
 import { DiscordGuard } from "discord-nestjs";
 import { ClientEvents, Message } from "discord.js";
 
-import { TechTeam } from "config/tech-team";
+import { GuildEnum } from "enums/guilds";
+import { RolesEnum } from "enums/roles";
 
 const { NODE_ENV } = process.env;
 
@@ -18,10 +19,16 @@ export class DevGuard implements DiscordGuard {
 
 		if (notMessage) return true;
 
-		const isTechTeamMember = Boolean(
-			context.member?.roles.cache.get(TechTeam.staffRole),
-		);
+		const guildId = context.guild?.id;
 
-		return isTechTeamMember;
+		if (!guildId) return false;
+
+		const roleId = RolesEnum[guildId as GuildEnum].STAFF;
+
+		if (!roleId) return false;
+
+		const hasStaffRole = context.member?.roles.cache.has(roleId) || false;
+
+		return hasStaffRole;
 	}
 }
