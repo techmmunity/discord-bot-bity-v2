@@ -1,7 +1,7 @@
-import { GuildsEnum } from "./guilds";
+import { GuildEnum } from "./guilds";
 
-export const ChannelsEnum = {
-	[GuildsEnum.PROGRAMMING]: {
+export const ChannelEnum = {
+	[GuildEnum.PROGRAMMING]: {
 		// Logs
 		LOG_MEMBER: "824252395038965781",
 		LOG_REGISTER: "824252395038965782",
@@ -23,7 +23,7 @@ export const ChannelsEnum = {
 		WELCOME_MESSAGE: "784050272729169952",
 		ALLOWED_COMMANDS_CHANNELS: ["784085341744136213"],
 	},
-	[GuildsEnum.GRAPHIC]: {
+	[GuildEnum.GRAPHIC]: {
 		// Logs
 		LOG_MEMBER: "824252395038965788",
 		LOG_REGISTER: "824252395038965789",
@@ -45,7 +45,7 @@ export const ChannelsEnum = {
 		WELCOME_MESSAGE: "808317348242128960",
 		ALLOWED_COMMANDS_CHANNELS: ["808317348440178708"],
 	},
-	[GuildsEnum.ROBOTIC]: {
+	[GuildEnum.ROBOTIC]: {
 		// Logs
 		LOG_MEMBER: "824252395265196066",
 		LOG_REGISTER: "824252395265196067",
@@ -67,7 +67,7 @@ export const ChannelsEnum = {
 		WELCOME_MESSAGE: "",
 		ALLOWED_COMMANDS_CHANNELS: [""],
 	},
-	[GuildsEnum.MANAGEMENT]: {
+	[GuildEnum.MANAGEMENT]: {
 		// Logs
 		LOG_MEMBER: "824252395461804042",
 		LOG_REGISTER: "824252395461804043",

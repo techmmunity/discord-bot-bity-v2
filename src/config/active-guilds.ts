@@ -1,7 +1,7 @@
-import { GuildsEnum } from "enums/guilds";
+import { GuildEnum } from "enums/guilds";
 
 export const getActiveGuilds = () => [
-	GuildsEnum.PROGRAMMING,
+	GuildEnum.PROGRAMMING,
 	// TODO: Remover comentário
 	// GuildsEnum.GRAPHIC,
 	// GuildsEnum.SOUND,

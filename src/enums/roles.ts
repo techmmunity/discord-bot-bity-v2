@@ -1,8 +1,8 @@
-import { GuildsEnum } from "./guilds";
+import { GuildEnum } from "./guilds";
 
 export const RolesEnum = {
-	[GuildsEnum.PROGRAMMING]: {
-		DEV: "796424366459060225",
+	[GuildEnum.PROGRAMMING]: {
+		PROGRAMMING: "796424366459060225",
 		GRAPHIC: "805834793752854528",
 		ROBOTIC: "805834912132759552",
 		SOUND: "805834927529656341",
@@ -14,8 +14,8 @@ export const RolesEnum = {
 		ETC: "785265100003999785",
 		REGISTRED: "805836278972284999",
 	},
-	[GuildsEnum.GRAPHIC]: {
-		DEV: "808317347613507611",
+	[GuildEnum.GRAPHIC]: {
+		PROGRAMMING: "808317347613507611",
 		GRAPHIC: "808317347613507610",
 		ROBOTIC: "808317347613507608",
 		SOUND: "808317347613507609",
@@ -27,8 +27,8 @@ export const RolesEnum = {
 		ETC: "808317347282419730",
 		REGISTRED: "808317347282419729",
 	},
-	[GuildsEnum.SOUND]: {
-		DEV: "",
+	[GuildEnum.SOUND]: {
+		PROGRAMMING: "",
 		GRAPHIC: "",
 		ROBOTIC: "",
 		SOUND: "",
@@ -40,8 +40,8 @@ export const RolesEnum = {
 		ETC: "",
 		REGISTRED: "",
 	},
-	[GuildsEnum.ROBOTIC]: {
-		DEV: "",
+	[GuildEnum.ROBOTIC]: {
+		PROGRAMMING: "",
 		GRAPHIC: "",
 		ROBOTIC: "",
 		SOUND: "",
@@ -53,8 +53,8 @@ export const RolesEnum = {
 		ETC: "",
 		REGISTRED: "",
 	},
-	[GuildsEnum.MANAGEMENT]: {
-		DEV: "",
+	[GuildEnum.MANAGEMENT]: {
+		PROGRAMMING: "",
 		GRAPHIC: "",
 		ROBOTIC: "",
 		SOUND: "",

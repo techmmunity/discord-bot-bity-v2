@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { ClientProvider, Client, Once } from "discord-nestjs";
-import cron from "node-cron";
+import * as cron from "node-cron";
 
 import { createChannel } from "./service/create-channel";
 import { deleteChannel } from "./service/delete-channel";
@@ -9,12 +9,14 @@ import { getHangoverScheduleByGuild } from "./service/helpers/get-hangover-sched
 import { getCategoryName, getChannelName } from "./service/helpers/get-name";
 import { sendMessage } from "./service/send-message";
 
+import { GuildEnum } from "enums/guilds";
+
 import { getActiveGuilds } from "config/active-guilds";
 import { Hangover } from "config/hangover";
 
 interface HangoverParams {
 	DiscordClient: ClientProvider;
-	guildId: string;
+	guildId: GuildEnum;
 	categoryName: string;
 	channelName: string;
 }
@@ -31,7 +33,7 @@ export class HangoverJob {
 		guilds.forEach(guildId => this.set(guildId));
 	}
 
-	private set(guildId: string) {
+	private set(guildId: GuildEnum) {
 		const hangoverShedule = getHangoverScheduleByGuild(guildId);
 		const clearHangoutSchedule = getClearHangoverSchedule(guildId);
 

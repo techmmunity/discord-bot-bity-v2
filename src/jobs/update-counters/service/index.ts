@@ -4,11 +4,13 @@ import { Guild } from "discord.js";
 import { getPromisesToUpdateGuildCounters } from "./helpers/get-promises-to-update-counters";
 import { getRolesByMember } from "./helpers/get-roles-by-member";
 
+import { GuildEnum } from "enums/guilds";
+
 import { getCountersConfig } from "./helpers/get-counters-config";
 
 export const updateCounters = (
 	DiscordClient: ClientProvider,
-	guildId: string,
+	guildId: GuildEnum,
 ) => async () => {
 	const guild = DiscordClient.getClient().guilds.cache.get(guildId) as Guild;
 

@@ -3,11 +3,12 @@ import { Role } from "discord.js";
 
 import { getGuild } from "../helpers/get-guild";
 
+import { GuildEnum } from "enums/guilds";
 import { RolesEnum } from "enums/roles";
 
 interface CreateChannelParams {
 	DiscordClient: ClientProvider;
-	guildId: string;
+	guildId: GuildEnum;
 	categoryName: string;
 	channelName: string;
 }

@@ -3,14 +3,15 @@ import { MessageEmbed, TextChannel } from "discord.js";
 
 import { getGuild } from "../helpers/get-guild";
 
-import { ChannelsEnum } from "enums/channels";
+import { ChannelEnum } from "enums/channels";
+import { GuildEnum } from "enums/guilds";
 
 import { Colors } from "assets/colors";
 import { Images } from "assets/images";
 
 interface SendMessageParams {
 	DiscordClient: ClientProvider;
-	guildId: string;
+	guildId: GuildEnum;
 	channelName: string;
 }
 
@@ -22,7 +23,7 @@ export const sendMessage = ({
 	const guild = getGuild(DiscordClient, guildId);
 
 	const channel = guild.channels.cache.get(
-		ChannelsEnum[guildId].EVENTS,
+		ChannelEnum[guildId].EVENTS,
 	) as TextChannel;
 
 	const embed = new MessageEmbed()

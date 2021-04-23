@@ -1,5 +1,5 @@
 import { CronDayOfWeekEnum } from "enums/cron-day-of-week";
-import { GuildsEnum } from "enums/guilds";
+import { GuildEnum } from "enums/guilds";
 
 interface HangoverType {
 	day: {
@@ -9,7 +9,7 @@ interface HangoverType {
 
 export const Hangover: HangoverType = {
 	day: {
-		[GuildsEnum.PROGRAMMING]: CronDayOfWeekEnum.FRIDAY,
+		[GuildEnum.PROGRAMMING]: CronDayOfWeekEnum.FRIDAY,
 		// [GuildsEnum.GRAPHIC]: "",
 		// [GuildsEnum.SOUND]: "",
 		// [GuildsEnum.ROBOTIC]: "",
