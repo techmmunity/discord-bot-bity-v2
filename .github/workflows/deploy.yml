@@ -2,7 +2,7 @@ name: Deploy To Discloud
 
 on:
   push:
-    branches: [master]
+    branches: [temp-disabled-master]
 
 jobs:
   build:
@@ -29,9 +29,9 @@ jobs:
         run: yarn build
 
       - name: Add .env (Gambiarra Discloud)
-        run:
-					echo "NODE_ENV=production" >> dist/.env
-					echo "DISCORD_TOKEN=${secrets.DISCORD_TOKEN}" >> dist/.env
+        run: |
+          echo "NODE_ENV=production" >> dist/.env
+          echo "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" >> dist/.env
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
