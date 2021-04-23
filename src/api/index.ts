@@ -1,11 +1,6 @@
-import { InformationGateway } from "./information/information.gateway";
-import { MessageGateway } from "./message/message.gateway";
-import { ModerationGateway } from "./moderation/moderation.gateway";
-import { SystemGateway } from "./system/system.gateway";
+import { Commands } from "./commands";
+import { Events } from "./events";
 
-export const Api = [
-	InformationGateway,
-	MessageGateway,
-	ModerationGateway,
-	SystemGateway,
-];
+import { Jobs } from "./jobs";
+
+export const Api = [...Commands, ...Events, ...Jobs];
