@@ -1,9 +1,15 @@
 import { Module } from "@nestjs/common";
+import { DiscordModule } from "discord-nestjs";
 
-import { V1Module } from "v1/v1.module";
+import { Api } from "api";
+
+import { Jobs } from "jobs";
+
+import { DiscordConfig } from "config/discord";
 
 @Module({
-	imports: [V1Module],
+	imports: [DiscordModule.forRoot(DiscordConfig)],
+	providers: [...Api, ...Jobs],
 })
 export class AppModule {
 	//
