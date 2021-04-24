@@ -1,11 +1,12 @@
 import { ClientProvider } from "discord-nestjs";
-import { Guild, Invite, TextChannel } from "discord.js";
+import { Invite } from "discord.js";
 
-import { getEmbed } from "../helpers/get-embed";
-import { notShouldCollectLogs } from "../helpers/not-should-collect-logs";
+import { getChannelToLog } from "../helpers/get-channel-to-log";
+import { getInviteEmbed } from "../helpers/get-invite-embed";
 
-import { ChannelEnum } from "enums/channels";
-import { GuildEnum, SpecialGuildEnum } from "enums/guilds";
+import { GuildEnum } from "enums/guilds";
+
+import { Colors } from "assets/colors";
 
 interface InviteDeleteParams {
 	DiscordClient: ClientProvider;
@@ -13,19 +14,19 @@ interface InviteDeleteParams {
 }
 
 export const inviteDelete = ({ DiscordClient, invite }: InviteDeleteParams) => {
-	if (notShouldCollectLogs(invite.guild)) return;
+	const guildId = invite.guild?.id as GuildEnum;
 
-	const currentGuildId = invite.guild?.id as GuildEnum;
+	const channel = getChannelToLog({
+		DiscordClient,
+		guildId,
+		type: "invite",
+	});
 
-	const guildToLog = DiscordClient.getClient().guilds.cache.get(
-		SpecialGuildEnum.LOGS,
-	) as Guild;
-
-	const channel = guildToLog.channels.cache.get(
-		ChannelEnum[currentGuildId].LOG_INVITE,
-	) as TextChannel;
-
-	const embed = getEmbed(invite, "INVITE CREATED");
+	const embed = getInviteEmbed({
+		invite,
+		title: "INVITE DELETE",
+		color: Colors.red,
+	});
 
 	return channel.send(embed);
 };

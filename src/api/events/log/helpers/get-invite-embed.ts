@@ -3,7 +3,11 @@ import { Invite, MessageEmbed } from "discord.js";
 import { InviteUtil } from "utils/invite";
 import { TimeUtil } from "utils/time";
 
-import { Colors } from "assets/colors";
+interface GetEmbedParams {
+	invite: Invite;
+	color: string;
+	title: string;
+}
 
 const getExpiresAt = (invite: Invite) => {
 	if (invite.expiresAt) {
@@ -15,7 +19,7 @@ const getExpiresAt = (invite: Invite) => {
 
 const isTemporary = (invite: Invite) => (invite.expiresAt ? "Yes" : "No");
 
-export const getEmbed = (invite: Invite, title: string) => {
+export const getInviteEmbed = ({ invite, title, color }: GetEmbedParams) => {
 	const messageToSend = InviteUtil.formatMessage(
 		invite,
 		[
@@ -29,7 +33,7 @@ export const getEmbed = (invite: Invite, title: string) => {
 	);
 
 	const embed = new MessageEmbed()
-		.setColor(Colors.green)
+		.setColor(color)
 		.setTitle(title)
 		.setDescription(messageToSend)
 		.setThumbnail(invite.inviter?.avatarURL({ dynamic: true }) as string);
