@@ -11,7 +11,7 @@ interface GetEmbedParams {
 export const getIsBot = (member: GuildMember) =>
 	member.user.bot ? "Yes" : "No";
 
-export const getMemberEmbed = ({ member, title, color }: GetEmbedParams) => {
+export const getEmbed = ({ member, title, color }: GetEmbedParams) => {
 	const isBot = getIsBot(member);
 
 	const message = [

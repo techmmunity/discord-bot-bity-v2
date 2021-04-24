@@ -2,18 +2,23 @@ import { ClientProvider } from "discord-nestjs";
 import { GuildMember } from "discord.js";
 
 import { getChannelToLog } from "../helpers/get-channel-to-log";
-import { getMemberEmbed } from "../helpers/get-member-embed";
+import { getEmbed } from "./get-embed";
 
 import { GuildEnum } from "enums/guilds";
 
-import { Colors } from "assets/colors";
-
-interface MemberAddParams {
+interface MemberParams {
 	DiscordClient: ClientProvider;
 	member: GuildMember;
+	title: string;
+	color: string;
 }
 
-export const memberAdd = ({ DiscordClient, member }: MemberAddParams) => {
+export const member = ({
+	DiscordClient,
+	member,
+	title,
+	color,
+}: MemberParams) => {
 	const guildId = member.guild?.id as GuildEnum;
 
 	const channel = getChannelToLog({
@@ -22,9 +27,9 @@ export const memberAdd = ({ DiscordClient, member }: MemberAddParams) => {
 		type: "member",
 	});
 
-	const embed = getMemberEmbed({
-		title: "MEMBER ADD",
-		color: Colors.green,
+	const embed = getEmbed({
+		title,
+		color,
 		member,
 	});
 

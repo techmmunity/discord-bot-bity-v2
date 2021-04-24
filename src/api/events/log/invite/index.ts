@@ -2,18 +2,23 @@ import { ClientProvider } from "discord-nestjs";
 import { Invite } from "discord.js";
 
 import { getChannelToLog } from "../helpers/get-channel-to-log";
-import { getInviteEmbed } from "../helpers/get-invite-embed";
+import { getEmbed } from "./get-embed";
 
 import { GuildEnum } from "enums/guilds";
 
-import { Colors } from "assets/colors";
-
-interface InviteCreateParams {
+interface InviteParams {
 	DiscordClient: ClientProvider;
 	invite: Invite;
+	title: string;
+	color: string;
 }
 
-export const inviteCreate = ({ DiscordClient, invite }: InviteCreateParams) => {
+export const invite = ({
+	DiscordClient,
+	invite,
+	title,
+	color,
+}: InviteParams) => {
 	const guildId = invite.guild?.id as GuildEnum;
 
 	const channel = getChannelToLog({
@@ -22,10 +27,10 @@ export const inviteCreate = ({ DiscordClient, invite }: InviteCreateParams) => {
 		type: "invite",
 	});
 
-	const embed = getInviteEmbed({
+	const embed = getEmbed({
 		invite,
-		title: "INVITE CREATE",
-		color: Colors.green,
+		title,
+		color,
 	});
 
 	return channel.send(embed);

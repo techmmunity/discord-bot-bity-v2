@@ -19,7 +19,7 @@ const getExpiresAt = (invite: Invite) => {
 
 const isTemporary = (invite: Invite) => (invite.expiresAt ? "Yes" : "No");
 
-export const getInviteEmbed = ({ invite, title, color }: GetEmbedParams) => {
+export const getEmbed = ({ invite, title, color }: GetEmbedParams) => {
 	const messageToSend = InviteUtil.formatMessage(
 		invite,
 		[
