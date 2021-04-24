@@ -15,7 +15,7 @@ const getExpiresAt = (invite: Invite) => {
 
 const isTemporary = (invite: Invite) => (invite.expiresAt ? "Yes" : "No");
 
-export const getEmbed = (invite: Invite) => {
+export const getEmbed = (invite: Invite, title: string) => {
 	const messageToSend = InviteUtil.formatMessage(
 		invite,
 		[
@@ -30,7 +30,7 @@ export const getEmbed = (invite: Invite) => {
 
 	const embed = new MessageEmbed()
 		.setColor(Colors.green)
-		.setTitle("INVITE CREATED")
+		.setTitle(title)
 		.setDescription(messageToSend)
 		.setThumbnail(invite.inviter?.avatarURL({ dynamic: true }) as string);
 
