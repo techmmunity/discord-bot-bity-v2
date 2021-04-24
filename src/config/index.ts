@@ -1,7 +1,8 @@
+const { NODE_ENV } = process.env
+
 export const Config = {
 	version: "v1",
-	prfixPrd: "bty ",
-	prfixDev: "btt ",
+	prefix: NODE_ENV === "production" ? "bty " : "btt ",
 	flagPrefix: "--",
 	flagDelimiter: "'",
 };

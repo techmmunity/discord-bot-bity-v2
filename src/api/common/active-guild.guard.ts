@@ -5,10 +5,10 @@ import { GuildEnum } from "enums/guilds";
 
 import { getActiveGuilds } from "config/active-guilds";
 
-export class LogGuard implements DiscordGuard {
-	public async canActive(
+export class ActiveGuildGuard implements DiscordGuard {
+	public canActive(
 		_: keyof ClientEvents,
-		[context]: [Message | GuildMember | Invite],
+		[context]: [Message | Invite | GuildMember],
 	) {
 		const guildId = context.guild?.id as GuildEnum;
 

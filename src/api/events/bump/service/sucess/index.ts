@@ -37,7 +37,6 @@ export const success = async (message: Message) => {
 	} else {
 		const doestHasRolePromise = sendDoesntHasRoleEmbed({
 			message,
-			member,
 		});
 
 		promises.push(doestHasRolePromise);

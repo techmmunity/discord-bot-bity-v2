@@ -6,12 +6,12 @@ import { invite } from "./service/invite";
 import { member } from "./service/member";
 import { message } from "./service/message";
 
-import { LogGuard } from "api/events/log/log.guard";
+import { ActiveGuildGuard } from "api/common/active-guild.guard";
 
 import { Colors } from "assets/colors";
 
 @Injectable()
-@UseGuards(LogGuard)
+@UseGuards(ActiveGuildGuard)
 export class LogEvent {
 	@Client()
 	public DiscordClient: ClientProvider;

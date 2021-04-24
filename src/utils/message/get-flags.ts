@@ -2,19 +2,14 @@ import { Message } from "discord.js";
 
 import { Config } from "config";
 
-const { NODE_ENV } = process.env;
-
 const FLAGS_REGEX = /--[^\s]+(?:='[^']+'|=[^\s]+)|--[^\s]+/g;
 
 export interface Flags {
 	[flag: string]: string | boolean;
 }
 
-const getPrefix = () =>
-	NODE_ENV === "production" ? Config.prfixPrd : Config.prfixDev;
-
 const removePrefix = (content: string) => {
-	const prefix = getPrefix();
+	const prefix = Config.prefix;
 
 	const messageWithoutPrefix = content.replace(prefix, "");
 
