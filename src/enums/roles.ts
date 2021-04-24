@@ -14,6 +14,7 @@ export const RolesEnum = {
 		INTERESTS: "785270939659010098",
 		ETC: "785265100003999785",
 		REGISTRED: "805836278972284999",
+		BUMP: "830047968609435678",
 	},
 	[GuildEnum.GRAPHIC]: {
 		STAFF: "",
@@ -28,6 +29,7 @@ export const RolesEnum = {
 		INTERESTS: "808317347613507606",
 		ETC: "808317347282419730",
 		REGISTRED: "808317347282419729",
+		BUMP: "",
 	},
 	[GuildEnum.SOUND]: {
 		STAFF: "",
@@ -42,6 +44,7 @@ export const RolesEnum = {
 		INTERESTS: "",
 		ETC: "",
 		REGISTRED: "",
+		BUMP: "",
 	},
 	[GuildEnum.ROBOTIC]: {
 		STAFF: "",
@@ -56,6 +59,7 @@ export const RolesEnum = {
 		INTERESTS: "",
 		ETC: "",
 		REGISTRED: "",
+		BUMP: "",
 	},
 	[GuildEnum.MANAGEMENT]: {
 		STAFF: "",
@@ -70,5 +74,6 @@ export const RolesEnum = {
 		INTERESTS: "",
 		ETC: "",
 		REGISTRED: "",
+		BUMP: "",
 	},
 };

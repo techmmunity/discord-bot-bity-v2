@@ -9,4 +9,6 @@ export const Images = {
 		"https://1.bp.blogspot.com/-sOqL5mROuYM/WJBwZhZQG7I/AAAAAAAAFig/WIA5MxdqcdMilcQRPskD47Vv4BPAKCuJACLcB/s1600/benchmark-hero.png",
 	treasure:
 		"https://pngimg.com/uploads/treasure_chest/treasure_chest_PNG117.png",
+	noWayJose:
+		"https://www.reactiongifs.com/r/2013/10/No-Way-Jose-Gif-On-Full-House.gif",
 };

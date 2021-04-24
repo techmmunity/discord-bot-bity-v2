@@ -6,7 +6,7 @@ import { invite } from "./invite";
 import { member } from "./member";
 import { message } from "./message";
 
-import { LogGuard } from "api/common/log.guard";
+import { LogGuard } from "api/events/log/log.guard";
 
 import { Colors } from "assets/colors";
 
