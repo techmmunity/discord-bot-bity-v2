@@ -54,3 +54,6 @@ docker/
 tsconfig*
 !tsconfig.json
 !tsconfig.build.json
+
+# husky
+.husky

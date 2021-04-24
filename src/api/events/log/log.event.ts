@@ -2,9 +2,9 @@ import { Injectable } from "@nestjs/common";
 import { Client, ClientProvider, On, UseGuards } from "discord-nestjs";
 import { GuildMember, Invite, Message } from "discord.js";
 
-import { invite } from "./invite";
-import { member } from "./member";
-import { message } from "./message";
+import { invite } from "./service/invite";
+import { member } from "./service/member";
+import { message } from "./service/message";
 
 import { LogGuard } from "api/events/log/log.guard";
 

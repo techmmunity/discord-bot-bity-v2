@@ -3,7 +3,7 @@ import { Client, ClientProvider, On, UseGuards } from "discord-nestjs";
 import { Message } from "discord.js";
 
 import { BumpGuard } from "./bump.guard";
-import { success } from "./sucess";
+import { success } from "./service/sucess";
 
 @Injectable()
 @UseGuards(BumpGuard)
