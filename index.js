@@ -1721,87 +1721,6 @@ exports.Api = [...commands_1.Commands, ...events_1.Events, ...jobs_1.Jobs];
 
 /***/ }),
 
-/***/ 70038:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.BotStatusJob = void 0;
-const common_1 = __nccwpck_require__(6434);
-const discord_nestjs_1 = __nccwpck_require__(2589);
-const cron = __nccwpck_require__(82148);
-const service_1 = __nccwpck_require__(40765);
-const jobs_schedule_1 = __nccwpck_require__(97980);
-let BotStatusJob = class BotStatusJob {
-    setCron() {
-        cron.schedule(jobs_schedule_1.JobsSchedule.SET_BOT_STATUS, service_1.setStatus(this.DiscordClient));
-    }
-};
-__decorate([
-    discord_nestjs_1.Client(),
-    __metadata("design:type", Object)
-], BotStatusJob.prototype, "DiscordClient", void 0);
-__decorate([
-    discord_nestjs_1.Once({ event: "ready" }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], BotStatusJob.prototype, "setCron", null);
-BotStatusJob = __decorate([
-    common_1.Injectable()
-], BotStatusJob);
-exports.BotStatusJob = BotStatusJob;
-//# sourceMappingURL=bot-status.job.js.map
-
-/***/ }),
-
-/***/ 40765:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.setStatus = void 0;
-const bot_status_1 = __nccwpck_require__(17311);
-const url_1 = __nccwpck_require__(8842);
-const getCurrentStatus = (DiscordClient) => {
-    var _a;
-    const currentActivity = (_a = DiscordClient.getClient().user) === null || _a === void 0 ? void 0 : _a.presence.activities[0];
-    if (currentActivity)
-        return currentActivity.name;
-    return undefined;
-};
-const getBotStatus = (DiscordClient) => {
-    const currentStatus = getCurrentStatus(DiscordClient);
-    const statusIndex = bot_status_1.BotStatus.findIndex(status => status === currentStatus);
-    const newIndex = statusIndex + 1;
-    return bot_status_1.BotStatus[newIndex] ? bot_status_1.BotStatus[newIndex] : bot_status_1.BotStatus[0];
-};
-const setStatus = (DiscordClient) => async () => {
-    var _a;
-    const status = getBotStatus(DiscordClient);
-    await ((_a = DiscordClient.getClient()
-        .user) === null || _a === void 0 ? void 0 : _a.setActivity({
-        name: status,
-        type: "STREAMING",
-        url: url_1.Urls.TWITCH,
-    }).catch());
-};
-exports.setStatus = setStatus;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
 /***/ 17429:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -2058,10 +1977,9 @@ exports.sendMessage = sendMessage;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Jobs = void 0;
-const bot_status_job_1 = __nccwpck_require__(70038);
 const hangover_job_1 = __nccwpck_require__(17429);
 const update_counters_job_1 = __nccwpck_require__(68851);
-exports.Jobs = [bot_status_job_1.BotStatusJob, hangover_job_1.HangoverJob, update_counters_job_1.UpdateCountersJob];
+exports.Jobs = [hangover_job_1.HangoverJob, update_counters_job_1.UpdateCountersJob];
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -2401,19 +2319,6 @@ exports.getActiveGuilds = getActiveGuilds;
 
 /***/ }),
 
-/***/ 17311:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.BotStatus = void 0;
-const url_1 = __nccwpck_require__(8842);
-exports.BotStatus = ["TECHMMUNITY", url_1.Urls.LANDING_PAGE_SHORT];
-//# sourceMappingURL=bot-status.js.map
-
-/***/ }),
-
 /***/ 8262:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -2438,6 +2343,7 @@ exports.ChannelsPatterns = {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DiscordConfig = void 0;
 const active_guilds_1 = __nccwpck_require__(8865);
+const url_1 = __nccwpck_require__(8842);
 const guilds_1 = __nccwpck_require__(26912);
 const config_1 = __nccwpck_require__(89122);
 const { DISCORD_TOKEN } = process.env;
@@ -2445,6 +2351,13 @@ exports.DiscordConfig = {
     token: DISCORD_TOKEN,
     commandPrefix: config_1.Config.prefix,
     allowGuilds: [...active_guilds_1.getActiveGuilds(), guilds_1.SpecialGuildEnum.STAFF],
+    presence: {
+        activity: {
+            name: url_1.Urls.LANDING_PAGE_SHORT,
+            type: "STREAMING",
+            url: url_1.Urls.TWITCH,
+        },
+    },
 };
 //# sourceMappingURL=discord.js.map
 
