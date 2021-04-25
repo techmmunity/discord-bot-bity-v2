@@ -1,17 +1,17 @@
-import { Injectable, UseGuards } from "@nestjs/common";
-import { On } from "discord-nestjs";
+import { Injectable } from "@nestjs/common";
+import { On, UseGuards } from "discord-nestjs";
 import { Message } from "discord.js";
 
 import { BumpGuard } from "./bump.guard";
-// import { success } from "./service/sucess";
+import { success } from "./service/sucess";
 
-// import { ActiveGuildGuard } from "api/common/active-guild.guard";
+import { ActiveGuildGuard } from "api/common/active-guild.guard";
 
 @Injectable()
-@UseGuards(BumpGuard)
+@UseGuards(ActiveGuildGuard, BumpGuard)
 export class BumpEvent {
 	@On({ event: "message" })
-	public sucess(_: Message) {
-		// return success(message);
+	public sucess(message: Message) {
+		return success(message);
 	}
 }
