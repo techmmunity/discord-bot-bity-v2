@@ -1815,10 +1815,16 @@ const createChannel = ({ DiscordClient, guildId, categoryName, channelName, }) =
             },
         ],
     });
-    await guild.channels.create(channelName, {
-        type: "voice",
-        parent: HangoverFridayCategory,
-    });
+    await Promise.all([
+        guild.channels.create(channelName, {
+            type: "voice",
+            parent: HangoverFridayCategory,
+        }),
+        guild.channels.create(channelName, {
+            type: "text",
+            parent: HangoverFridayCategory,
+        }),
+    ]);
 };
 exports.createChannel = createChannel;
 //# sourceMappingURL=index.js.map
