@@ -1658,7 +1658,7 @@ exports.SuggestionGuard = SuggestionGuard;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ready = void 0;
 const ready = (logger) => {
-    logger.log("\n\n\nBot is ready!\n\n\n");
+    logger.log("Bot is ready!");
 };
 exports.ready = ready;
 //# sourceMappingURL=index.js.map
@@ -2195,7 +2195,7 @@ const get_promises_to_update_counters_1 = __nccwpck_require__(14912);
 const get_roles_by_member_1 = __nccwpck_require__(50554);
 const guilds_1 = __nccwpck_require__(26912);
 const get_counters_config_1 = __nccwpck_require__(75757);
-const updateCounters = (DiscordClient, guildId) => async () => {
+const updateCounters = async (DiscordClient, guildId) => {
     const guild = DiscordClient.getClient().guilds.cache.get(guildId);
     const rolesIdsByMember = await get_roles_by_member_1.getRolesByMember(guild);
     const countersConfig = get_counters_config_1.getCountersConfig(guildId);
