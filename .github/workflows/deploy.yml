@@ -28,17 +28,24 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Compile To Minified Version
+        run: yarn compile
+
+      - name: Change Main File Name
+        run: |
+          mv bot/index.js bot/main.js
+
       - name: Add .env (Gambiarra Discloud)
         run: |
-          echo "NODE_ENV=production" >> dist/.env
-          echo "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" >> dist/.env
+          echo "NODE_ENV=production" >> bot/.env
+          echo "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" >> bot/.env
 
       - name: Copy Package.json
         run: |
-          cp package.json dist/package.json
+          cp package.json bot/package.json
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: discloud # The branch the action should deploy to.
-          folder: dist # The folder the action should deploy.
+          folder: bot # The folder the action should deploy.

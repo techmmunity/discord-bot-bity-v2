@@ -1,6 +1,7 @@
 # Compiled Output
-/dist
-/node_modules
+dist/
+bot/
+node_modules/
 
 # Logs
 logs
