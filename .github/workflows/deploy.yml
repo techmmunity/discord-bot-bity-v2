@@ -2,7 +2,7 @@ name: Deploy To Discloud
 
 on:
   push:
-    branches: [temp-disabled-master]
+    branches: [master]
 
 jobs:
   build:
