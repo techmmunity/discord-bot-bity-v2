@@ -2060,8 +2060,199 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Jobs = void 0;
 const bot_status_job_1 = __nccwpck_require__(70038);
 const hangover_job_1 = __nccwpck_require__(17429);
-exports.Jobs = [bot_status_job_1.BotStatusJob, hangover_job_1.HangoverJob];
+const update_counters_job_1 = __nccwpck_require__(68851);
+exports.Jobs = [bot_status_job_1.BotStatusJob, hangover_job_1.HangoverJob, update_counters_job_1.UpdateCountersJob];
 //# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 75757:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getCountersConfig = void 0;
+const channels_1 = __nccwpck_require__(4206);
+const guilds_1 = __nccwpck_require__(26912);
+const roles_1 = __nccwpck_require__(53472);
+const getCountersConfig = (guildId) => [
+    {
+        channelId: channels_1.ChannelEnum[guildId].COUNTER_DEV,
+        channelName: "Dev",
+        hasAllRoles: [roles_1.RolesEnum[guildId].PROGRAMMING],
+    },
+    {
+        channelId: channels_1.ChannelEnum[guildId].COUNTER_GRAPHIC,
+        channelName: "Graphic",
+        hasAllRoles: [roles_1.RolesEnum[guildId].GRAPHIC],
+    },
+    {
+        channelId: channels_1.ChannelEnum[guildId].COUNTER_SOUND,
+        channelName: "Sound",
+        hasAllRoles: [roles_1.RolesEnum[guildId].SOUND],
+    },
+    {
+        channelId: channels_1.ChannelEnum[guildId].COUNTER_ROBOTIC,
+        channelName: "Robotic",
+        hasAllRoles: [roles_1.RolesEnum[guildId].ROBOTIC],
+    },
+    {
+        channelId: channels_1.ChannelEnum[guildId].COUNTER_MANAGEMENT,
+        channelName: "Management",
+        hasAllRoles: [roles_1.RolesEnum[guildId].MANAGEMENT],
+    },
+    {
+        channelId: channels_1.ChannelEnum[guildId].COUNTER_UNREGISTRED,
+        channelName: "Unregistred",
+        doesntHasAnyOfRoles: [roles_1.RolesEnum[guildId].REGISTRED],
+    },
+    {
+        channelId: channels_1.ChannelEnum[guildId].COUNTER_TOTAL,
+        channelName: "Total",
+        doesntHasAnyOfRoles: [],
+    },
+];
+exports.getCountersConfig = getCountersConfig;
+//# sourceMappingURL=get-counters-config.js.map
+
+/***/ }),
+
+/***/ 14912:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getPromisesToUpdateGuildCounters = exports.getChannel = void 0;
+const getChannel = (guild, counter) => guild.channels.cache.get(counter.channelId);
+exports.getChannel = getChannel;
+const hasAllRoles = (rolesIds) => {
+    return (memberRoles) => rolesIds.every((roleId) => memberRoles.includes(roleId));
+};
+const qtdHasAllRoles = (rolesIdsByMember, rolesIds) => {
+    if (!rolesIds)
+        return 0;
+    const membersThatHasAllRoles = rolesIdsByMember.filter(hasAllRoles(rolesIds));
+    return membersThatHasAllRoles.length;
+};
+const doesntHasAllRoles = (rolesIds) => (memberRoles) => rolesIds.every((roleId) => !memberRoles.includes(roleId));
+const qtdDoesntHasAllRoles = (rolesIdsByMember, rolesIds) => {
+    if (!rolesIds)
+        return rolesIdsByMember.length;
+    const membersThatDoesntHasAllRoles = rolesIdsByMember.filter(doesntHasAllRoles(rolesIds));
+    return membersThatDoesntHasAllRoles.length;
+};
+const getCounterQtd = (rolesIdsByMember, counterConfig) => {
+    if (counterConfig.hasAllRoles) {
+        return qtdHasAllRoles(rolesIdsByMember, counterConfig.hasAllRoles);
+    }
+    if (counterConfig.doesntHasAnyOfRoles) {
+        return qtdDoesntHasAllRoles(rolesIdsByMember, counterConfig.doesntHasAnyOfRoles);
+    }
+    return 0;
+};
+const getPromisesToUpdateGuildCounters = (guild, rolesIdsByMember, countersConfig) => countersConfig.map(counterConfig => {
+    const qtd = getCounterQtd(rolesIdsByMember, counterConfig);
+    const channel = exports.getChannel(guild, counterConfig);
+    const newChannelName = `${counterConfig.channelName} Count: ${qtd}`;
+    if (channel.name !== newChannelName) {
+        return channel.setName(newChannelName);
+    }
+});
+exports.getPromisesToUpdateGuildCounters = getPromisesToUpdateGuildCounters;
+//# sourceMappingURL=get-promises-to-update-counters.js.map
+
+/***/ }),
+
+/***/ 50554:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getRolesByMember = void 0;
+const removeBots = (members) => members.filter(member => !member.user.bot);
+const getRolesByMember = async (guild) => {
+    const members = await guild.members.fetch();
+    const guildMembers = removeBots(members);
+    const rolesIdsByMember = guildMembers.map(member => member.roles.cache.map(role => role.id));
+    return rolesIdsByMember;
+};
+exports.getRolesByMember = getRolesByMember;
+//# sourceMappingURL=get-roles-by-member.js.map
+
+/***/ }),
+
+/***/ 62521:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.updateCounters = void 0;
+const get_promises_to_update_counters_1 = __nccwpck_require__(14912);
+const get_roles_by_member_1 = __nccwpck_require__(50554);
+const guilds_1 = __nccwpck_require__(26912);
+const get_counters_config_1 = __nccwpck_require__(75757);
+const updateCounters = (DiscordClient, guildId) => async () => {
+    const guild = DiscordClient.getClient().guilds.cache.get(guildId);
+    const rolesIdsByMember = await get_roles_by_member_1.getRolesByMember(guild);
+    const countersConfig = get_counters_config_1.getCountersConfig(guildId);
+    const promisesToChangeChannelsNames = get_promises_to_update_counters_1.getPromisesToUpdateGuildCounters(guild, rolesIdsByMember, countersConfig);
+    return promisesToChangeChannelsNames;
+};
+exports.updateCounters = updateCounters;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 68851:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateCountersJob = void 0;
+const common_1 = __nccwpck_require__(6434);
+const discord_nestjs_1 = __nccwpck_require__(2589);
+const cron = __nccwpck_require__(82148);
+const service_1 = __nccwpck_require__(62521);
+const jobs_schedule_1 = __nccwpck_require__(97980);
+const active_guilds_1 = __nccwpck_require__(8865);
+let UpdateCountersJob = class UpdateCountersJob {
+    setCron() {
+        cron.schedule(jobs_schedule_1.JobsSchedule.UPDATE_COUNTERS, this.setJobForActiveGuilds);
+    }
+    setJobForActiveGuilds() {
+        const guilds = active_guilds_1.getActiveGuilds();
+        return () => Promise.all(guilds.map(guildId => service_1.updateCounters(this.DiscordClient, guildId)));
+    }
+};
+__decorate([
+    discord_nestjs_1.Client(),
+    __metadata("design:type", Object)
+], UpdateCountersJob.prototype, "DiscordClient", void 0);
+__decorate([
+    discord_nestjs_1.Once({ event: "ready" }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], UpdateCountersJob.prototype, "setCron", null);
+UpdateCountersJob = __decorate([
+    common_1.Injectable()
+], UpdateCountersJob);
+exports.UpdateCountersJob = UpdateCountersJob;
+//# sourceMappingURL=update-counters.job.js.map
 
 /***/ }),
 
