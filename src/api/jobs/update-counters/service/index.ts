@@ -8,10 +8,10 @@ import { GuildEnum } from "enums/guilds";
 
 import { getCountersConfig } from "./helpers/get-counters-config";
 
-export const updateCounters = (
+export const updateCounters = async (
 	DiscordClient: ClientProvider,
 	guildId: GuildEnum,
-) => async () => {
+) => {
 	const guild = DiscordClient.getClient().guilds.cache.get(guildId) as Guild;
 
 	const rolesIdsByMember = await getRolesByMember(guild);
