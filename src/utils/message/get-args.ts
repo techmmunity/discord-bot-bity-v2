@@ -1,26 +1,16 @@
 import { Message } from "discord.js";
 
-import { Config } from "config";
-
-const ARGS_REGEX = /\s+|--[a-zA-Z]+='[^']+'/g;
-
-const removePrefix = (content: string) => {
-	const prefix = Config.prefix;
-
-	const messageWithoutPrefix = content.replace(prefix, "");
-
-	const messageWithputCommand = messageWithoutPrefix
-		.split(" ")
-		.slice(1)
-		.join(" ");
-
-	return messageWithputCommand;
-};
+import { getFlagsUnformatted } from "./get-flags";
+import { removePrefix } from "./helpers/remove-prefix";
 
 export const getArgs = (message: Message) => {
+	const flags = getFlagsUnformatted(message);
+
 	const messageContent = removePrefix(message.content);
 
-	const args = messageContent.match(ARGS_REGEX) as RegExpMatchArray;
+	const messageWithoutflags = flags.reduce((message, flag) => {
+		return message.replace(flag, "");
+	}, messageContent);
 
-	return args;
+	return messageWithoutflags.split(" ");
 };

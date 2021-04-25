@@ -1,5 +1,7 @@
 import { Message } from "discord.js";
 
+import { removePrefix } from "./helpers/remove-prefix";
+
 import { Config } from "config";
 
 const FLAGS_REGEX = /--[^\s]+(?:='[^']+'|=[^\s]+)|--[^\s]+/g;
@@ -7,19 +9,6 @@ const FLAGS_REGEX = /--[^\s]+(?:='[^']+'|=[^\s]+)|--[^\s]+/g;
 export interface Flags {
 	[flag: string]: string | boolean;
 }
-
-const removePrefix = (content: string) => {
-	const prefix = Config.prefix;
-
-	const messageWithoutPrefix = content.replace(prefix, "");
-
-	const messageWithputCommand = messageWithoutPrefix
-		.split(" ")
-		.slice(1)
-		.join(" ");
-
-	return messageWithputCommand;
-};
 
 const isFlagWithValue = (value: string) => value.includes("=");
 
@@ -68,10 +57,14 @@ const formatFlags = (flags: RegExpMatchArray) =>
 		return acc;
 	}, {} as Flags);
 
-export const getFlags = (message: Message) => {
+export const getFlagsUnformatted = (message: Message) => {
 	const messageContent = removePrefix(message.content);
 
-	const flags = messageContent.match(FLAGS_REGEX);
+	return messageContent.match(FLAGS_REGEX) || [];
+};
+
+export const getFlags = (message: Message) => {
+	const flags = getFlagsUnformatted(message);
 
 	if (flags) {
 		return formatFlags(flags);

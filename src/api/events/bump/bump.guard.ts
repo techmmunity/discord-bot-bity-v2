@@ -7,6 +7,8 @@ export class BumpGuard implements DiscordGuard {
 	public async canActive(_: keyof ClientEvents, [context]: [Message]) {
 		const authorId = context.author.id;
 
+		return false;
+
 		if (this.notIsDisboardBot(authorId)) return false;
 
 		if (this.notBumpSucess(context.content)) return false;
