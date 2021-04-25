@@ -33,6 +33,10 @@ jobs:
           echo "NODE_ENV=production" >> dist/.env
           echo "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" >> dist/.env
 
+      - name: Copy Package.json
+        run: |
+          cp package.json dist/package.json
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
