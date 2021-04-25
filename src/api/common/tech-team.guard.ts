@@ -1,8 +1,9 @@
 import { DiscordGuard } from "discord-nestjs";
 import { ClientEvents, Message } from "discord.js";
 
-import { GuildEnum } from "enums/guilds";
+import { GuildEnum, SpecialGuildEnum } from "enums/guilds";
 import { RolesEnum } from "enums/roles";
+import { UsersEnum } from "enums/users";
 
 export class TechTeamGuard implements DiscordGuard {
 	public async canActive(
@@ -13,10 +14,29 @@ export class TechTeamGuard implements DiscordGuard {
 
 		if (notMessage) return true;
 
+		return this.isSpecialGuild(context)
+			? this.isTechTeamSpecialMember(context)
+			: this.isTechTeamMember(context);
+	}
+
+	private isSpecialGuild(context: Message) {
 		const guildId = context.guild?.id;
 
 		if (!guildId) return false;
 
+		return [SpecialGuildEnum.STAFF, SpecialGuildEnum.LOGS].includes(
+			guildId as SpecialGuildEnum,
+		);
+	}
+
+	private isTechTeamSpecialMember(context: Message) {
+		return context.author.id === UsersEnum.RAZAL;
+	}
+
+	private isTechTeamMember(context: Message) {
+		const guildId = context.guild?.id;
+
+		if (!guildId) return false;
 		const roleId = RolesEnum[guildId as GuildEnum].STAFF;
 
 		if (!roleId) return false;
