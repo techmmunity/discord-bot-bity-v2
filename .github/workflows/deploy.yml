@@ -1,4 +1,4 @@
-name: Deploy To Discloud
+name: Deploy To Heroku
 
 on:
   push:
@@ -31,18 +31,13 @@ jobs:
       - name: Compile To Minified Version
         run: yarn compile
 
-      - name: Change Main File Name
-        run: |
-          mv bot/index.js bot/main.js
-
-      - name: Add .env (Gambiarra Discloud)
-        run: |
-          echo "NODE_ENV=production" >> bot/.env
-          echo "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" >> bot/.env
-
       - name: Copy Package.json
         run: |
           cp package.json bot/package.json
+
+      - name: Add Procfile
+        run: |
+          echo "worker: node index.js" > bot/Procfile
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
