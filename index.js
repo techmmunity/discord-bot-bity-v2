@@ -1984,8 +1984,94 @@ exports.sendMessage = sendMessage;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Jobs = void 0;
 const hangover_job_1 = __nccwpck_require__(17429);
+const review_reminder_job_1 = __nccwpck_require__(29403);
 const update_counters_job_1 = __nccwpck_require__(68851);
-exports.Jobs = [hangover_job_1.HangoverJob, update_counters_job_1.UpdateCountersJob];
+exports.Jobs = [hangover_job_1.HangoverJob, review_reminder_job_1.ReviewReminderJob, update_counters_job_1.UpdateCountersJob];
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 29403:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ReviewReminderJob = void 0;
+const common_1 = __nccwpck_require__(6434);
+const discord_nestjs_1 = __nccwpck_require__(2589);
+const cron = __nccwpck_require__(82148);
+const service_1 = __nccwpck_require__(64726);
+const jobs_schedule_1 = __nccwpck_require__(97980);
+const active_guilds_1 = __nccwpck_require__(8865);
+let ReviewReminderJob = class ReviewReminderJob {
+    setCron() {
+        cron.schedule(jobs_schedule_1.JobsSchedule.REVIEW_REMINDER, this.sendReminder);
+    }
+    sendReminder() {
+        const guilds = active_guilds_1.getActiveGuilds();
+        return () => Promise.all(guilds.map(guildId => service_1.sendReminder(this.DiscordClient, guildId)));
+    }
+};
+__decorate([
+    discord_nestjs_1.Client(),
+    __metadata("design:type", Object)
+], ReviewReminderJob.prototype, "DiscordClient", void 0);
+__decorate([
+    discord_nestjs_1.Once({ event: "ready" }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], ReviewReminderJob.prototype, "setCron", null);
+ReviewReminderJob = __decorate([
+    common_1.Injectable()
+], ReviewReminderJob);
+exports.ReviewReminderJob = ReviewReminderJob;
+//# sourceMappingURL=review-reminder.job.js.map
+
+/***/ }),
+
+/***/ 64726:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sendReminder = void 0;
+const discord_js_1 = __nccwpck_require__(85973);
+const channels_1 = __nccwpck_require__(4206);
+const guilds_1 = __nccwpck_require__(26912);
+const colors_1 = __nccwpck_require__(45799);
+const images_1 = __nccwpck_require__(52753);
+const getReviewUrl = {
+    [guilds_1.GuildEnum.PROGRAMMING]: "https://disboard.org/review/create/784050272263471145",
+    [guilds_1.GuildEnum.GRAPHIC]: "",
+    [guilds_1.GuildEnum.SOUND]: "",
+    [guilds_1.GuildEnum.ROBOTIC]: "",
+    [guilds_1.GuildEnum.MANAGEMENT]: "",
+};
+const makeEmbed = (guildId) => new discord_js_1.MessageEmbed()
+    .setTitle("Click here, please!")
+    .setColor(colors_1.Colors.turquoise)
+    .setDescription("Guys, please, give a feedback to the server, it help us a lot! ❤️")
+    .setImage(images_1.Images.apesTogetherStrong)
+    .setURL(getReviewUrl[guildId]);
+const sendReminder = async (DiscordClient, guildId) => {
+    const guild = DiscordClient.getClient().guilds.cache.get(guildId);
+    const channel = guild.channels.cache.get(channels_1.ChannelEnum[guildId].GENERAL);
+    const embed = makeEmbed(guildId);
+    await channel.send(embed);
+};
+exports.sendReminder = sendReminder;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -2304,6 +2390,7 @@ exports.Images = {
     performance: "https://1.bp.blogspot.com/-sOqL5mROuYM/WJBwZhZQG7I/AAAAAAAAFig/WIA5MxdqcdMilcQRPskD47Vv4BPAKCuJACLcB/s1600/benchmark-hero.png",
     treasure: "https://pngimg.com/uploads/treasure_chest/treasure_chest_PNG117.png",
     noWayJose: "https://www.reactiongifs.com/r/2013/10/No-Way-Jose-Gif-On-Full-House.gif",
+    apesTogetherStrong: "https://33.media.tumblr.com/128f22974ef066ea21336fcede41bf90/tumblr_nb5lrs02NY1tgbziwo4_400.gif",
 };
 //# sourceMappingURL=index.js.map
 
@@ -2417,6 +2504,7 @@ exports.JobsSchedule = {
     UPDATE_COUNTERS: "0 * * * *",
     HANGOVER: "0 23 * * ",
     GRAPHIC_AGENCY: "0 15 * * 1",
+    REVIEW_REMINDER: "0 15 * * 2",
 };
 //# sourceMappingURL=jobs-schedule.js.map
 
@@ -2477,6 +2565,7 @@ exports.ChannelEnum = {
         COUNTER_MANAGEMENT: "805904540725411901",
         COUNTER_UNREGISTRED: "794322104497078342",
         COUNTER_TOTAL: "834934111088279552",
+        GENERAL: "784050272729169952",
         SUGGESTIONS: "800073441143160864",
         EVENTS: "789129005525630996",
         SERVERS: "793923821643890699",
@@ -2497,6 +2586,7 @@ exports.ChannelEnum = {
         COUNTER_MANAGEMENT: "808317348003446846",
         COUNTER_UNREGISTRED: "808317348003446847",
         COUNTER_TOTAL: "",
+        GENERAL: "",
         SUGGESTIONS: "808317348003446851",
         EVENTS: "",
         SERVERS: "",
@@ -2517,6 +2607,7 @@ exports.ChannelEnum = {
         COUNTER_MANAGEMENT: "",
         COUNTER_UNREGISTRED: "",
         COUNTER_TOTAL: "",
+        GENERAL: "",
         SUGGESTIONS: "",
         EVENTS: "",
         SERVERS: "",
@@ -2537,6 +2628,7 @@ exports.ChannelEnum = {
         COUNTER_MANAGEMENT: "",
         COUNTER_UNREGISTRED: "",
         COUNTER_TOTAL: "",
+        GENERAL: "",
         SUGGESTIONS: "",
         EVENTS: "",
         SERVERS: "",
