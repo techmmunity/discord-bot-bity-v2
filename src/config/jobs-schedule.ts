@@ -15,4 +15,6 @@ export const JobsSchedule = {
 	HANGOVER: "0 23 * * ", // DOESN'T HAS DAY OF WEEK BECAUSE IT'S SETTED DYNAMICALY
 	// Every Monday, 12h
 	GRAPHIC_AGENCY: "0 15 * * 1",
+	// Every Tuesday, 12h
+	REVIEW_REMINDER: "0 15 * * 2",
 };

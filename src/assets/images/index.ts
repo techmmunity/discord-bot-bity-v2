@@ -11,4 +11,6 @@ export const Images = {
 		"https://pngimg.com/uploads/treasure_chest/treasure_chest_PNG117.png",
 	noWayJose:
 		"https://www.reactiongifs.com/r/2013/10/No-Way-Jose-Gif-On-Full-House.gif",
+	apesTogetherStrong:
+		"https://33.media.tumblr.com/128f22974ef066ea21336fcede41bf90/tumblr_nb5lrs02NY1tgbziwo4_400.gif",
 };
