@@ -2,7 +2,7 @@ import { Message, MessageEmbed } from "discord.js";
 
 import { MessageUtil } from "utils/message";
 
-interface GetEmbedParams {
+interface GetEmbedDeleteParams {
 	message: Message;
 	color: string;
 	title: string;
@@ -11,7 +11,11 @@ interface GetEmbedParams {
 export const getIsBot = (message: Message) =>
 	message.author.bot ? "Yes" : "No";
 
-export const getEmbed = ({ message, title, color }: GetEmbedParams) => {
+export const getEmbedDelete = ({
+	message,
+	title,
+	color,
+}: GetEmbedDeleteParams) => {
 	const messageContent = [
 		"**User ID**: {userId}",
 		"**User Tag**: {userTag}",
@@ -21,10 +25,12 @@ export const getEmbed = ({ message, title, color }: GetEmbedParams) => {
 
 	const formmatedMessage = MessageUtil.formatMessage(message, messageContent);
 
+	const messageToSend = formmatedMessage + "\n**Message**:\n" + message.content;
+
 	const embed = new MessageEmbed()
 		.setColor(color)
 		.setTitle(title)
-		.setDescription(formmatedMessage)
+		.setDescription(messageToSend)
 		.setThumbnail(message.author.avatarURL({ dynamic: true }) as string);
 
 	return embed;

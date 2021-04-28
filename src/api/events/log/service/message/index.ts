@@ -1,37 +1,35 @@
 import { ClientProvider } from "discord-nestjs";
 import { Message } from "discord.js";
 
-import { getChannelToLog } from "../helpers/get-channel-to-log";
-import { getEmbed } from "./get-embed";
-
-import { GuildEnum } from "enums/guilds";
+import { logDelete, DeleteMessageLogParams } from "./delete/delete";
+import { logEdit, EditMessageLogParams } from "./edit/edit";
+import { getChannel } from "./helpers/get-channel";
 
 interface MessageParams {
 	DiscordClient: ClientProvider;
-	message: Message;
+	message?: Message;
+	oldMessage?: Message;
+	newMessage?: Message;
 	title: string;
 	color: string;
 }
 
-export const message = ({
-	DiscordClient,
-	message,
-	title,
-	color,
-}: MessageParams) => {
-	const guildId = message.guild?.id as GuildEnum;
+export const message = (params: MessageParams) => {
+	const { message, newMessage, oldMessage } = params;
 
-	const channel = getChannelToLog({
-		DiscordClient,
-		guildId,
-		type: "message",
-	});
+	const channel = getChannel(params);
 
-	const embed = getEmbed({
-		title,
-		color,
-		message,
-	});
+	if (message) {
+		return logDelete({
+			channel,
+			...params,
+		} as DeleteMessageLogParams);
+	}
 
-	return channel.send(embed);
+	if (oldMessage && newMessage) {
+		return logEdit({
+			channel,
+			...params,
+		} as EditMessageLogParams);
+	}
 };
