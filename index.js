@@ -3422,10 +3422,7 @@ const getFlagsUnformatted = (message) => {
 exports.getFlagsUnformatted = getFlagsUnformatted;
 const getFlags = (message) => {
     const flags = exports.getFlagsUnformatted(message);
-    if (flags) {
-        return formatFlags(flags);
-    }
-    return {};
+    return formatFlags(flags);
 };
 exports.getFlags = getFlags;
 //# sourceMappingURL=get-flags.js.map

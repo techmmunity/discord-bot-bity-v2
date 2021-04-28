@@ -73,10 +73,10 @@
 		"testEnvironment": "node"
 	},
 	"scripts": {
+		"temp:check-tsc": "tsc",
 		"clear": "rimraf dist && rimraf tsconfig.build.tsbuildinfo && rimraf tsconfig.tsbuildinfo",
 		"clear:dev": "yarn clear && yarn dev",
 		"prebuild": "rimraf dist",
-		"husky:precommit": "tsc && lint-staged",
 		"build": "nest build",
 		"compile": "ncc build dist/main.js -o bot",
 		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -93,6 +93,6 @@
 		"update-dependencies": "yarn upgrade-interactive --latest",
 		"docker": "docker-compose up",
 		"docker:clear": "docker container rm bity-bot_bot && docker image rm bity-bot_bot && docker volume rm bity-bot_nodemodules",
-		"prepare": "husky install"
+		"husky:pre-commit": "tsc && lint-staged"
 	}
 }
