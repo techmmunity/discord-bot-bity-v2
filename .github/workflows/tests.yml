@@ -11,13 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install Dependencies
+        run: |
+          yarn
+
       - name: Test TypeScript Build
         run: |
           yarn temp:check-tsc
-
-      # - name: Install Dependencies
-      #   run: |
-      #     yarn
 
       # - name: Run Tests
       #   run: |

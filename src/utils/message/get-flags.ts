@@ -66,9 +66,5 @@ export const getFlagsUnformatted = (message: Message) => {
 export const getFlags = (message: Message) => {
 	const flags = getFlagsUnformatted(message);
 
-	if (flags) {
-		return formatFlags(flags);
-	}
-
-	return {} as Flags;
+	return formatFlags(flags);
 };
