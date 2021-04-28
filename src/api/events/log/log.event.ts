@@ -67,12 +67,13 @@ export class LogEvent {
 	}
 
 	@On({ event: "messageUpdate" })
-	public messageEdit(messageLog: Message) {
+	public messageEdit(oldMessageLog: Message, newMessageLog: Message) {
 		return message({
 			DiscordClient: this.DiscordClient,
 			title: "MESSAGE EDIT",
 			color: Colors.blue,
-			message: messageLog,
+			oldMessage: oldMessageLog,
+			newMessage: newMessageLog,
 		});
 	}
 }
