@@ -1189,12 +1189,13 @@ let LogEvent = class LogEvent {
             message: messageLog,
         });
     }
-    messageEdit(messageLog) {
+    messageEdit(oldMessageLog, newMessageLog) {
         return message_1.message({
             DiscordClient: this.DiscordClient,
             title: "MESSAGE EDIT",
             color: colors_1.Colors.blue,
-            message: messageLog,
+            oldMessage: oldMessageLog,
+            newMessage: newMessageLog,
         });
     }
 };
@@ -1235,7 +1236,7 @@ __decorate([
 __decorate([
     discord_nestjs_1.On({ event: "messageUpdate" }),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [discord_js_1.Message]),
+    __metadata("design:paramtypes", [discord_js_1.Message, discord_js_1.Message]),
     __metadata("design:returntype", void 0)
 ], LogEvent.prototype, "messageEdit", null);
 LogEvent = __decorate([
@@ -1410,18 +1411,39 @@ exports.member = member;
 
 /***/ }),
 
-/***/ 52958:
+/***/ 16445:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getEmbed = exports.getIsBot = void 0;
+exports.logDelete = void 0;
+const get_embed_delete_1 = __nccwpck_require__(74405);
+const logDelete = ({ channel, message, color, title, }) => {
+    const embed = get_embed_delete_1.getEmbedDelete({
+        title,
+        color,
+        message,
+    });
+    return channel.send(embed);
+};
+exports.logDelete = logDelete;
+//# sourceMappingURL=delete.js.map
+
+/***/ }),
+
+/***/ 74405:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getEmbedDelete = exports.getIsBot = void 0;
 const discord_js_1 = __nccwpck_require__(85973);
 const message_1 = __nccwpck_require__(97899);
 const getIsBot = (message) => message.author.bot ? "Yes" : "No";
 exports.getIsBot = getIsBot;
-const getEmbed = ({ message, title, color }) => {
+const getEmbedDelete = ({ message, title, color, }) => {
     const messageContent = [
         "**User ID**: {userId}",
         "**User Tag**: {userTag}",
@@ -1429,15 +1451,95 @@ const getEmbed = ({ message, title, color }) => {
         `**Channel**: <#${message.channel.id}>`,
     ].join("\n");
     const formmatedMessage = message_1.MessageUtil.formatMessage(message, messageContent);
+    const messageToSend = formmatedMessage + "\n**Message**:\n" + message.content;
     const embed = new discord_js_1.MessageEmbed()
         .setColor(color)
         .setTitle(title)
-        .setDescription(formmatedMessage)
+        .setDescription(messageToSend)
         .setThumbnail(message.author.avatarURL({ dynamic: true }));
     return embed;
 };
-exports.getEmbed = getEmbed;
-//# sourceMappingURL=get-embed.js.map
+exports.getEmbedDelete = getEmbedDelete;
+//# sourceMappingURL=get-embed-delete.js.map
+
+/***/ }),
+
+/***/ 47324:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.logEdit = void 0;
+const get_embed_edit_1 = __nccwpck_require__(96139);
+const logEdit = ({ channel, oldMessage, newMessage, color, title, }) => {
+    const embed = get_embed_edit_1.getEmbedEdit({
+        title,
+        color,
+        newMessage,
+        oldMessage,
+    });
+    return channel.send(embed);
+};
+exports.logEdit = logEdit;
+//# sourceMappingURL=edit.js.map
+
+/***/ }),
+
+/***/ 96139:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getEmbedEdit = exports.getIsBot = void 0;
+const discord_js_1 = __nccwpck_require__(85973);
+const message_1 = __nccwpck_require__(97899);
+const getIsBot = (message) => message.author.bot ? "Yes" : "No";
+exports.getIsBot = getIsBot;
+const getEmbedEdit = ({ oldMessage, newMessage, title, color, }) => {
+    const messageContent = [
+        "**User ID**: {userId}",
+        "**User Tag**: {userTag}",
+        "**Nickname**: {userNickname}",
+        `**Channel**: <#${newMessage.channel.id}>`,
+    ].join("\n");
+    const formmatedMessage = message_1.MessageUtil.formatMessage(newMessage, messageContent);
+    const oldMessageToSend = "\n**Old Message**:\n" + oldMessage.content;
+    const newMessageToSend = "\n\n**New Message**:\n" + newMessage.content;
+    const messageToSend = formmatedMessage + oldMessageToSend + newMessageToSend;
+    const embed = new discord_js_1.MessageEmbed()
+        .setColor(color)
+        .setTitle(title)
+        .setDescription(messageToSend)
+        .setThumbnail(newMessage.author.avatarURL({ dynamic: true }));
+    return embed;
+};
+exports.getEmbedEdit = getEmbedEdit;
+//# sourceMappingURL=get-embed-edit.js.map
+
+/***/ }),
+
+/***/ 32809:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getChannel = void 0;
+const get_channel_to_log_1 = __nccwpck_require__(28395);
+const guilds_1 = __nccwpck_require__(26912);
+const getChannel = ({ DiscordClient, message, newMessage, }) => {
+    var _a, _b;
+    const guildId = (((_a = message === null || message === void 0 ? void 0 : message.guild) === null || _a === void 0 ? void 0 : _a.id) || ((_b = newMessage === null || newMessage === void 0 ? void 0 : newMessage.guild) === null || _b === void 0 ? void 0 : _b.id));
+    return get_channel_to_log_1.getChannelToLog({
+        DiscordClient,
+        guildId,
+        type: "message",
+    });
+};
+exports.getChannel = getChannel;
+//# sourceMappingURL=get-channel.js.map
 
 /***/ }),
 
@@ -1448,23 +1550,18 @@ exports.getEmbed = getEmbed;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.message = void 0;
-const get_channel_to_log_1 = __nccwpck_require__(28395);
-const get_embed_1 = __nccwpck_require__(52958);
-const guilds_1 = __nccwpck_require__(26912);
-const message = ({ DiscordClient, message, title, color, }) => {
-    var _a;
-    const guildId = (_a = message.guild) === null || _a === void 0 ? void 0 : _a.id;
-    const channel = get_channel_to_log_1.getChannelToLog({
-        DiscordClient,
-        guildId,
-        type: "message",
-    });
-    const embed = get_embed_1.getEmbed({
-        title,
-        color,
-        message,
-    });
-    return channel.send(embed);
+const delete_1 = __nccwpck_require__(16445);
+const edit_1 = __nccwpck_require__(47324);
+const get_channel_1 = __nccwpck_require__(32809);
+const message = (params) => {
+    const { message, newMessage, oldMessage } = params;
+    const channel = get_channel_1.getChannel(params);
+    if (message) {
+        return delete_1.logDelete(Object.assign({ channel }, params));
+    }
+    if (oldMessage && newMessage) {
+        return edit_1.logEdit(Object.assign({ channel }, params));
+    }
 };
 exports.message = message;
 //# sourceMappingURL=index.js.map
