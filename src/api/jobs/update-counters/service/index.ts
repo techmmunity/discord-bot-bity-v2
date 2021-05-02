@@ -1,5 +1,4 @@
 import { ClientProvider } from "discord-nestjs";
-import { Guild } from "discord.js";
 
 import { getPromisesToUpdateGuildCounters } from "./helpers/get-promises-to-update-counters";
 import { getRolesByMember } from "./helpers/get-roles-by-member";
@@ -12,7 +11,7 @@ export const updateCounters = async (
 	DiscordClient: ClientProvider,
 	guildId: GuildEnum,
 ) => {
-	const guild = DiscordClient.getClient().guilds.cache.get(guildId) as Guild;
+	const guild = await DiscordClient.getClient().guilds.fetch(guildId);
 
 	const rolesIdsByMember = await getRolesByMember(guild);
 

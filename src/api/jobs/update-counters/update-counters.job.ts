@@ -6,6 +6,8 @@ import { updateCounters } from "./service";
 
 import { JobsSchedule } from "config/jobs-schedule";
 
+import { GuildEnum } from "enums/guilds";
+
 import { getActiveGuilds } from "config/active-guilds";
 
 export type RolesIds = Array<string>;
@@ -17,15 +19,15 @@ export class UpdateCountersJob {
 
 	@Once({ event: "ready" })
 	public setCron() {
-		cron.schedule(JobsSchedule.UPDATE_COUNTERS, this.setJobForActiveGuilds);
-	}
-
-	private setJobForActiveGuilds() {
 		const guilds = getActiveGuilds();
 
-		return () =>
-			Promise.all(
-				guilds.map(guildId => updateCounters(this.DiscordClient, guildId)),
-			);
+		guilds.forEach(guildId => {
+			cron.schedule(JobsSchedule.UPDATE_COUNTERS, this.setJob(guildId));
+		});
+	}
+
+	private setJob(guildId: GuildEnum) {
+		return async () =>
+			Promise.all(await updateCounters(this.DiscordClient, guildId));
 	}
 }
