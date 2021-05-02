@@ -2303,7 +2303,7 @@ const get_roles_by_member_1 = __nccwpck_require__(50554);
 const guilds_1 = __nccwpck_require__(26912);
 const get_counters_config_1 = __nccwpck_require__(75757);
 const updateCounters = async (DiscordClient, guildId) => {
-    const guild = DiscordClient.getClient().guilds.cache.get(guildId);
+    const guild = await DiscordClient.getClient().guilds.fetch(guildId);
     const rolesIdsByMember = await get_roles_by_member_1.getRolesByMember(guild);
     const countersConfig = get_counters_config_1.getCountersConfig(guildId);
     const promisesToChangeChannelsNames = get_promises_to_update_counters_1.getPromisesToUpdateGuildCounters(guild, rolesIdsByMember, countersConfig);
@@ -2335,14 +2335,17 @@ const discord_nestjs_1 = __nccwpck_require__(2589);
 const cron = __nccwpck_require__(82148);
 const service_1 = __nccwpck_require__(62521);
 const jobs_schedule_1 = __nccwpck_require__(97980);
+const guilds_1 = __nccwpck_require__(26912);
 const active_guilds_1 = __nccwpck_require__(8865);
 let UpdateCountersJob = class UpdateCountersJob {
     setCron() {
-        cron.schedule(jobs_schedule_1.JobsSchedule.UPDATE_COUNTERS, this.setJobForActiveGuilds);
-    }
-    setJobForActiveGuilds() {
         const guilds = active_guilds_1.getActiveGuilds();
-        return () => Promise.all(guilds.map(guildId => service_1.updateCounters(this.DiscordClient, guildId)));
+        guilds.forEach(guildId => {
+            cron.schedule(jobs_schedule_1.JobsSchedule.UPDATE_COUNTERS, this.setJob(guildId));
+        });
+    }
+    setJob(guildId) {
+        return async () => Promise.all(await service_1.updateCounters(this.DiscordClient, guildId));
     }
 };
 __decorate([
