@@ -36,5 +36,7 @@ export const sendMessage = async ({
 		.addField("Join us on twitch!", Urls.TWITCH)
 		.addField("Or at the discord", `#${channelName}`);
 
-	await channel.send(embed);
+	const message = await channel.send(embed);
+
+	await message.crosspost();
 };
