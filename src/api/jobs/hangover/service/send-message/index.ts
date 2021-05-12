@@ -17,11 +17,11 @@ interface SendMessageParams {
 	channelName: string;
 }
 
-export const sendMessage = ({
+export const sendMessage = async ({
 	DiscordClient,
 	guildId,
 	channelName,
-}: SendMessageParams) => async () => {
+}: SendMessageParams) => {
 	const guild = getGuild(DiscordClient, guildId);
 
 	const channel = guild.channels.cache.get(

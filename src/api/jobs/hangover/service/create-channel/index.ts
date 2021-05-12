@@ -13,12 +13,12 @@ interface CreateChannelParams {
 	channelName: string;
 }
 
-export const createChannel = ({
+export const createChannel = async ({
 	DiscordClient,
 	guildId,
 	categoryName,
 	channelName,
-}: CreateChannelParams) => async () => {
+}: CreateChannelParams) => {
 	const guild = getGuild(DiscordClient, guildId);
 
 	const registredRole = guild.roles.cache.get(
