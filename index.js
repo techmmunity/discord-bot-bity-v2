@@ -1862,8 +1862,12 @@ let HangoverJob = class HangoverJob {
             categoryName,
             channelName,
         };
-        cron.schedule(hangoverShedule, () => Promise.all([send_message_1.sendMessage(params), create_channel_1.createChannel(params)]));
+        cron.schedule(hangoverShedule, () => this.setup(params));
         cron.schedule(clearHangoutSchedule, delete_channel_1.deleteChannel(params));
+    }
+    async setup(params) {
+        const channel = await create_channel_1.createChannel(params);
+        await send_message_1.sendMessage(Object.assign(Object.assign({}, params), { hangoverChannel: channel }));
     }
 };
 __decorate([
@@ -1912,16 +1916,17 @@ const createChannel = async ({ DiscordClient, guildId, categoryName, channelName
             },
         ],
     });
-    await Promise.all([
-        guild.channels.create(channelName, {
-            type: "voice",
-            parent: HangoverFridayCategory,
-        }),
+    const [textChannel] = await Promise.all([
         guild.channels.create(channelName, {
             type: "text",
             parent: HangoverFridayCategory,
         }),
+        guild.channels.create(channelName, {
+            type: "voice",
+            parent: HangoverFridayCategory,
+        }),
     ]);
+    return textChannel;
 };
 exports.createChannel = createChannel;
 //# sourceMappingURL=index.js.map
@@ -2056,7 +2061,7 @@ const guilds_1 = __nccwpck_require__(26912);
 const url_1 = __nccwpck_require__(8842);
 const colors_1 = __nccwpck_require__(45799);
 const images_1 = __nccwpck_require__(52753);
-const sendMessage = async ({ DiscordClient, guildId, channelName, }) => {
+const sendMessage = async ({ DiscordClient, guildId, hangoverChannel, }) => {
     const guild = get_guild_1.getGuild(DiscordClient, guildId);
     const channel = guild.channels.cache.get(channels_1.ChannelEnum[guildId].EVENTS);
     const embed = new discord_js_1.MessageEmbed()
@@ -2065,8 +2070,9 @@ const sendMessage = async ({ DiscordClient, guildId, channelName, }) => {
         .setColor(colors_1.Colors.blue)
         .setThumbnail(images_1.Images.bityGif)
         .addField("Join us on twitch!", url_1.Urls.TWITCH)
-        .addField("Or at the discord", `#${channelName}`);
-    await channel.send(embed);
+        .addField("Or at the discord", `<#${hangoverChannel.id}>`);
+    const message = await channel.send(embed);
+    await message.crosspost();
 };
 exports.sendMessage = sendMessage;
 //# sourceMappingURL=index.js.map
