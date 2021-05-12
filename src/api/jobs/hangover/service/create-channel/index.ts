@@ -44,14 +44,16 @@ export const createChannel = async ({
 		],
 	});
 
-	await Promise.all([
-		guild.channels.create(channelName, {
-			type: "voice",
-			parent: HangoverFridayCategory,
-		}),
+	const [textChannel] = await Promise.all([
 		guild.channels.create(channelName, {
 			type: "text",
 			parent: HangoverFridayCategory,
 		}),
+		guild.channels.create(channelName, {
+			type: "voice",
+			parent: HangoverFridayCategory,
+		}),
 	]);
+
+	return textChannel;
 };

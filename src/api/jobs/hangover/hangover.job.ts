@@ -47,10 +47,17 @@ export class HangoverJob {
 			channelName,
 		};
 
-		cron.schedule(hangoverShedule, () =>
-			Promise.all([sendMessage(params), createChannel(params)]),
-		);
+		cron.schedule(hangoverShedule, () => this.setup(params));
 
 		cron.schedule(clearHangoutSchedule, deleteChannel(params));
+	}
+
+	public async setup(params: HangoverParams) {
+		const channel = await createChannel(params);
+
+		await sendMessage({
+			...params,
+			hangoverChannel: channel,
+		});
 	}
 }

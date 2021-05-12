@@ -14,13 +14,13 @@ import { Images } from "assets/images";
 interface SendMessageParams {
 	DiscordClient: ClientProvider;
 	guildId: GuildEnum;
-	channelName: string;
+	hangoverChannel: TextChannel;
 }
 
 export const sendMessage = async ({
 	DiscordClient,
 	guildId,
-	channelName,
+	hangoverChannel,
 }: SendMessageParams) => {
 	const guild = getGuild(DiscordClient, guildId);
 
@@ -34,7 +34,7 @@ export const sendMessage = async ({
 		.setColor(Colors.blue)
 		.setThumbnail(Images.bityGif)
 		.addField("Join us on twitch!", Urls.TWITCH)
-		.addField("Or at the discord", `#${channelName}`);
+		.addField("Or at the discord", `<#${hangoverChannel.id}>`);
 
 	const message = await channel.send(embed);
 
