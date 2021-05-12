@@ -1894,7 +1894,7 @@ exports.createChannel = void 0;
 const get_guild_1 = __nccwpck_require__(34057);
 const guilds_1 = __nccwpck_require__(26912);
 const roles_1 = __nccwpck_require__(53472);
-const createChannel = ({ DiscordClient, guildId, categoryName, channelName, }) => async () => {
+const createChannel = async ({ DiscordClient, guildId, categoryName, channelName, }) => {
     const guild = get_guild_1.getGuild(DiscordClient, guildId);
     const registredRole = guild.roles.cache.get(roles_1.RolesEnum[guildId].REGISTRED);
     const everyoneRole = guild.roles.cache.find(role => role.name === "@everyone");
@@ -2056,7 +2056,7 @@ const guilds_1 = __nccwpck_require__(26912);
 const url_1 = __nccwpck_require__(8842);
 const colors_1 = __nccwpck_require__(45799);
 const images_1 = __nccwpck_require__(52753);
-const sendMessage = ({ DiscordClient, guildId, channelName, }) => async () => {
+const sendMessage = async ({ DiscordClient, guildId, channelName, }) => {
     const guild = get_guild_1.getGuild(DiscordClient, guildId);
     const channel = guild.channels.cache.get(channels_1.ChannelEnum[guildId].EVENTS);
     const embed = new discord_js_1.MessageEmbed()
