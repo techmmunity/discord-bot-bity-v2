@@ -1943,9 +1943,14 @@ exports.deleteChannel = void 0;
 const get_guild_1 = __nccwpck_require__(34057);
 const deleteChannel = ({ DiscordClient, guildId, categoryName, channelName, }) => async () => {
     const guild = get_guild_1.getGuild(DiscordClient, guildId);
-    const channel = guild.channels.cache.find(channel => channel.name === channelName);
+    const textChannel = guild.channels.cache.find(channel => channel.name === channelName && channel.type === "text");
+    const voiceChannel = guild.channels.cache.find(channel => channel.name === channelName && channel.type === "voice");
     const category = guild.channels.cache.find(channel => channel.name === categoryName);
-    await Promise.all([channel === null || channel === void 0 ? void 0 : channel.delete(), category === null || category === void 0 ? void 0 : category.delete()]);
+    await Promise.all([
+        textChannel === null || textChannel === void 0 ? void 0 : textChannel.delete(),
+        voiceChannel === null || voiceChannel === void 0 ? void 0 : voiceChannel.delete(),
+        category === null || category === void 0 ? void 0 : category.delete(),
+    ]);
 };
 exports.deleteChannel = deleteChannel;
 //# sourceMappingURL=index.js.map
