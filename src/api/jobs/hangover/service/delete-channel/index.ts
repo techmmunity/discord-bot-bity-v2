@@ -17,13 +17,21 @@ export const deleteChannel = ({
 }: DeleteChannelParams) => async () => {
 	const guild = getGuild(DiscordClient, guildId);
 
-	const channel = guild.channels.cache.find(
-		channel => channel.name === channelName,
+	const textChannel = guild.channels.cache.find(
+		channel => channel.name === channelName && channel.type === "text",
+	);
+
+	const voiceChannel = guild.channels.cache.find(
+		channel => channel.name === channelName && channel.type === "voice",
 	);
 
 	const category = guild.channels.cache.find(
 		channel => channel.name === categoryName,
 	);
 
-	await Promise.all([channel?.delete(), category?.delete()]);
+	await Promise.all([
+		textChannel?.delete(),
+		voiceChannel?.delete(),
+		category?.delete(),
+	]);
 };
