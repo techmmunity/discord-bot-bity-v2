@@ -25,6 +25,8 @@ export const ChannelEnum = {
 		WELCOME_MESSAGE: "784050272729169952",
 		UNLOCK_CHANNELS: "805895726617853952",
 		ALLOWED_COMMANDS_CHANNELS: ["784085341744136213"],
+		TESTS: "823519832283545631",
+		CHALLENGES: "844341876973764628",
 	},
 	[GuildEnum.GRAPHIC]: {
 		// Logs
@@ -50,6 +52,8 @@ export const ChannelEnum = {
 		WELCOME_MESSAGE: "808317348242128960",
 		UNLOCK_CHANNELS: "",
 		ALLOWED_COMMANDS_CHANNELS: ["808317348440178708"],
+		TESTS: "",
+		CHALLENGES: "",
 	},
 	[GuildEnum.ROBOTIC]: {
 		// Logs
@@ -75,6 +79,8 @@ export const ChannelEnum = {
 		WELCOME_MESSAGE: "",
 		UNLOCK_CHANNELS: "",
 		ALLOWED_COMMANDS_CHANNELS: [""],
+		TESTS: "",
+		CHALLENGES: "",
 	},
 	[GuildEnum.MANAGEMENT]: {
 		// Logs
@@ -100,5 +106,7 @@ export const ChannelEnum = {
 		WELCOME_MESSAGE: "",
 		UNLOCK_CHANNELS: "",
 		ALLOWED_COMMANDS_CHANNELS: [""],
+		TESTS: "",
+		CHALLENGES: "",
 	},
 };

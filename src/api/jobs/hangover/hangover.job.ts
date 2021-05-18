@@ -52,7 +52,7 @@ export class HangoverJob {
 		cron.schedule(clearHangoutSchedule, deleteChannel(params));
 	}
 
-	public async setup(params: HangoverParams) {
+	private async setup(params: HangoverParams) {
 		const channel = await createChannel(params);
 
 		await sendMessage({
