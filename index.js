@@ -2855,8 +2855,7 @@ exports.DiscordConfig = {
     presence: {
         activity: {
             name: url_1.Urls.LANDING_PAGE_SHORT,
-            type: "STREAMING",
-            url: url_1.Urls.TWITCH,
+            type: "PLAYING",
         },
     },
 };
