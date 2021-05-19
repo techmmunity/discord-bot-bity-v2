@@ -460,6 +460,7 @@ const common_1 = __nccwpck_require__(6434);
 const discord_nestjs_1 = __nccwpck_require__(2589);
 const discord_js_1 = __nccwpck_require__(85973);
 const clear_1 = __nccwpck_require__(57068);
+const get_challenge_1 = __nccwpck_require__(55902);
 const register_1 = __nccwpck_require__(70377);
 const set_emojis_1 = __nccwpck_require__(78193);
 const tech_team_guard_1 = __nccwpck_require__(85556);
@@ -472,6 +473,9 @@ let ModerationGateway = class ModerationGateway {
     }
     async setEmojis(message) {
         return set_emojis_1.setEmojis(message);
+    }
+    async getChallenge(message) {
+        return get_challenge_1.getChallenge(message);
     }
 };
 __decorate([
@@ -492,6 +496,12 @@ __decorate([
     __metadata("design:paramtypes", [discord_js_1.Message]),
     __metadata("design:returntype", Promise)
 ], ModerationGateway.prototype, "setEmojis", null);
+__decorate([
+    discord_nestjs_1.OnCommand({ name: "get-challenge" }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [discord_js_1.Message]),
+    __metadata("design:returntype", Promise)
+], ModerationGateway.prototype, "getChallenge", null);
 ModerationGateway = __decorate([
     common_1.Injectable(),
     discord_nestjs_1.UseGuards(tech_team_guard_1.TechTeamGuard)
@@ -534,6 +544,74 @@ const clear = async (message) => {
     await sendEmbedMessage(message, messagesToDelete.size - 1);
 };
 exports.clear = clear;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 52534:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.makeEmbed = void 0;
+const discord_js_1 = __nccwpck_require__(85973);
+const url_1 = __nccwpck_require__(8842);
+const colors_1 = __nccwpck_require__(45799);
+const images_1 = __nccwpck_require__(52753);
+const challenge_1 = __nccwpck_require__(87390);
+const makeEmbed = (challenge) => new discord_js_1.MessageEmbed()
+    .setTitle(challenge.title)
+    .setColor(colors_1.Colors.turquoise)
+    .setDescription(challenge.description)
+    .setAuthor("Techmmunity", images_1.Images.techmmunityLogo, url_1.Urls.LANDING_PAGE_COMPLETE)
+    .addFields([
+    {
+        name: "Como funcionam os desafios?",
+        value: "Veja a mensagem pinada nesse canal :wink:",
+    },
+    {
+        name: "Linguagem",
+        value: challenge.language,
+        inline: true,
+    },
+    {
+        name: "Nivel",
+        value: challenge.level,
+        inline: true,
+    },
+    {
+        name: "ID",
+        value: challenge.id,
+        inline: true,
+    },
+]);
+exports.makeEmbed = makeEmbed;
+//# sourceMappingURL=make-embed.js.map
+
+/***/ }),
+
+/***/ 55902:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getChallenge = void 0;
+const make_embed_1 = __nccwpck_require__(52534);
+const message_1 = __nccwpck_require__(97899);
+const challenges_1 = __nccwpck_require__(90043);
+const getChallenge = async (message) => {
+    const challengeId = message_1.MessageUtil.getArgs(message).shift();
+    const challenge = challenges_1.Challenges.find(challenge => challenge.id === challengeId);
+    if (challenge) {
+        const embed = make_embed_1.makeEmbed(challenge);
+        await message.channel.send(embed);
+        return;
+    }
+    await message.channel.send("Challenge not found!");
+};
+exports.getChallenge = getChallenge;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -1836,14 +1914,13 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ChallengeJob = void 0;
 const common_1 = __nccwpck_require__(6434);
 const discord_nestjs_1 = __nccwpck_require__(2589);
-const discord_js_1 = __nccwpck_require__(85973);
 const cron = __nccwpck_require__(82148);
+const make_embed_1 = __nccwpck_require__(52534);
 const jobs_schedule_1 = __nccwpck_require__(97980);
 const channels_1 = __nccwpck_require__(4206);
 const guilds_1 = __nccwpck_require__(26912);
 const roles_1 = __nccwpck_require__(53472);
 const challenges_1 = __nccwpck_require__(90043);
-const colors_1 = __nccwpck_require__(45799);
 const { NODE_ENV } = process.env;
 let ChallengeJob = class ChallengeJob {
     setCron() {
@@ -1863,31 +1940,7 @@ let ChallengeJob = class ChallengeJob {
     }
     async setup(guildId) {
         const challenge = this.getChallenge();
-        const embed = new discord_js_1.MessageEmbed()
-            .setTitle(challenge.title)
-            .setColor(colors_1.Colors.turquoise)
-            .setDescription(challenge.description)
-            .addFields([
-            {
-                name: "Como funcionam os desafios?",
-                value: "Veja a mensagem pinada nesse canal :wink:",
-            },
-            {
-                name: "Linguagem",
-                value: challenge.language,
-                inline: true,
-            },
-            {
-                name: "Nivel",
-                value: challenge.level,
-                inline: true,
-            },
-            {
-                name: "ID",
-                value: challenge.id,
-                inline: true,
-            },
-        ]);
+        const embed = make_embed_1.makeEmbed(challenge);
         const channel = await this.getChannel(guildId);
         const message = await channel.send({
             content: `<@&${roles_1.RolesEnum[guildId].CHALLENGES}>`,
@@ -2598,6 +2651,7 @@ exports.Emojis = {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Images = void 0;
 exports.Images = {
+    techmmunityLogo: "https://cdn.discordapp.com/icons/784050272263471145/d5d2e64afbf53f17e08fa22ebac8c817.png?size=128",
     lattency: "https://cdn.picpng.com/ping_pong/ping-pong-image-36284.png",
     bityGif: "https://media.giphy.com/media/PGJPqkTcK1Vk0cIxgw/giphy.gif",
     trashCan: "https://lh3.googleusercontent.com/pw/ACtC-3dV1vZNU4AkSj5uUAw98Sa16HYypd3v5nwcxRZ_N4gI2I35QIOXNG7BjTpe6Pj4_uoRZKZZKik_Swu71eL5rBoLEdqMSgue8GAMrL4V8-jQyYq6Tppa4zON6ANo8-EuTWxGAwkY8U8dc3Av4-OlmaDJ=s512-no?authuser=0",
@@ -2634,18 +2688,44 @@ exports.getActiveGuilds = getActiveGuilds;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Challenges = void 0;
+const java_1 = __nccwpck_require__(21574);
 const javascript_1 = __nccwpck_require__(79584);
 const python_1 = __nccwpck_require__(51733);
 const react_1 = __nccwpck_require__(30180);
 const typescript_1 = __nccwpck_require__(96606);
 const challenge_1 = __nccwpck_require__(87390);
 exports.Challenges = [
+    java_1.JavaChallenges,
     javascript_1.JavascriptChallenges,
     python_1.PythonChallenges,
     react_1.ReactChallenges,
     typescript_1.TypeScriptChallenges,
 ].flat();
 //# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 21574:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.JavaChallenges = void 0;
+const markdown_1 = __nccwpck_require__(85964);
+const challenge_level_1 = __nccwpck_require__(22116);
+const challenge_1 = __nccwpck_require__(87390);
+exports.JavaChallenges = [
+    {
+        id: "JAVA-0001",
+        title: "hUeHue!",
+        description: 'Dada uma String como "o rato roeu a roupa do rei de roma", transformar essa String para hUeHuE.\nConsiderar que somente entradas contendo texto devam ser aceitas. Exemplos:\n\n' +
+            markdown_1.MarkdownUtil.codeBlock('huehueGenerator("o rato roeu") -> "o RaTo RoEu"\nhuehueGenerator("o r4to r0eu") -> "entrada inválida"'),
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "Java",
+    },
+];
+//# sourceMappingURL=java.js.map
 
 /***/ }),
 
