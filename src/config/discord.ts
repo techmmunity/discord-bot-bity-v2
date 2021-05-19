@@ -16,8 +16,7 @@ export const DiscordConfig: DiscordModuleOption = {
 	presence: {
 		activity: {
 			name: Urls.LANDING_PAGE_SHORT,
-			type: "STREAMING",
-			url: Urls.TWITCH,
+			type: "PLAYING",
 		},
 	},
 };
