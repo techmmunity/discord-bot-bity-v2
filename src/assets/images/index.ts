@@ -1,4 +1,6 @@
 export const Images = {
+	techmmunityLogo:
+		"https://cdn.discordapp.com/icons/784050272263471145/d5d2e64afbf53f17e08fa22ebac8c817.png?size=128",
 	lattency: "https://cdn.picpng.com/ping_pong/ping-pong-image-36284.png",
 	bityGif: "https://media.giphy.com/media/PGJPqkTcK1Vk0cIxgw/giphy.gif",
 	trashCan:

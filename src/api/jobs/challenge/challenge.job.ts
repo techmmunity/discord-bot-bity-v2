@@ -1,7 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { ClientProvider, Client, Once } from "discord-nestjs";
-import { MessageEmbed, TextChannel } from "discord.js";
+import { TextChannel } from "discord.js";
 import * as cron from "node-cron";
+
+import { makeEmbed } from "api/commands/moderation/service/get-challenge/helpers/make-embed";
 
 import { JobsSchedule } from "config/jobs-schedule";
 
@@ -10,8 +12,6 @@ import { GuildEnum } from "enums/guilds";
 import { RolesEnum } from "enums/roles";
 
 import { Challenges } from "config/challenges";
-
-import { Colors } from "assets/colors";
 
 const { NODE_ENV } = process.env;
 
@@ -50,31 +50,7 @@ export class ChallengeJob {
 	public async setup(guildId: GuildEnum) {
 		const challenge = this.getChallenge();
 
-		const embed = new MessageEmbed()
-			.setTitle(challenge.title)
-			.setColor(Colors.turquoise)
-			.setDescription(challenge.description)
-			.addFields([
-				{
-					name: "Como funcionam os desafios?",
-					value: "Veja a mensagem pinada nesse canal :wink:",
-				},
-				{
-					name: "Linguagem",
-					value: challenge.language,
-					inline: true,
-				},
-				{
-					name: "Nivel",
-					value: challenge.level,
-					inline: true,
-				},
-				{
-					name: "ID",
-					value: challenge.id,
-					inline: true,
-				},
-			]);
+		const embed = makeEmbed(challenge);
 
 		const channel = await this.getChannel(guildId);
 
