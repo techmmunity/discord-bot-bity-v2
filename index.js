@@ -2635,8 +2635,16 @@ exports.getActiveGuilds = getActiveGuilds;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Challenges = void 0;
 const javascript_1 = __nccwpck_require__(79584);
+const python_1 = __nccwpck_require__(51733);
+const react_1 = __nccwpck_require__(30180);
+const typescript_1 = __nccwpck_require__(96606);
 const challenge_1 = __nccwpck_require__(87390);
-exports.Challenges = [...javascript_1.JavascriptChallenges];
+exports.Challenges = [
+    javascript_1.JavascriptChallenges,
+    python_1.PythonChallenges,
+    react_1.ReactChallenges,
+    typescript_1.TypeScriptChallenges,
+].flat();
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -2820,6 +2828,114 @@ exports.JavascriptChallenges = [
 
 /***/ }),
 
+/***/ 51733:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PythonChallenges = void 0;
+const challenge_level_1 = __nccwpck_require__(22116);
+const challenge_1 = __nccwpck_require__(87390);
+exports.PythonChallenges = [
+    {
+        id: "PY-0001",
+        title: "Crie uma função que retorne o clima de uma cidade brasileira!",
+        description: "Crie uma função que receba 1 parametro, o nome de uma cidade brasileira, e retorne o clima dessa cidade baseado nessa API: `https://www.weatherapi.com/`.",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "Python",
+    },
+];
+//# sourceMappingURL=python.js.map
+
+/***/ }),
+
+/***/ 30180:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ReactChallenges = void 0;
+const challenge_level_1 = __nccwpck_require__(22116);
+const challenge_1 = __nccwpck_require__(87390);
+exports.ReactChallenges = [
+    {
+        id: "RT-0001",
+        title: "Use um state para exibir dados na tela!",
+        description: "Crie uma UI que tenha um input de texto, e quando o usuário digitar algo, o valor deve ser exibido em UpperCase logo abaixo do input, em tempo real.",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "React",
+    },
+    {
+        id: "RT-0002",
+        title: "Crie uma lista de afazeres!",
+        description: "Crie uma UI que tenha um input de texto, e quando o usuário digitar algo e apertar ENTER, o texto do input deve aparecer abaixo do input, e conforme o usuário for digitando e apertando ENTER, os textos devem ser exibidos embaixo do texto anterior.",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "React",
+    },
+    {
+        id: "RT-0003",
+        title: "Exiba os dados de uma api!",
+        description: "Quando a pagina for carregada, busque os dados dessa API: `http://fakeapi.jsonparseronline.com/posts` e os exiba na tela. (Lembre-se de fazer uma interface bem bonita! :wink:)",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "React",
+    },
+];
+//# sourceMappingURL=react.js.map
+
+/***/ }),
+
+/***/ 96606:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TypeScriptChallenges = void 0;
+const challenge_level_1 = __nccwpck_require__(22116);
+const challenge_1 = __nccwpck_require__(87390);
+exports.TypeScriptChallenges = [
+    {
+        id: "TS-0001",
+        title: "Crie uma função que some 2 numeros!",
+        description: "Crie uma função que receba 2 parametros, ambos numeros, e retorne a soma desses dois numeros.",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "TypeScript",
+    },
+    {
+        id: "TS-0002",
+        title: "Crie uma função que retorne a soma de todos os números de um array!",
+        description: "Crie uma função que receba 1 parametro, um array de numeros, e retorne a soma de todos os numeros desse array.",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "TypeScript",
+    },
+    {
+        id: "TS-0003",
+        title: "Crie uma função que retorne a soma das idades!",
+        description: "Crie uma função que receba 1 parametro, um obejto com as chaves sendo o nomes de pessoas, e o valor sendo a idade desssas pessoas, e retorne a soma da idade de todas as pessoas.",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "TypeScript",
+    },
+    {
+        id: "TS-0004",
+        title: "Crie uma função que retorne o idioma falado em um país da america latina!",
+        description: "Crie uma função que receba 1 parametro, um enum de todos os paises da america latina, retorne o idioma falado nesse país.",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "TypeScript",
+    },
+    {
+        id: "TS-0005",
+        title: "Crie uma função que tenha uma tipagem dinamica!",
+        description: "Crie uma função que receba 1 parametro, do tipo especificado ao chamar a função, e retorne esse mesmo valor, sem nenhuma alteração.",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "TypeScript",
+    },
+];
+//# sourceMappingURL=typescript.js.map
+
+/***/ }),
+
 /***/ 8262:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -2912,7 +3028,7 @@ exports.JobsSchedule = {
     HANGOVER: "0 23 * * ",
     GRAPHIC_AGENCY: "0 15 * * 1",
     REVIEW_REMINDER: "0 15 * * 2",
-    CHALLENGE: "0 15 * * 1,2,3,4,5,6",
+    CHALLENGE: "0 15 * * 1,2,3,4,5",
 };
 //# sourceMappingURL=jobs-schedule.js.map
 
