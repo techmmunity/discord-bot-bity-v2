@@ -1,6 +1,7 @@
 import { Collection, GuildMember, Message } from "discord.js";
 
 import { addRoles } from "./helpers/add-roles";
+import { sendServerExplanationMessage } from "./helpers/send-server-explanation-message";
 import { sendWelcomeMessage } from "./helpers/send-welcome-message";
 
 import { MessageUtil } from "utils/message";
@@ -47,5 +48,11 @@ export const register = async (message: Message) => {
 	 * Return Promises
 	 */
 
-	return Promise.all(promises);
+	await Promise.all(promises);
+
+	/**
+	 * Send server explanation message
+	 */
+
+	await sendServerExplanationMessage(message);
 };

@@ -40,4 +40,27 @@ export const ReactChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "React",
 	},
+	{
+		id: "RT-1-0005",
+		title: "Crie uma calculadora! (Lvl 1)",
+		description:
+			"Crei uma UI de uma calculadora. Ela deve ter as seguintes funções\n\n- Somar\n- Subtrair\n- Multiplicar\n- Dividir",
+		level: ChallengeLevelEnum.Junior,
+		language: "React",
+		image: "https://i.ytimg.com/vi/lXosDpaQ4Zs/maxresdefault.jpg",
+	},
+	/**
+	 *
+	 * Middle
+	 *
+	 */
+	{
+		id: "RT-2-0001",
+		title: "Crie uma calculadora! (Lvl 2)",
+		description:
+			"Crei uma UI de uma calculadora, ela deve ser renponsiva, usar tags semanticas e ter acessibilidade. Ela deve ter as seguintes funções\n\n- Somar\n- Subtrair\n- Multiplicar\n- Dividir",
+		level: ChallengeLevelEnum.Middle,
+		language: "React",
+		image: "https://i.ytimg.com/vi/lXosDpaQ4Zs/maxresdefault.jpg",
+	},
 ];
