@@ -659,6 +659,33 @@ exports.addRoles = addRoles;
 
 /***/ }),
 
+/***/ 27626:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sendServerExplanationMessage = void 0;
+const channels_1 = __nccwpck_require__(4206);
+const guilds_1 = __nccwpck_require__(26912);
+const sendServerExplanationMessage = async (message) => {
+    var _a, _b;
+    const guildId = (_a = message.guild) === null || _a === void 0 ? void 0 : _a.id;
+    const unlockChannelsId = channels_1.ChannelEnum[guildId].UNLOCK_CHANNELS;
+    const challenglesId = channels_1.ChannelEnum[guildId].CHALLENGES;
+    const welcomeMessageChannel = (_b = message.guild) === null || _b === void 0 ? void 0 : _b.channels.cache.get(channels_1.ChannelEnum[guildId].WELCOME_MESSAGE);
+    await welcomeMessageChannel.send([
+        "Fala jovens, seja bem vindos(as)!",
+        `Depois deem uma passada no <#${unlockChannelsId}>`,
+        "Lá vcs podem desbloquear canais pra postar suas duvidas / conteudos",
+        `Nós tbm temos desafios diarios, ao meio dia, no <#${challenglesId}>`,
+    ].join("\n"));
+};
+exports.sendServerExplanationMessage = sendServerExplanationMessage;
+//# sourceMappingURL=send-server-explanation-message.js.map
+
+/***/ }),
+
 /***/ 40447:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -709,6 +736,7 @@ exports.sendWelcomeMessage = sendWelcomeMessage;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.register = void 0;
 const add_roles_1 = __nccwpck_require__(53583);
+const send_server_explanation_message_1 = __nccwpck_require__(27626);
 const send_welcome_message_1 = __nccwpck_require__(40447);
 const message_1 = __nccwpck_require__(97899);
 const guilds_1 = __nccwpck_require__(26912);
@@ -728,7 +756,8 @@ const register = async (message) => {
         const sendWelcomeMessagesPromises = Promise.all(members.map(member => send_welcome_message_1.sendWelcomeMessage(message, member, guildId)));
         promises.push(sendWelcomeMessagesPromises);
     }
-    return Promise.all(promises);
+    await Promise.all(promises);
+    await send_server_explanation_message_1.sendServerExplanationMessage(message);
 };
 exports.register = register;
 //# sourceMappingURL=index.js.map
@@ -3516,6 +3545,22 @@ exports.ReactChallenges = [
         description: "Crei uma UI de um jogo da velha, onde 2 pessoas possam jogar, e suas rodadas se alternem.\n\n - Caso de velha, deverá ser exibido um alerta\n- Caso um jogador vença, deverá ser exibido um alerta dizendo qual dos jogadores venceu",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "React",
+    },
+    {
+        id: "RT-1-0005",
+        title: "Crie uma calculadora! (Lvl 1)",
+        description: "Crei uma UI de uma calculadora. Ela deve ter as seguintes funções\n\n- Somar\n- Subtrair\n- Multiplicar\n- Dividir",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "React",
+        image: "https://i.ytimg.com/vi/lXosDpaQ4Zs/maxresdefault.jpg",
+    },
+    {
+        id: "RT-2-0001",
+        title: "Crie uma calculadora! (Lvl 2)",
+        description: "Crei uma UI de uma calculadora, ela deve ser renponsiva, usar tags semanticas e ter acessibilidade. Ela deve ter as seguintes funções\n\n- Somar\n- Subtrair\n- Multiplicar\n- Dividir",
+        level: challenge_level_1.ChallengeLevelEnum.Middle,
+        language: "React",
+        image: "https://i.ytimg.com/vi/lXosDpaQ4Zs/maxresdefault.jpg",
     },
 ];
 //# sourceMappingURL=react.js.map
