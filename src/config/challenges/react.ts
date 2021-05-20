@@ -32,4 +32,12 @@ export const ReactChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "React",
 	},
+	{
+		id: "RT-0004",
+		title: "Crie um jogo da velha!",
+		description:
+			"Crei uma UI de um jogo da velha, onde 2 pessoas possam jogar, e suas rodadas se alternem.\n\n - Caso de velha, deverá ser exibido um alerta\n- Caso um jogador vença, deverá ser exibido um alerta dizendo qual dos jogadores venceu",
+		level: ChallengeLevelEnum.Junior,
+		language: "React",
+	},
 ];
