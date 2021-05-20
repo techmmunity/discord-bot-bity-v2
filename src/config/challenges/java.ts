@@ -1,4 +1,4 @@
-import { MarkdownUtil } from "utils/markdown";
+import { makeDescription } from "./helpers/make-description";
 
 import { ChallengeLevelEnum } from "enums/challenge-level";
 
@@ -13,12 +13,21 @@ export const JavaChallenges: Array<Challenge> = [
 	{
 		id: "JAVA-0001",
 		title: "hUeHue!",
-		description:
-			'Dada uma String como "o rato roeu a roupa do rei de roma", transformar essa String para hUeHuE.\nConsiderar que somente entradas contendo texto devam ser aceitas. Exemplos:\n\n' +
-			MarkdownUtil.codeBlock(
-				'huehueGenerator("o rato roeu") -> "o RaTo RoEu"\nhuehueGenerator("o r4to r0eu") -> "entrada inválida"',
-			),
 		level: ChallengeLevelEnum.Junior,
 		language: "Java",
+		description: makeDescription({
+			text:
+				'Dada uma String como "o rato roeu a roupa do rei de roma", transformar essa String para hUeHuE.\nConsiderar que somente entradas contendo texto devam ser aceitas.',
+			examples: [
+				{
+					example: 'huehueGenerator("o rato roeu")',
+					returnedValue: '"o RaTo RoEu"',
+				},
+				{
+					example: 'huehueGenerator("o r4to r0eu")',
+					returnedValue: '"entrada inválida"',
+				},
+			],
+		}),
 	},
 ];
