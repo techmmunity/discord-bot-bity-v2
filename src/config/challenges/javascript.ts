@@ -18,6 +18,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 2 parametros, ambos numeros, e retornar a soma desses numeros.",
 			examples: [
@@ -38,6 +39,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro numerico, que será a quantidade de segundos, e retornar a quantidade convertida e arredondada dos segundos para minutos.",
 			examples: [
@@ -58,6 +60,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro numerico, que será a quantidade de minutos, e retornar a quantidade convertida e arredondada dos minutos para segundos.",
 			examples: [
@@ -78,6 +81,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 2 parametros, ambos numeros, que serão o **tamanho da base** e a **altura** do triangulo, e retornar o calculo da area desse triangulo.",
 			examples: [
@@ -107,6 +111,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro, um array de strings, e retornar o primeiro item desse array.\n\n**ATENÇÃO:** Você não pode usar magic numbers!",
 			examples: [
@@ -127,6 +132,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro, um array de strings, e retornar o ultimo item desse array.\n\n**ATENÇÃO:** Você não pode usar magic numbers!",
 			examples: [
@@ -147,6 +153,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro, um number, e retornar um boolean dizendo se o numero é menor ou igual a zero.",
 			examples: [
@@ -171,6 +178,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro, um number, e retornar um boolean dizendo se o numero é menor que cem.",
 			examples: [
@@ -195,6 +203,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 2 parametros, ambos numeros, e deve retornar um boolean que diz se a soma desses 2 numeros é igual a dez.",
 			examples: [
@@ -224,6 +233,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro, um array de strings, e retornar a string com mais caracteres desse array.",
 			examples: [
@@ -248,6 +258,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro, uma string, e retornar a letra que mais foi usada (repetida) nessa string.",
 			examples: [
@@ -273,6 +284,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 2 parametros, ambos strings, e retornar um valor boolean que diz se as strings são anagramas uma da outra.",
 			examples: [
@@ -297,6 +309,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro, uma string, e retornar um valor boolean que diz se a string é palindroma (se ela é escrita do mesmo jeito de trás para frente).",
 			examples: [
@@ -321,6 +334,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro numerico, que será a quantidade de segundos, e retornar a quantidade convertida dos segundos para minutos. Caso sobrem segundos, eles também devem ser retornados.",
 			examples: [
@@ -345,6 +359,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro, um array de numeros, e retornar um novo array com os numeros ordenados em ordem crescente.",
 			examples: [
@@ -369,6 +384,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber 1 parametro, um array de numeros, e retornar um novo array com os numeros ordenados em ordem decrescente.",
 			examples: [
@@ -394,6 +410,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber _n_ parametros, de tipos variados, e retornar um number que diz a quantidade de argumentos que foi passada (Dica: `...`).",
 			examples: [
@@ -418,6 +435,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber um parametro, um number que representa a idade atual da pessoa, e retornar a quantidade de dias que a pessoa viveu, contando com os anos bissextos.",
 			examples: [
@@ -450,6 +468,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"A função deve receber um parametro, um array de numbers, e retornar a soma de todos os itens do array.",
 			examples: [
@@ -470,6 +489,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"Usando a lib `@techmmunity/easy-check`, crie uma função que receba um numero, eleve esse numero ao quadrado, e retorne se o resultado disso é um numero par (odd).",
 			examples: [
@@ -490,6 +510,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"Crie uma função que receba 1 parametro, um array de strings, e retorne um elemento aleatório desse array.",
 			examples: [
@@ -514,6 +535,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"Crie uma função que receba 1 parametro, uma string, e retorne se essa string é uma data valida ou não.",
 			examples: [
@@ -538,6 +560,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"Crie uma função que receba 1 parametro, uma string, e retorne essa mesma string, mas sem os espaços.",
 			examples: [
@@ -558,6 +581,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"Crie uma função que receba 1 parametro, um array, e retorne um objeto, com a chave sendo um elemento do array, e o valor sendo a quantidade de vezes que ele foi repetido.",
 			examples: [
@@ -584,6 +608,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"Crie uma função que receba 2 parametro, uma string (a frase) e um number (a rotação), e retorne uma string convertendo cada letra da frase para uma letra seguinte do alfabeto. (Ex: Se a rotação for 3, `a -> d`, `b -> e` e `y -> b`).",
 			examples: [
@@ -612,6 +637,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"Crie uma função que receba 2 parametro, uma string (a frase) e um number (a rotação), e retorne uma string convertendo cada letra da frase para uma letra anterior do alfabeto. (Ex: Se a rotação for 3, `d -> a`, `e -> b` e `b -> y`).",
 			examples: [
@@ -645,6 +671,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Middle,
 		language: "JavaScript",
 		description: makeDescription({
+			language: "js",
 			text:
 				"Crie uma função que receba 1 parametro, um number, e retorne um array com 2 items:\n\n- O **maior** numero que pode ser obitido ao alterar a posição de 2 digitos desse numero\n-O **menor** numero que pode ser obitido ao alterar a posição de 2 digitos desse numero.\n\n**Obs:** Zeros a esquerda não são permitidos!",
 			examples: [

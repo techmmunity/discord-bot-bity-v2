@@ -16,6 +16,7 @@ export const TypeScriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "TypeScript",
 		description: makeDescription({
+			language: "ts",
 			text:
 				"A função deve receber 2 parametros, ambos numeros, e retornar a soma desses numeros.",
 			examples: [
@@ -37,6 +38,7 @@ export const TypeScriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "TypeScript",
 		description: makeDescription({
+			language: "ts",
 			text:
 				"Crie uma função que receba 1 parametro, um array de numeros, e retorne a soma de todos os numeros desse array.",
 			examples: [
@@ -57,6 +59,7 @@ export const TypeScriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "TypeScript",
 		description: makeDescription({
+			language: "ts",
 			text:
 				"Crie uma função que receba 1 parametro, um obejto com as chaves sendo o nomes de pessoas, e o valor sendo a idade desssas pessoas, e retorne a soma da idade de todas as pessoas.",
 			examples: [
@@ -78,6 +81,7 @@ export const TypeScriptChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "TypeScript",
 		description: makeDescription({
+			language: "ts",
 			text:
 				"Crie uma função que receba 1 parametro, um enum de todos os paises da america latina, retorne o idioma falado nesse país.",
 			examples: [

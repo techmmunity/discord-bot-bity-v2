@@ -16,6 +16,7 @@ export const JavaChallenges: Array<Challenge> = [
 		level: ChallengeLevelEnum.Junior,
 		language: "Java",
 		description: makeDescription({
+			language: "java",
 			text:
 				'Dada uma String como "o rato roeu a roupa do rei de roma", transformar essa String para hUeHuE.\nConsiderar que somente entradas contendo texto devam ser aceitas.',
 			examples: [
