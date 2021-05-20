@@ -13,7 +13,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 	 *
 	 */
 	{
-		id: "JS-0001",
+		id: "JS-0-0001",
 		title: "Crie uma função que retorne a soma de 2 numeros!",
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
@@ -34,7 +34,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0002",
+		id: "JS-0-0002",
 		title: "Crie uma função que converta segundos para minutos!",
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
@@ -55,7 +55,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0003",
+		id: "JS-0-0003",
 		title: "Crie uma função que converta minutos para segundos!",
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
@@ -76,7 +76,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0004",
+		id: "JS-0-0004",
 		title: "Crie uma função que retorne a area de um triangulo retangulo!",
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
@@ -97,7 +97,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0005",
+		id: "JS-0-0005",
 		title: "Corrija o bug! #1",
 		description: MarkdownUtil.codeBlock(
 			"function cubes(a) {\n	retunr a ** 3\n}",
@@ -106,7 +106,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		language: "JavaScript",
 	},
 	{
-		id: "JS-0006",
+		id: "JS-0-0006",
 		title: "Crie uma função que retorne o primeiro item de um array!",
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
@@ -127,7 +127,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0007",
+		id: "JS-0-0007",
 		title: "Crie uma função que retorne o ultimo item de um array!",
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
@@ -148,7 +148,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0008",
+		id: "JS-0-0008",
 		title: "Crie uma função que verifica se um numero é menor ou igual a zero!",
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
@@ -173,7 +173,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0009",
+		id: "JS-0-0009",
 		title: "Crie uma função que verifica se um numero é menor que 100!",
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
@@ -198,7 +198,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0010",
+		id: "JS-0-0010",
 		title: "Crie uma função que diga se a soma de 2 numeros é iguala a 10!",
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
@@ -228,7 +228,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 	 *
 	 */
 	{
-		id: "JS-0011",
+		id: "JS-1-0001",
 		title: "Crie uma função que retorne a maior string de um array!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -253,7 +253,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0012",
+		id: "JS-1-0002",
 		title: "Crie uma função que retorne a letra mais usada em uma string!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -278,7 +278,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0013",
+		id: "JS-1-0003",
 		title:
 			"Crie uma função que verifica se duas strings são anagramas uma da outra!",
 		level: ChallengeLevelEnum.Junior,
@@ -304,7 +304,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0014",
+		id: "JS-1-0004",
 		title: "Crie uma função que verifica se uma string é palíndroma!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -329,7 +329,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0015",
+		id: "JS-1-0005",
 		title: "Crie uma função que converta segundos para minutos!",
 		level: ChallengeLevelEnum.Starter,
 		language: "JavaScript",
@@ -354,7 +354,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0016",
+		id: "JS-1-0006",
 		title: "Crie uma função que ordene números de um array! (crescente)",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -379,7 +379,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0017",
+		id: "JS-1-0007",
 		title: "Crie uma função que ordene números de um array! (decrescente)",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -404,7 +404,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0018",
+		id: "JS-1-0008",
 		title:
 			"Crie uma função que retorne o nro de argumentos que foram passados!",
 		level: ChallengeLevelEnum.Junior,
@@ -430,7 +430,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0019",
+		id: "JS-1-0009",
 		title: "Crie uma função que converta a idade de uma pessoa para dias!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -451,7 +451,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0020",
+		id: "JS-1-0010",
 		title: "Corrija o bug! #2",
 		description:
 			"Nesse trecho existe um loop infinito, faça as alterações necessarias para corrigir o bug:\n" +
@@ -462,7 +462,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		language: "JavaScript",
 	},
 	{
-		id: "JS-0021",
+		id: "JS-1-0011",
 		title:
 			"Crie uma função que retorne a soma de todos os numeros de um array!",
 		level: ChallengeLevelEnum.Junior,
@@ -484,7 +484,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0022",
+		id: "JS-1-0012",
 		title: "Use o NPM!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -505,7 +505,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0023",
+		id: "JS-1-0013",
 		title: "Random Element!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -530,7 +530,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0023",
+		id: "JS-1-0013",
 		title: "Valid Date!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -555,7 +555,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0024",
+		id: "JS-1-0014",
 		title: "Remove Spaces!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -576,7 +576,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0025",
+		id: "JS-1-0015",
 		title: "How many times!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -603,7 +603,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0026",
+		id: "JS-1-0016",
 		title: "Caesar's Cipher!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -632,7 +632,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 		}),
 	},
 	{
-		id: "JS-0027",
+		id: "JS-1-0017",
 		title: "Reverse Caesar's Cipher!",
 		level: ChallengeLevelEnum.Junior,
 		language: "JavaScript",
@@ -666,7 +666,7 @@ export const JavascriptChallenges: Array<Challenge> = [
 	 *
 	 */
 	{
-		id: "JS-0025",
+		id: "JS-2-0001",
 		title: "Maxie And Minnie!",
 		level: ChallengeLevelEnum.Middle,
 		language: "JavaScript",
