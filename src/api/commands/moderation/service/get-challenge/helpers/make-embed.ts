@@ -7,8 +7,8 @@ import { Images } from "assets/images";
 
 import { Challenge } from "types/challenge";
 
-export const makeEmbed = (challenge: Challenge) =>
-	new MessageEmbed()
+export const makeEmbed = (challenge: Challenge) => {
+	const embed = new MessageEmbed()
 		.setTitle(challenge.title)
 		.setColor(Colors.turquoise)
 		.setDescription(challenge.description)
@@ -38,3 +38,10 @@ export const makeEmbed = (challenge: Challenge) =>
 				inline: true,
 			},
 		]);
+
+	if (challenge.image) {
+		embed.setImage(challenge.image);
+	}
+
+	return embed;
+};

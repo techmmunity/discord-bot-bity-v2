@@ -11,7 +11,7 @@ export const JavaChallenges: Array<Challenge> = [
 	 *
 	 */
 	{
-		id: "JAVA-0001",
+		id: "JAVA-1-0001",
 		title: "hUeHue!",
 		level: ChallengeLevelEnum.Junior,
 		language: "Java",
