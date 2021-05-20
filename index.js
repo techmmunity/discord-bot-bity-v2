@@ -560,32 +560,38 @@ const url_1 = __nccwpck_require__(8842);
 const colors_1 = __nccwpck_require__(45799);
 const images_1 = __nccwpck_require__(52753);
 const challenge_1 = __nccwpck_require__(87390);
-const makeEmbed = (challenge) => new discord_js_1.MessageEmbed()
-    .setTitle(challenge.title)
-    .setColor(colors_1.Colors.turquoise)
-    .setDescription(challenge.description)
-    .setAuthor("Techmmunity", images_1.Images.techmmunityLogo, url_1.Urls.LANDING_PAGE_COMPLETE)
-    .addFields([
-    {
-        name: "Como funcionam os desafios?",
-        value: "Veja a mensagem pinada nesse canal :wink:",
-    },
-    {
-        name: "Linguagem",
-        value: challenge.language,
-        inline: true,
-    },
-    {
-        name: "Nivel",
-        value: challenge.level,
-        inline: true,
-    },
-    {
-        name: "ID",
-        value: challenge.id,
-        inline: true,
-    },
-]);
+const makeEmbed = (challenge) => {
+    const embed = new discord_js_1.MessageEmbed()
+        .setTitle(challenge.title)
+        .setColor(colors_1.Colors.turquoise)
+        .setDescription(challenge.description)
+        .setAuthor("Techmmunity", images_1.Images.techmmunityLogo, url_1.Urls.LANDING_PAGE_COMPLETE)
+        .addFields([
+        {
+            name: "Como funcionam os desafios?",
+            value: "Veja a mensagem pinada nesse canal :wink:",
+        },
+        {
+            name: "Linguagem",
+            value: challenge.language,
+            inline: true,
+        },
+        {
+            name: "Nivel",
+            value: challenge.level,
+            inline: true,
+        },
+        {
+            name: "ID",
+            value: challenge.id,
+            inline: true,
+        },
+    ]);
+    if (challenge.image) {
+        embed.setImage(challenge.image);
+    }
+    return embed;
+};
 exports.makeEmbed = makeEmbed;
 //# sourceMappingURL=make-embed.js.map
 
@@ -2681,6 +2687,45 @@ exports.getActiveGuilds = getActiveGuilds;
 
 /***/ }),
 
+/***/ 33200:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CssChallenges = void 0;
+const challenge_level_1 = __nccwpck_require__(22116);
+const challenge_1 = __nccwpck_require__(87390);
+exports.CssChallenges = [
+    {
+        id: "CSS-0-0001",
+        title: "Black And White!",
+        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        language: "CSS",
+        image: "https://css-challenges.com/wp-content/uploads/2020/05/Black-or-White.png",
+        description: "Divida a tela em 2, a parte da esquerda deve ser branca com o texto preto, e a parte da direita preta com o texto branco.",
+    },
+    {
+        id: "CSS-1-0001",
+        title: "Social buttons!",
+        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        language: "CSS",
+        image: "https://www.peengler.com/wp-content/uploads/2020/04/Stylish-Social-Buttons-min.jpg",
+        description: "Crie botões de login social, os de cima são exemplos dos botões em estado normal, e os de baixo são como eles devem ficar quando o usuario passa o mouse em cima.",
+    },
+    {
+        id: "CSS-2-0001",
+        title: "Colorful Word!",
+        level: challenge_level_1.ChallengeLevelEnum.Middle,
+        language: "CSS",
+        image: "https://css-challenges.com/wp-content/uploads/2018/09/A-colorful-world.png",
+        description: "Faça com que cada letra de um texto tenha uma cor diferente!",
+    },
+];
+//# sourceMappingURL=css.js.map
+
+/***/ }),
+
 /***/ 76344:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -2709,6 +2754,7 @@ exports.makeDescription = makeDescription;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Challenges = void 0;
+const css_1 = __nccwpck_require__(33200);
 const java_1 = __nccwpck_require__(21574);
 const javascript_1 = __nccwpck_require__(79584);
 const python_1 = __nccwpck_require__(51733);
@@ -2716,6 +2762,7 @@ const react_1 = __nccwpck_require__(30180);
 const typescript_1 = __nccwpck_require__(96606);
 const challenge_1 = __nccwpck_require__(87390);
 exports.Challenges = [
+    css_1.CssChallenges,
     java_1.JavaChallenges,
     javascript_1.JavascriptChallenges,
     python_1.PythonChallenges,
@@ -2738,7 +2785,7 @@ const challenge_level_1 = __nccwpck_require__(22116);
 const challenge_1 = __nccwpck_require__(87390);
 exports.JavaChallenges = [
     {
-        id: "JAVA-0001",
+        id: "JAVA-1-0001",
         title: "hUeHue!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "Java",
@@ -2775,7 +2822,7 @@ const challenge_level_1 = __nccwpck_require__(22116);
 const challenge_1 = __nccwpck_require__(87390);
 exports.JavascriptChallenges = [
     {
-        id: "JS-0001",
+        id: "JS-0-0001",
         title: "Crie uma função que retorne a soma de 2 numeros!",
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
@@ -2795,7 +2842,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0002",
+        id: "JS-0-0002",
         title: "Crie uma função que converta segundos para minutos!",
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
@@ -2815,7 +2862,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0003",
+        id: "JS-0-0003",
         title: "Crie uma função que converta minutos para segundos!",
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
@@ -2835,7 +2882,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0004",
+        id: "JS-0-0004",
         title: "Crie uma função que retorne a area de um triangulo retangulo!",
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
@@ -2855,14 +2902,14 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0005",
+        id: "JS-0-0005",
         title: "Corrija o bug! #1",
         description: markdown_1.MarkdownUtil.codeBlock("function cubes(a) {\n	retunr a ** 3\n}"),
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
     },
     {
-        id: "JS-0006",
+        id: "JS-0-0006",
         title: "Crie uma função que retorne o primeiro item de um array!",
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
@@ -2882,7 +2929,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0007",
+        id: "JS-0-0007",
         title: "Crie uma função que retorne o ultimo item de um array!",
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
@@ -2902,7 +2949,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0008",
+        id: "JS-0-0008",
         title: "Crie uma função que verifica se um numero é menor ou igual a zero!",
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
@@ -2926,7 +2973,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0009",
+        id: "JS-0-0009",
         title: "Crie uma função que verifica se um numero é menor que 100!",
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
@@ -2950,7 +2997,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0010",
+        id: "JS-0-0010",
         title: "Crie uma função que diga se a soma de 2 numeros é iguala a 10!",
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
@@ -2974,7 +3021,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0011",
+        id: "JS-1-0001",
         title: "Crie uma função que retorne a maior string de um array!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -2998,7 +3045,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0012",
+        id: "JS-1-0002",
         title: "Crie uma função que retorne a letra mais usada em uma string!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3022,7 +3069,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0013",
+        id: "JS-1-0003",
         title: "Crie uma função que verifica se duas strings são anagramas uma da outra!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3046,7 +3093,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0014",
+        id: "JS-1-0004",
         title: "Crie uma função que verifica se uma string é palíndroma!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3070,7 +3117,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0015",
+        id: "JS-1-0005",
         title: "Crie uma função que converta segundos para minutos!",
         level: challenge_level_1.ChallengeLevelEnum.Starter,
         language: "JavaScript",
@@ -3094,7 +3141,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0016",
+        id: "JS-1-0006",
         title: "Crie uma função que ordene números de um array! (crescente)",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3118,7 +3165,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0017",
+        id: "JS-1-0007",
         title: "Crie uma função que ordene números de um array! (decrescente)",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3142,7 +3189,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0018",
+        id: "JS-1-0008",
         title: "Crie uma função que retorne o nro de argumentos que foram passados!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3166,7 +3213,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0019",
+        id: "JS-1-0009",
         title: "Crie uma função que converta a idade de uma pessoa para dias!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3186,7 +3233,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0020",
+        id: "JS-1-0010",
         title: "Corrija o bug! #2",
         description: "Nesse trecho existe um loop infinito, faça as alterações necessarias para corrigir o bug:\n" +
             markdown_1.MarkdownUtil.codeBlock("function printArray(number) {\n  var newArray = [];\n\n  for(var i = 1; i <= number;) {\n    newArray.push(i);\n  }\n\n  return newArray;\n}"),
@@ -3194,7 +3241,7 @@ exports.JavascriptChallenges = [
         language: "JavaScript",
     },
     {
-        id: "JS-0021",
+        id: "JS-1-0011",
         title: "Crie uma função que retorne a soma de todos os numeros de um array!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3214,7 +3261,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0022",
+        id: "JS-1-0012",
         title: "Use o NPM!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3234,7 +3281,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0023",
+        id: "JS-1-0013",
         title: "Random Element!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3258,7 +3305,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0023",
+        id: "JS-1-0013",
         title: "Valid Date!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3282,7 +3329,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0024",
+        id: "JS-1-0014",
         title: "Remove Spaces!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3302,7 +3349,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0025",
+        id: "JS-1-0015",
         title: "How many times!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3326,7 +3373,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0026",
+        id: "JS-1-0016",
         title: "Caesar's Cipher!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3354,7 +3401,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0027",
+        id: "JS-1-0017",
         title: "Reverse Caesar's Cipher!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "JavaScript",
@@ -3382,7 +3429,7 @@ exports.JavascriptChallenges = [
         }),
     },
     {
-        id: "JS-0025",
+        id: "JS-2-0001",
         title: "Maxie And Minnie!",
         level: challenge_level_1.ChallengeLevelEnum.Middle,
         language: "JavaScript",
@@ -3421,7 +3468,7 @@ const challenge_level_1 = __nccwpck_require__(22116);
 const challenge_1 = __nccwpck_require__(87390);
 exports.PythonChallenges = [
     {
-        id: "PY-0001",
+        id: "PY-1-0001",
         title: "Crie uma função que retorne o clima de uma cidade brasileira!",
         description: "Crie uma função que receba 1 parametro, o nome de uma cidade brasileira, e retorne o clima dessa cidade baseado nessa API: `https://www.weatherapi.com/`.",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
@@ -3443,28 +3490,28 @@ const challenge_level_1 = __nccwpck_require__(22116);
 const challenge_1 = __nccwpck_require__(87390);
 exports.ReactChallenges = [
     {
-        id: "RT-0001",
+        id: "RT-1-0001",
         title: "Use um state para exibir dados na tela!",
         description: "Crie uma UI que tenha um input de texto, e quando o usuário digitar algo, o valor deve ser exibido em UpperCase logo abaixo do input, em tempo real.",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "React",
     },
     {
-        id: "RT-0002",
+        id: "RT-1-0002",
         title: "Crie uma lista de afazeres!",
         description: "Crie uma UI que tenha um input de texto, e quando o usuário digitar algo e apertar ENTER, o texto do input deve aparecer abaixo do input, e conforme o usuário for digitando e apertando ENTER, os textos devem ser exibidos embaixo do texto anterior.",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "React",
     },
     {
-        id: "RT-0003",
+        id: "RT-1-0003",
         title: "Exiba os dados de uma api!",
         description: "Quando a pagina for carregada, busque os dados dessa API: `http://fakeapi.jsonparseronline.com/posts` e os exiba na tela. (Lembre-se de fazer uma interface bem bonita! :wink:)",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "React",
     },
     {
-        id: "RT-0004",
+        id: "RT-1-0004",
         title: "Crie um jogo da velha!",
         description: "Crei uma UI de um jogo da velha, onde 2 pessoas possam jogar, e suas rodadas se alternem.\n\n - Caso de velha, deverá ser exibido um alerta\n- Caso um jogador vença, deverá ser exibido um alerta dizendo qual dos jogadores venceu",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
@@ -3487,7 +3534,7 @@ const challenge_level_1 = __nccwpck_require__(22116);
 const challenge_1 = __nccwpck_require__(87390);
 exports.TypeScriptChallenges = [
     {
-        id: "TS-0001",
+        id: "TS-1-0001",
         title: "Crie uma função que retorne a soma de 2 numeros!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "TypeScript",
@@ -3507,7 +3554,7 @@ exports.TypeScriptChallenges = [
         }),
     },
     {
-        id: "TS-0002",
+        id: "TS-1-0002",
         title: "Crie uma função que retorne a soma de todos os números de um array!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "TypeScript",
@@ -3527,7 +3574,7 @@ exports.TypeScriptChallenges = [
         }),
     },
     {
-        id: "TS-0003",
+        id: "TS-1-0003",
         title: "Crie uma função que retorne a soma das idades!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "TypeScript",
@@ -3547,7 +3594,7 @@ exports.TypeScriptChallenges = [
         }),
     },
     {
-        id: "TS-0004",
+        id: "TS-1-0004",
         title: "Crie uma função que retorne o idioma falado em um país da america latina!",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
         language: "TypeScript",
@@ -3567,7 +3614,7 @@ exports.TypeScriptChallenges = [
         }),
     },
     {
-        id: "TS-0005",
+        id: "TS-1-0005",
         title: "Crie uma função que tenha uma tipagem dinamica!",
         description: "Crie uma função que receba 1 parametro, do tipo especificado ao chamar a função, e retorne esse mesmo valor, sem nenhuma alteração.",
         level: challenge_level_1.ChallengeLevelEnum.Junior,
