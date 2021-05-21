@@ -238,15 +238,15 @@ export const JavascriptChallenges: Array<Challenge> = [
 				"A função deve receber 1 parametro, um array de strings, e retornar a string com mais caracteres desse array.",
 			examples: [
 				{
-					example: 'getSmaller(["foo", "five", "ducks"])',
-					returnedValue: '"foo"',
+					example: 'getBigger(["foo", "five", "ducks"])',
+					returnedValue: '"ducks"',
 				},
 				{
-					example: 'getSmaller(["javascript", "python", "php"])',
-					returnedValue: '"php"',
+					example: 'getBigger(["javascript", "python", "php"])',
+					returnedValue: '"javascript"',
 				},
 				{
-					example: 'getSmaller(["a", "b", "c"])',
+					example: 'getBigger(["a", "b", "c"])',
 					returnedValue: "a",
 				},
 			],
@@ -656,6 +656,31 @@ export const JavascriptChallenges: Array<Challenge> = [
 				{
 					example: 'caesarCipher("Bmkpuucvqbg qa bpm jmab kwuucvqbg!", 34)',
 					returnedValue: '"Techmmunity is the best community!"',
+				},
+			],
+		}),
+	},
+	{
+		id: "JS-1-0018",
+		title: "Crie uma função que retorne a menor string de um array!",
+		level: ChallengeLevelEnum.Junior,
+		language: "JavaScript",
+		description: makeDescription({
+			language: "js",
+			text:
+				"A função deve receber 1 parametro, um array de strings, e retornar a string com menos caracteres desse array.",
+			examples: [
+				{
+					example: 'getSmaller(["foo", "five", "ducks"])',
+					returnedValue: '"foo"',
+				},
+				{
+					example: 'getSmaller(["javascript", "python", "php"])',
+					returnedValue: '"php"',
+				},
+				{
+					example: 'getSmaller(["a", "b", "c"])',
+					returnedValue: "a",
 				},
 			],
 		}),
