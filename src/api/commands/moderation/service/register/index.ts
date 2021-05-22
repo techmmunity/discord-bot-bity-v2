@@ -54,5 +54,7 @@ export const register = async (message: Message) => {
 	 * Send server explanation message
 	 */
 
-	await sendServerExplanationMessage(message);
+	if (!flags.silent) {
+		await sendServerExplanationMessage(message);
+	}
 };
