@@ -757,7 +757,9 @@ const register = async (message) => {
         promises.push(sendWelcomeMessagesPromises);
     }
     await Promise.all(promises);
-    await send_server_explanation_message_1.sendServerExplanationMessage(message);
+    if (!flags.silent) {
+        await send_server_explanation_message_1.sendServerExplanationMessage(message);
+    }
 };
 exports.register = register;
 //# sourceMappingURL=index.js.map
