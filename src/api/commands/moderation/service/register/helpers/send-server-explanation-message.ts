@@ -15,7 +15,7 @@ export const sendServerExplanationMessage = async (message: Message) => {
 
 	await welcomeMessageChannel.send(
 		[
-			"Fala jovens, seja bem vindos(as)!",
+			"Fala jovens, sejam bem vindos(as)!",
 			`Depois deem uma passada no <#${unlockChannelsId}>`,
 			"Lá vcs podem desbloquear canais pra postar suas duvidas / conteudos",
 			`Nós tbm temos desafios diarios, ao meio dia, no <#${challenglesId}>`,
