@@ -1,5 +1,7 @@
 import { GuildMember, Message } from "discord.js";
+import { BumpRepository } from "entities/bump.entity";
 
+import { incrementBumps } from "./helpers/increment-bumps";
 import { sendDoesntHasRoleEmbed } from "./helpers/send-doest-have-role-embed";
 import { sendSuccessEmbed } from "./helpers/send-sucess-embed";
 
@@ -14,7 +16,10 @@ const getBumpRole = (member: GuildMember) => {
 	return bumpRole;
 };
 
-export const success = async (message: Message) => {
+export const success = async (
+	BumpRepository: BumpRepository,
+	message: Message,
+) => {
 	const member = message.mentions.members?.first();
 
 	if (!member) return;
@@ -28,18 +33,21 @@ export const success = async (message: Message) => {
 	promises.push(deleteBotMessagePromise);
 
 	if (bumpRole) {
+		const userBumpsTotal = await incrementBumps(BumpRepository, message);
+
 		const succesMessagePromise = sendSuccessEmbed({
 			message,
 			member,
+			userBumpsTotal,
 		});
 
 		promises.push(succesMessagePromise);
 	} else {
-		const doestHasRolePromise = sendDoesntHasRoleEmbed({
+		const doesntHasRolePromise = sendDoesntHasRoleEmbed({
 			message,
 		});
 
-		promises.push(doestHasRolePromise);
+		promises.push(doesntHasRolePromise);
 	}
 
 	return Promise.all(promises);

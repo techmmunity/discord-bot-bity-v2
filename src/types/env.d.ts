@@ -5,6 +5,7 @@ declare global {
 		interface ProcessEnv {
 			NODE_ENV: "dev" | "production" | "homolog" | "test";
 			DISCORD_TOKEN: string;
+			MONGODB_URL: string;
 		}
 	}
 }
