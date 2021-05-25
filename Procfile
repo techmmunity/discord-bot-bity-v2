@@ -1,1 +1,1 @@
-worker: node index.js
+worker: NODE_PATH=dist node dist/main
