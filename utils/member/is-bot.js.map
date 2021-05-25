@@ -1,0 +1,1 @@
+{"version":3,"file":"is-bot.js","sourceRoot":"","sources":["../../../src/utils/member/is-bot.ts"],"names":[],"mappings":";;;AAEO,MAAM,KAAK,GAAG,KAAK,EAAE,MAAwC,EAAE,EAAE;IACvE,IAAI,yBAAyB,GAAG,MAAqB,CAAC;IAEtD,IAAI,MAAM,CAAC,OAAO,EAAE;QACnB,yBAAyB,GAAG,MAAM,MAAM,CAAC,KAAK,EAAE,CAAC;KACjD;IAED,OAAO,yBAAyB,CAAC,IAAI,CAAC,GAAG,CAAC;AAC3C,CAAC,CAAC;AARW,QAAA,KAAK,SAQhB"}

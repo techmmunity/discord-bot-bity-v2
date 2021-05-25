@@ -1,1 +1,1 @@
-worker: NODE_PATH=dist node dist/main
+worker: NODE_PATH=dist node main
