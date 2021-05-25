@@ -8,11 +8,13 @@ import { Images } from "assets/images";
 interface SendSuccessEmbedParams {
 	message: Message;
 	member: GuildMember;
+	userBumpsTotal: number;
 }
 
 export const sendSuccessEmbed = ({
 	member,
 	message,
+	userBumpsTotal,
 }: SendSuccessEmbedParams) => {
 	const description = MemberUtil.formatMessage(
 		member,
@@ -32,7 +34,7 @@ export const sendSuccessEmbed = ({
 			},
 			{
 				name: "Card progress:",
-				value: "0 / 100",
+				value: `${userBumpsTotal} / 100`,
 				inline: true,
 			},
 		]);
