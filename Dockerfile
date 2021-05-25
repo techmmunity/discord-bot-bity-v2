@@ -9,8 +9,6 @@ RUN yarn --production=true
 
 ADD . .
 
-RUN yarn clone:core
-
 RUN yarn build
 
 CMD yarn start:prod

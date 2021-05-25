@@ -28,12 +28,20 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Copy files
+        run: |
+          cp package.json dist/package.json
+          cp yarn.lock dist/yarn.lock
+          cp nest-cli.json dist/nest-cli.json
+          cp tsconfig.json dist/tsconfig.json
+          cp tsconfig.build.json dist/tsconfig.build.json
+
       - name: Add Procfile
         run: |
-          echo "worker: NODE_PATH=dist node dist/main" > Procfile
+          echo "worker: NODE_PATH=dist node main" > dist/Procfile
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: release # The branch the action should deploy to.
-          folder: . # The folder the action should deploy.
+          folder: dist # The folder the action should deploy.
