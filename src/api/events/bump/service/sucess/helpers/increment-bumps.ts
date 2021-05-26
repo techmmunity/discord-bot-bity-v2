@@ -5,14 +5,18 @@ export const incrementBumps = async (
 	BumpRepository: BumpRepository,
 	message: Message,
 ) => {
+	const userId = message.mentions.users.first()?.id;
+
+	if (!userId) return 0;
+
 	const userBump = await BumpRepository.findOne({
-		discordUserId: message.author.id,
+		discordUserId: userId,
 	});
 
 	if (userBump) {
 		await BumpRepository.update(
 			{
-				discordUserId: message.author.id,
+				discordUserId: userId,
 			},
 			{
 				bumps: userBump.bumps + 1,
@@ -23,7 +27,7 @@ export const incrementBumps = async (
 	}
 
 	await BumpRepository.save({
-		discordUserId: message.author.id,
+		discordUserId: userId,
 		bumps: 1,
 	});
 
