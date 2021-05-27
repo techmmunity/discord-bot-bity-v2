@@ -13,6 +13,8 @@ export declare const ChannelEnum: {
         COUNTER_UNREGISTRED: string;
         COUNTER_TOTAL: string;
         GENERAL: string;
+        CHALLENGES: string;
+        BUMP_RUSH: string;
         SUGGESTIONS: string;
         EVENTS: string;
         SERVERS: string;
@@ -20,7 +22,6 @@ export declare const ChannelEnum: {
         UNLOCK_CHANNELS: string;
         ALLOWED_COMMANDS_CHANNELS: string[];
         TESTS: string;
-        CHALLENGES: string;
     };
     "": {
         LOG_MEMBER: string;
@@ -36,6 +37,8 @@ export declare const ChannelEnum: {
         COUNTER_UNREGISTRED: string;
         COUNTER_TOTAL: string;
         GENERAL: string;
+        CHALLENGES: string;
+        BUMP_RUSH: string;
         SUGGESTIONS: string;
         EVENTS: string;
         SERVERS: string;
@@ -43,6 +46,5 @@ export declare const ChannelEnum: {
         UNLOCK_CHANNELS: string;
         ALLOWED_COMMANDS_CHANNELS: string[];
         TESTS: string;
-        CHALLENGES: string;
     };
 };

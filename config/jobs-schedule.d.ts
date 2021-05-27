@@ -5,4 +5,5 @@ export declare const JobsSchedule: {
     GRAPHIC_AGENCY: string;
     REVIEW_REMINDER: string;
     CHALLENGE: string;
+    BUMP_RANK: string;
 };
