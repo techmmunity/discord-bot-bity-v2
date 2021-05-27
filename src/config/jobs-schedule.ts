@@ -19,4 +19,6 @@ export const JobsSchedule = {
 	REVIEW_REMINDER: "0 15 * * 2",
 	// Every Week Day, 12h
 	CHALLENGE: "0 15 * * 1,2,3,4,5",
+	// Every Day, 8h,14h,20h
+	BUMP_RANK: "0 11,17,23 * * *",
 };
