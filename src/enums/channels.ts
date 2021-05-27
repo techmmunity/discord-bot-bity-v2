@@ -18,6 +18,9 @@ export const ChannelEnum = {
 		COUNTER_TOTAL: "834934111088279552",
 		// GENERAL
 		GENERAL: "784050272729169952",
+		// SPECIAL
+		CHALLENGES: "844341876973764628",
+		BUMP_RUSH: "829488805974900737",
 		// Etc
 		SUGGESTIONS: "800073441143160864",
 		EVENTS: "789129005525630996",
@@ -26,7 +29,6 @@ export const ChannelEnum = {
 		UNLOCK_CHANNELS: "805895726617853952",
 		ALLOWED_COMMANDS_CHANNELS: ["784085341744136213"],
 		TESTS: "823519832283545631",
-		CHALLENGES: "844341876973764628",
 	},
 	[GuildEnum.GRAPHIC]: {
 		// Logs
@@ -45,6 +47,10 @@ export const ChannelEnum = {
 		COUNTER_TOTAL: "",
 		// GENERAL
 		GENERAL: "",
+		TESTS: "",
+		// SPECIAL
+		CHALLENGES: "",
+		BUMP_RUSH: "",
 		// Etc
 		SUGGESTIONS: "808317348003446851",
 		EVENTS: "",
@@ -52,8 +58,6 @@ export const ChannelEnum = {
 		WELCOME_MESSAGE: "808317348242128960",
 		UNLOCK_CHANNELS: "",
 		ALLOWED_COMMANDS_CHANNELS: ["808317348440178708"],
-		TESTS: "",
-		CHALLENGES: "",
 	},
 	[GuildEnum.ROBOTIC]: {
 		// Logs
@@ -72,6 +76,9 @@ export const ChannelEnum = {
 		COUNTER_TOTAL: "",
 		// GENERAL
 		GENERAL: "",
+		// SPECIAL
+		CHALLENGES: "",
+		BUMP_RUSH: "",
 		// Etc
 		SUGGESTIONS: "",
 		EVENTS: "",
@@ -80,7 +87,6 @@ export const ChannelEnum = {
 		UNLOCK_CHANNELS: "",
 		ALLOWED_COMMANDS_CHANNELS: [""],
 		TESTS: "",
-		CHALLENGES: "",
 	},
 	[GuildEnum.MANAGEMENT]: {
 		// Logs
@@ -99,6 +105,9 @@ export const ChannelEnum = {
 		COUNTER_TOTAL: "",
 		// GENERAL
 		GENERAL: "",
+		// SPECIAL
+		CHALLENGES: "",
+		BUMP_RUSH: "",
 		// Etc
 		SUGGESTIONS: "",
 		EVENTS: "",
@@ -107,6 +116,5 @@ export const ChannelEnum = {
 		UNLOCK_CHANNELS: "",
 		ALLOWED_COMMANDS_CHANNELS: [""],
 		TESTS: "",
-		CHALLENGES: "",
 	},
 };
