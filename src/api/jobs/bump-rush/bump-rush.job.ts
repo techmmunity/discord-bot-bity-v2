@@ -24,7 +24,7 @@ export class BumpRushJob {
 
 	@Once({ event: "ready" })
 	public setCron() {
-		cron.schedule(JobsSchedule.CHALLENGE, () =>
+		cron.schedule(JobsSchedule.BUMP_RANK, () =>
 			this.setup(GuildEnum.PROGRAMMING),
 		);
 	}
