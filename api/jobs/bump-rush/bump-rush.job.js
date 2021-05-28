@@ -28,7 +28,7 @@ let BumpRushJob = class BumpRushJob {
         this.BumpRepository = BumpRepository;
     }
     setCron() {
-        cron.schedule(jobs_schedule_1.JobsSchedule.CHALLENGE, () => this.setup(guilds_1.GuildEnum.PROGRAMMING));
+        cron.schedule(jobs_schedule_1.JobsSchedule.BUMP_RANK, () => this.setup(guilds_1.GuildEnum.PROGRAMMING));
     }
     async getChannel(guildId) {
         const guild = await this.DiscordClient.getClient().guilds.fetch(guildId);
