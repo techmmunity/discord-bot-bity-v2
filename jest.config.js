@@ -15,6 +15,7 @@ module.exports = {
 	coverageDirectory: "../coverage",
 	testEnvironment: "node",
 	moduleDirectories: ["node_modules", "src"],
+	resetMocks: true,
 	// coverageThreshold: {
 	// 	global: {
 	// 		branches: 100,
