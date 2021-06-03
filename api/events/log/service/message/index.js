@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.message = void 0;
+exports.messageLog = void 0;
 const delete_1 = require("./delete/delete");
 const edit_1 = require("./edit/edit");
 const get_channel_1 = require("./helpers/get-channel");
-const message = (params) => {
+const messageLog = (params) => {
     const { message, newMessage, oldMessage } = params;
     const channel = get_channel_1.getChannel(params);
     if (message) {
@@ -14,5 +14,5 @@ const message = (params) => {
         return edit_1.logEdit(Object.assign({ channel }, params));
     }
 };
-exports.message = message;
+exports.messageLog = messageLog;
 //# sourceMappingURL=index.js.map

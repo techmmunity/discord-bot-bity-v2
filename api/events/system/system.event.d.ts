@@ -1,4 +1,4 @@
 export declare class SystemEvent {
-    private logger;
+    private readonly logger;
     ready(): void;
 }

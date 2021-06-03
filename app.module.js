@@ -19,11 +19,11 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     common_1.Module({
         imports: [
-            mongodb_1.MongoDbConnect,
+            mongodb_1.MONGO_DB_CONNECT,
             typeorm_1.TypeOrmModule.forFeature([bump_entity_1.BumpEntity]),
-            discord_nestjs_1.DiscordModule.forRoot(discord_1.DiscordConfig),
+            discord_nestjs_1.DiscordModule.forRoot(discord_1.DISCORD_CONFIG),
         ],
-        providers: api_1.Api,
+        providers: api_1.API,
     })
 ], AppModule);
 exports.AppModule = AppModule;

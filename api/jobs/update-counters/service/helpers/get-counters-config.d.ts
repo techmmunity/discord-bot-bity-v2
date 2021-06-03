@@ -1,5 +1,5 @@
 import { GuildEnum } from "enums/guilds";
-export interface ICounterConfig {
+export interface CounterConfig {
     channelId: string;
     channelName: string;
     hasAllRoles?: Array<string>;

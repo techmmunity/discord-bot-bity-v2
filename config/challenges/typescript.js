@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TypeScriptChallenges = void 0;
+exports.TYPESCRIPT_CHALLENGES = void 0;
 const make_description_1 = require("./helpers/make-description");
 const challenge_level_1 = require("../../enums/challenge-level");
 const challenge_1 = require("../../types/challenge");
-exports.TypeScriptChallenges = [
+exports.TYPESCRIPT_CHALLENGES = [
     {
         id: "TS-1-0001",
         title: "Crie uma função que retorne a soma de 2 numeros!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "TypeScript",
         description: make_description_1.makeDescription({
             language: "ts",
@@ -28,7 +28,7 @@ exports.TypeScriptChallenges = [
     {
         id: "TS-1-0002",
         title: "Crie uma função que retorne a soma de todos os números de um array!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "TypeScript",
         description: make_description_1.makeDescription({
             language: "ts",
@@ -48,7 +48,7 @@ exports.TypeScriptChallenges = [
     {
         id: "TS-1-0003",
         title: "Crie uma função que retorne a soma das idades!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "TypeScript",
         description: make_description_1.makeDescription({
             language: "ts",
@@ -68,7 +68,7 @@ exports.TypeScriptChallenges = [
     {
         id: "TS-1-0004",
         title: "Crie uma função que retorne o idioma falado em um país da america latina!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "TypeScript",
         description: make_description_1.makeDescription({
             language: "ts",
@@ -89,7 +89,7 @@ exports.TypeScriptChallenges = [
         id: "TS-1-0005",
         title: "Crie uma função que tenha uma tipagem dinamica!",
         description: "Crie uma função que receba 1 parametro, do tipo especificado ao chamar a função, e retorne esse mesmo valor, sem nenhuma alteração.",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "TypeScript",
     },
 ];

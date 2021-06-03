@@ -22,14 +22,14 @@ const challenges_1 = require("../../../config/challenges");
 const { NODE_ENV } = process.env;
 let ChallengeJob = class ChallengeJob {
     setCron() {
-        cron.schedule(jobs_schedule_1.JobsSchedule.CHALLENGE, () => this.setup(guilds_1.GuildEnum.PROGRAMMING));
+        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.CHALLENGE, () => this.setup(guilds_1.GuildEnum.PROGRAMMING));
     }
     getChallenge() {
-        const randomIndex = Math.floor(Math.random() * challenges_1.Challenges.length);
-        return challenges_1.Challenges[randomIndex];
+        const randomIndex = Math.floor(Math.random() * challenges_1.CHALLENGES.length);
+        return challenges_1.CHALLENGES[randomIndex];
     }
     async getChannel(guildId) {
-        const client = this.DiscordClient.getClient();
+        const client = this.discordClient.getClient();
         const guild = await client.guilds.fetch(guildId);
         if (NODE_ENV === "production") {
             return guild.channels.cache.get(channels_1.ChannelEnum[guildId].CHALLENGES);
@@ -52,7 +52,7 @@ let ChallengeJob = class ChallengeJob {
 __decorate([
     discord_nestjs_1.Client(),
     __metadata("design:type", Object)
-], ChallengeJob.prototype, "DiscordClient", void 0);
+], ChallengeJob.prototype, "discordClient", void 0);
 __decorate([
     discord_nestjs_1.Once({ event: "ready" }),
     __metadata("design:type", Function),

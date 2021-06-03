@@ -3,4 +3,4 @@ import { LogEvent } from "./log/log.event";
 import { MentionEvent } from "./mention/mention.event";
 import { SuggestionEvent } from "./suggestion/suggestion.event";
 import { SystemEvent } from "./system/system.event";
-export declare const Events: (typeof BumpEvent | typeof LogEvent | typeof MentionEvent | typeof SuggestionEvent | typeof SystemEvent)[];
+export declare const EVENTS: (typeof BumpEvent | typeof LogEvent | typeof MentionEvent | typeof SuggestionEvent | typeof SystemEvent)[];

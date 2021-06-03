@@ -18,17 +18,17 @@ const jobs_schedule_1 = require("../../../config/jobs-schedule");
 const active_guilds_1 = require("../../../config/active-guilds");
 let ReviewReminderJob = class ReviewReminderJob {
     setCron() {
-        cron.schedule(jobs_schedule_1.JobsSchedule.REVIEW_REMINDER, this.sendReminder);
+        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.REVIEW_REMINDER, this.sendReminder);
     }
     sendReminder() {
         const guilds = active_guilds_1.getActiveGuilds();
-        return () => Promise.all(guilds.map(guildId => service_1.sendReminder(this.DiscordClient, guildId)));
+        return () => Promise.all(guilds.map(guildId => service_1.sendReminder(this.discordClient, guildId)));
     }
 };
 __decorate([
     discord_nestjs_1.Client(),
     __metadata("design:type", Object)
-], ReviewReminderJob.prototype, "DiscordClient", void 0);
+], ReviewReminderJob.prototype, "discordClient", void 0);
 __decorate([
     discord_nestjs_1.Once({ event: "ready" }),
     __metadata("design:type", Function),

@@ -15,7 +15,7 @@ const getEmbed = ({ member, title, color }) => {
         `**Bot**: ${isBot}`,
         "**Creation**: {userCreation}",
     ].join("\n");
-    const formmatedMessage = member_1.MemberUtil.formatMessage(member, message);
+    const formmatedMessage = member_1.memberUtil.formatMessage(member, message);
     const embed = new discord_js_1.MessageEmbed()
         .setColor(color)
         .setTitle(title)

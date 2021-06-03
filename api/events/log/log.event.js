@@ -20,50 +20,50 @@ const active_guild_guard_1 = require("../../common/active-guild.guard");
 const colors_1 = require("../../../assets/colors");
 let LogEvent = class LogEvent {
     inviteCreate(guildInvite) {
-        return invite_1.invite({
-            DiscordClient: this.DiscordClient,
+        return invite_1.inviteLog({
+            discordClient: this.discordClient,
             title: "INVITE CREATE",
-            color: colors_1.Colors.green,
+            color: colors_1.COLORS.green,
             invite: guildInvite,
         });
     }
     inviteDelete(guildInvite) {
-        return invite_1.invite({
-            DiscordClient: this.DiscordClient,
+        return invite_1.inviteLog({
+            discordClient: this.discordClient,
             title: "INVITE DELETE",
-            color: colors_1.Colors.red,
+            color: colors_1.COLORS.red,
             invite: guildInvite,
         });
     }
     memberAdd(guildMember) {
         return member_1.member({
-            DiscordClient: this.DiscordClient,
+            discordClient: this.discordClient,
             title: "MEMBER ADD",
-            color: colors_1.Colors.green,
-            member: guildMember,
+            color: colors_1.COLORS.green,
+            memberData: guildMember,
         });
     }
     memberRemove(guildMember) {
         return member_1.member({
-            DiscordClient: this.DiscordClient,
+            discordClient: this.discordClient,
             title: "MEMBER REMOVE",
-            color: colors_1.Colors.red,
-            member: guildMember,
+            color: colors_1.COLORS.red,
+            memberData: guildMember,
         });
     }
-    messageDelete(messageLog) {
-        return message_1.message({
-            DiscordClient: this.DiscordClient,
+    messageDelete(message) {
+        return message_1.messageLog({
+            discordClient: this.discordClient,
             title: "MESSAGE DELETE",
-            color: colors_1.Colors.red,
-            message: messageLog,
+            color: colors_1.COLORS.red,
+            message,
         });
     }
     messageEdit(oldMessageLog, newMessageLog) {
-        return message_1.message({
-            DiscordClient: this.DiscordClient,
+        return message_1.messageLog({
+            discordClient: this.discordClient,
             title: "MESSAGE EDIT",
-            color: colors_1.Colors.blue,
+            color: colors_1.COLORS.blue,
             oldMessage: oldMessageLog,
             newMessage: newMessageLog,
         });
@@ -72,7 +72,7 @@ let LogEvent = class LogEvent {
 __decorate([
     discord_nestjs_1.Client(),
     __metadata("design:type", Object)
-], LogEvent.prototype, "DiscordClient", void 0);
+], LogEvent.prototype, "discordClient", void 0);
 __decorate([
     discord_nestjs_1.On({ event: "inviteCreate" }),
     __metadata("design:type", Function),

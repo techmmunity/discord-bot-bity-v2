@@ -1,6 +1,6 @@
 import { ClientProvider } from "discord-nestjs";
 export declare class ReviewReminderJob {
-    DiscordClient: ClientProvider;
+    discordClient: ClientProvider;
     setCron(): void;
     sendReminder(): () => Promise<void[]>;
 }

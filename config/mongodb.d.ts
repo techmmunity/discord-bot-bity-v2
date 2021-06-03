@@ -1,1 +1,1 @@
-export declare const MongoDbConnect: import("@nestjs/common").DynamicModule;
+export declare const MONGO_DB_CONNECT: import("@nestjs/common").DynamicModule;

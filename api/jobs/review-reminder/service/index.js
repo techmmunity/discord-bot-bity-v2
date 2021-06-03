@@ -15,12 +15,12 @@ const getReviewUrl = {
 };
 const makeEmbed = (guildId) => new discord_js_1.MessageEmbed()
     .setTitle("Click here, please!")
-    .setColor(colors_1.Colors.turquoise)
+    .setColor(colors_1.COLORS.turquoise)
     .setDescription("Guys, please, give a feedback to the server, it help us a lot! ❤️")
-    .setImage(images_1.Images.apesTogetherStrong)
+    .setImage(images_1.IMAGES.apesTogetherStrong)
     .setURL(getReviewUrl[guildId]);
-const sendReminder = async (DiscordClient, guildId) => {
-    const guild = DiscordClient.getClient().guilds.cache.get(guildId);
+const sendReminder = async (discordClient, guildId) => {
+    const guild = discordClient.getClient().guilds.cache.get(guildId);
     const channel = guild.channels.cache.get(channels_1.ChannelEnum[guildId].GENERAL);
     const embed = makeEmbed(guildId);
     await channel.send(embed);

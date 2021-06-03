@@ -1,2 +1,2 @@
 import { Challenge } from "types/challenge";
-export declare const CssChallenges: Array<Challenge>;
+export declare const CSS_CHALLENGES: Array<Challenge>;

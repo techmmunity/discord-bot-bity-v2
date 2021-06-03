@@ -22,6 +22,8 @@ const getRoles = (guildId) => {
             return [...defaultRoles, roles_1.RolesEnum[guildId].ROBOTIC];
         case guilds_1.GuildEnum.MANAGEMENT:
             return [...defaultRoles, roles_1.RolesEnum[guildId].MANAGEMENT];
+        default:
+            return [];
     }
 };
 exports.getRoles = getRoles;

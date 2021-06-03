@@ -10,11 +10,11 @@ const formatMessage = (invite, text) => {
     const userDiscriminator = (_c = invite.inviter) === null || _c === void 0 ? void 0 : _c.discriminator;
     const userNickname = "";
     const userCreation = ((_d = invite.inviter) === null || _d === void 0 ? void 0 : _d.createdAt)
-        ? time_1.TimeUtil.getDateFormatted((_e = invite.inviter) === null || _e === void 0 ? void 0 : _e.createdAt)
+        ? time_1.timeUtil.getDateFormatted((_e = invite.inviter) === null || _e === void 0 ? void 0 : _e.createdAt)
         : "";
     const serverName = (_f = invite.guild) === null || _f === void 0 ? void 0 : _f.name;
     const memberCount = (_g = invite.guild) === null || _g === void 0 ? void 0 : _g.memberCount;
-    return format_1.FormatUtil.formatMessage(text, {
+    return format_1.formatUtil.formatMessage(text, {
         userId,
         userName,
         userDiscriminator,

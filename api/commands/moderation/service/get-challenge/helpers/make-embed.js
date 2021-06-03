@@ -9,9 +9,9 @@ const challenge_1 = require("../../../../../../types/challenge");
 const makeEmbed = (challenge) => {
     const embed = new discord_js_1.MessageEmbed()
         .setTitle(challenge.title)
-        .setColor(colors_1.Colors.turquoise)
+        .setColor(colors_1.COLORS.turquoise)
         .setDescription(challenge.description)
-        .setAuthor("Techmmunity", images_1.Images.techmmunityLogo, url_1.Urls.LANDING_PAGE_COMPLETE)
+        .setAuthor("Techmmunity", images_1.IMAGES.techmmunityLogo, url_1.URLS.LANDING_PAGE_COMPLETE)
         .addFields([
         {
             name: "Como funcionam os desafios?",

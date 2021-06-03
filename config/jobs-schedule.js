@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JobsSchedule = void 0;
-exports.JobsSchedule = {
+exports.JOBS_SCHEDULE = void 0;
+exports.JOBS_SCHEDULE = {
     SET_BOT_STATUS: "*/10 * * * * *",
     UPDATE_COUNTERS: "0 * * * *",
     HANGOVER: "0 23 * * ",

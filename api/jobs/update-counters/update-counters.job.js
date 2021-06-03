@@ -21,17 +21,17 @@ let UpdateCountersJob = class UpdateCountersJob {
     setCron() {
         const guilds = active_guilds_1.getActiveGuilds();
         guilds.forEach(guildId => {
-            cron.schedule(jobs_schedule_1.JobsSchedule.UPDATE_COUNTERS, this.setJob(guildId));
+            cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.UPDATE_COUNTERS, this.setJob(guildId));
         });
     }
     setJob(guildId) {
-        return async () => Promise.all(await service_1.updateCounters(this.DiscordClient, guildId));
+        return async () => Promise.all(await service_1.updateCounters(this.discordClient, guildId));
     }
 };
 __decorate([
     discord_nestjs_1.Client(),
     __metadata("design:type", Object)
-], UpdateCountersJob.prototype, "DiscordClient", void 0);
+], UpdateCountersJob.prototype, "discordClient", void 0);
 __decorate([
     discord_nestjs_1.Once({ event: "ready" }),
     __metadata("design:type", Function),

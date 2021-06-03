@@ -1,2 +1,2 @@
 import { Challenge } from "types/challenge";
-export declare const JavaChallenges: Array<Challenge>;
+export declare const JAVA_CHALLENGES: Array<Challenge>;

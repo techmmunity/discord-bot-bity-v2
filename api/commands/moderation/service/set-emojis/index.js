@@ -13,7 +13,7 @@ const setEmojis = async (message) => {
         await add_emoji_1.addEmoji({
             message,
             name: emojiName,
-            url: emojis_1.Emojis.static[emojiName],
+            url: emojis_1.EMOJIS.static[emojiName],
         });
     }
     await send_end_embed_1.sendEndEmbed({

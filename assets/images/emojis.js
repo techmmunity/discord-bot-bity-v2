@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Emojis = void 0;
-exports.Emojis = {
+exports.EMOJIS = void 0;
+exports.EMOJIS = {
     static: {
         bigbrain: "https://cdn.discordapp.com/emojis/806318401915846666.png?v=1",
         coffe: "https://cdn.discordapp.com/emojis/806318403110436935.png?v=1",

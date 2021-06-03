@@ -6,11 +6,11 @@ const member_1 = require("../../../../../../utils/member");
 const colors_1 = require("../../../../../../assets/colors");
 const images_1 = require("../../../../../../assets/images");
 const sendSuccessEmbed = ({ member, message, userBumpsTotal, }) => {
-    const description = member_1.MemberUtil.formatMessage(member, "Thanks for bump the server {userMention} ({userTag})!");
+    const description = member_1.memberUtil.formatMessage(member, "Thanks for bump the server {userMention} ({userTag})!");
     const embed = new discord_js_1.MessageEmbed()
         .setTitle("Thanks!")
-        .setColor(colors_1.Colors.turquoise)
-        .setThumbnail(images_1.Images.treasure)
+        .setColor(colors_1.COLORS.turquoise)
+        .setThumbnail(images_1.IMAGES.treasure)
         .setDescription(description)
         .addFields([
         {

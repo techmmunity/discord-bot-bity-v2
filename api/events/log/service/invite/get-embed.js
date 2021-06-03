@@ -6,14 +6,14 @@ const invite_1 = require("../../../../../utils/invite");
 const time_1 = require("../../../../../utils/time");
 const getExpiresAt = (invite) => {
     if (invite.expiresAt) {
-        return time_1.TimeUtil.getDateFormatted(invite.expiresAt);
+        return time_1.timeUtil.getDateFormatted(invite.expiresAt);
     }
     return "--";
 };
 const isTemporary = (invite) => (invite.expiresAt ? "Yes" : "No");
 const getEmbed = ({ invite, title, color }) => {
     var _a;
-    const messageToSend = invite_1.InviteUtil.formatMessage(invite, [
+    const messageToSend = invite_1.inviteUtil.formatMessage(invite, [
         "**Inviter ID**: {userId}",
         "**Inviter Tag**: {userTag}",
         `**Code:** ${invite.code}`,

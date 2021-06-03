@@ -10,12 +10,12 @@ const formatMessage = (member, text) => {
     const userDiscriminator = (_c = member.user) === null || _c === void 0 ? void 0 : _c.discriminator;
     const userNickname = member.displayName;
     const userCreation = ((_d = member.user) === null || _d === void 0 ? void 0 : _d.createdAt)
-        ? time_1.TimeUtil.getDateFormatted((_e = member.user) === null || _e === void 0 ? void 0 : _e.createdAt)
+        ? time_1.timeUtil.getDateFormatted((_e = member.user) === null || _e === void 0 ? void 0 : _e.createdAt)
         : "";
     const serverName = member.guild.name;
     const memberCount = member.guild.memberCount;
     const guildName = member.guild.name;
-    return format_1.FormatUtil.formatMessage(text, {
+    return format_1.formatUtil.formatMessage(text, {
         userId,
         userName,
         userDiscriminator,

@@ -5,10 +5,10 @@ const getEmoji = (messageContent) => { var _a; return (_a = /<:.+:(\d+)>/.exec(m
 const getAnimatedEmoji = (messageContent) => { var _a; return (_a = /<a:.+:(\d+)>/.exec(messageContent)) === null || _a === void 0 ? void 0 : _a.pop(); };
 const getEmojiUrl = (emoji) => `https://cdn.discordapp.com/emojis/${emoji}.png?v=1`;
 const getAnimatedEmojiUrl = (emoji) => `https://cdn.discordapp.com/emojis/${emoji}.gif?v=1`;
-const emoji = async (message) => {
-    const emoji = getEmoji(message.content);
-    if (emoji) {
-        const emojiUrl = getEmojiUrl(emoji);
+const emoji = (message) => {
+    const emojiData = getEmoji(message.content);
+    if (emojiData) {
+        const emojiUrl = getEmojiUrl(emojiData);
         return message.channel.send(emojiUrl);
     }
     const animatedEmoji = getAnimatedEmoji(message.content);

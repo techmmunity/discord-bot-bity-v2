@@ -12,7 +12,7 @@ const getBumpRole = (member) => {
     const bumpRole = member.roles.cache.get(roles_1.RolesEnum[guildId].BUMP);
     return bumpRole;
 };
-const success = async (BumpRepository, message) => {
+const success = async (bumpRepository, message) => {
     var _a;
     const member = (_a = message.mentions.members) === null || _a === void 0 ? void 0 : _a.first();
     if (!member)
@@ -22,7 +22,7 @@ const success = async (BumpRepository, message) => {
     const deleteBotMessagePromise = message.delete();
     promises.push(deleteBotMessagePromise);
     if (bumpRole) {
-        const userBumpsTotal = await increment_bumps_1.incrementBumps(BumpRepository, message);
+        const userBumpsTotal = await increment_bumps_1.incrementBumps(bumpRepository, message);
         const succesMessagePromise = send_sucess_embed_1.sendSuccessEmbed({
             message,
             member,

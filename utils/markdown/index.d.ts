@@ -1,4 +1,4 @@
-export declare const MarkdownUtil: {
+export declare const markdownUtil: {
     boldItalic: (value: string) => string;
     bold: (value: string) => string;
     codeBlock: (value: string, language?: string | undefined) => string;

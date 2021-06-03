@@ -10,11 +10,14 @@ const getChannelId = (guildId, type) => {
         case "member":
             return channels_1.ChannelEnum[guildId].LOG_MEMBER;
         case "message":
+        default:
             return channels_1.ChannelEnum[guildId].LOG_MESSAGE;
     }
 };
-const getChannelToLog = ({ DiscordClient, guildId, type, }) => {
-    const guild = DiscordClient.getClient().guilds.cache.get(guilds_1.SpecialGuildEnum.LOGS);
+const getChannelToLog = ({ discordClient, guildId, type, }) => {
+    const guild = discordClient
+        .getClient()
+        .guilds.cache.get(guilds_1.SpecialGuildEnum.LOGS);
     const channelId = getChannelId(guildId, type);
     const channel = guild.channels.cache.get(channelId);
     return channel;

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MarkdownUtil = void 0;
+exports.markdownUtil = void 0;
 const bold_1 = require("./bold");
 const bold_italic_1 = require("./bold-italic");
 const code_1 = require("./code");
@@ -12,7 +12,7 @@ const strikethrough_1 = require("./strikethrough");
 const underline_1 = require("./underline");
 const underline_bold_1 = require("./underline-bold");
 const underline_italic_1 = require("./underline-italic");
-exports.MarkdownUtil = {
+exports.markdownUtil = {
     boldItalic: bold_italic_1.boldItalic,
     bold: bold_1.bold,
     codeBlock: code_block_1.codeBlock,

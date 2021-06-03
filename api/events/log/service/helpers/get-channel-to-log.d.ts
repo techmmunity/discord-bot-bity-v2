@@ -3,9 +3,9 @@ import { TextChannel } from "discord.js";
 import { GuildEnum } from "enums/guilds";
 declare type LogType = "invite" | "member" | "message";
 interface GetChannelToLogParams {
-    DiscordClient: ClientProvider;
+    discordClient: ClientProvider;
     guildId: GuildEnum;
     type: LogType;
 }
-export declare const getChannelToLog: ({ DiscordClient, guildId, type, }: GetChannelToLogParams) => TextChannel;
+export declare const getChannelToLog: ({ discordClient, guildId, type, }: GetChannelToLogParams) => TextChannel;
 export {};

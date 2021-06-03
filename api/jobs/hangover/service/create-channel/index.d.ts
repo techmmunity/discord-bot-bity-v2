@@ -2,10 +2,10 @@
 import { ClientProvider } from "discord-nestjs";
 import { GuildEnum } from "enums/guilds";
 interface CreateChannelParams {
-    DiscordClient: ClientProvider;
+    discordClient: ClientProvider;
     guildId: GuildEnum;
     categoryName: string;
     channelName: string;
 }
-export declare const createChannel: ({ DiscordClient, guildId, categoryName, channelName, }: CreateChannelParams) => Promise<import("discord.js").TextChannel>;
+export declare const createChannel: ({ discordClient, guildId, categoryName, channelName, }: CreateChannelParams) => Promise<import("discord.js").TextChannel>;
 export {};

@@ -7,12 +7,12 @@ const colors_1 = require("../../../../../assets/colors");
 const filterMessages = (messages) => messages.filter(message => !message.pinned);
 const sendEmbedMessage = async (message, qtd) => {
     const embed = new discord_js_1.MessageEmbed()
-        .setColor(colors_1.Colors.blue)
+        .setColor(colors_1.COLORS.blue)
         .setTitle(`${qtd} messages have been successfully deleted!`);
-    await message_1.MessageUtil.sendAndDelete(message, embed, 2.5);
+    await message_1.messageUtil.sendAndDelete(message, embed, 2.5);
 };
 const clear = async (message) => {
-    const args = message_1.MessageUtil.getArgs(message);
+    const args = message_1.messageUtil.getArgs(message);
     const qtdToDelete = Number(args.shift());
     if (isNaN(qtdToDelete) || qtdToDelete > 99) {
         throw new Error("INVALID_LIMIT");

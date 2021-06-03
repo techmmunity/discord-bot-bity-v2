@@ -1,4 +1,4 @@
-export declare const Images: {
+export declare const IMAGES: {
     techmmunityLogo: string;
     lattency: string;
     bityGif: string;

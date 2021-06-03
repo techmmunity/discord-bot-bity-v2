@@ -30,10 +30,10 @@ let HangoverJob = class HangoverJob {
     set(guildId) {
         const hangoverShedule = get_hangover_schedule_by_guild_1.getHangoverScheduleByGuild(guildId);
         const clearHangoutSchedule = get_clear_hangover_schedule_1.getClearHangoverSchedule(guildId);
-        const categoryName = get_name_1.getCategoryName(hangover_1.Hangover.day[guildId]);
-        const channelName = get_name_1.getChannelName(hangover_1.Hangover.day[guildId]);
+        const categoryName = get_name_1.getCategoryName(hangover_1.HANGOVER.day[guildId]);
+        const channelName = get_name_1.getChannelName(hangover_1.HANGOVER.day[guildId]);
         const params = {
-            DiscordClient: this.DiscordClient,
+            discordClient: this.discordClient,
             guildId,
             categoryName,
             channelName,
@@ -49,7 +49,7 @@ let HangoverJob = class HangoverJob {
 __decorate([
     discord_nestjs_1.Client(),
     __metadata("design:type", Object)
-], HangoverJob.prototype, "DiscordClient", void 0);
+], HangoverJob.prototype, "discordClient", void 0);
 __decorate([
     discord_nestjs_1.Once({ event: "ready" }),
     __metadata("design:type", Function),

@@ -5,7 +5,7 @@ const guilds_1 = require("../../enums/guilds");
 const roles_1 = require("../../enums/roles");
 const { NODE_ENV } = process.env;
 class DevGuard {
-    async canActive(event, [context]) {
+    canActive(event, [context]) {
         var _a, _b;
         const notDevEnv = NODE_ENV !== "dev";
         if (notDevEnv)

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Urls = void 0;
-exports.Urls = {
+exports.URLS = void 0;
+exports.URLS = {
     LANDING_PAGE_COMPLETE: "https://techmmunity.github.io/",
     LANDING_PAGE_SHORT: "techmmunity.github.io",
     TWITCH: "https://www.twitch.tv/techmmunity",

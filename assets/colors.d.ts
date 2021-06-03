@@ -1,4 +1,4 @@
-export declare const Colors: {
+export declare const COLORS: {
     turquoise: string;
     green: string;
     yellow: string;

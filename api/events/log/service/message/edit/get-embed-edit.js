@@ -12,9 +12,9 @@ const getEmbedEdit = ({ oldMessage, newMessage, title, color, }) => {
         "**Nickname**: {userNickname}",
         `**Channel**: <#${newMessage.channel.id}>`,
     ].join("\n");
-    const formmatedMessage = message_1.MessageUtil.formatMessage(newMessage, messageContent);
-    const oldMessageToSend = "\n**Old Message**:\n" + oldMessage.content;
-    const newMessageToSend = "\n\n**New Message**:\n" + newMessage.content;
+    const formmatedMessage = message_1.messageUtil.formatMessage(newMessage, messageContent);
+    const oldMessageToSend = `\n**Old Message**:\n${oldMessage.content}`;
+    const newMessageToSend = `\n\n**New Message**:\n${newMessage.content}`;
     const messageToSend = formmatedMessage + oldMessageToSend + newMessageToSend;
     const embed = new discord_js_1.MessageEmbed()
         .setColor(color)

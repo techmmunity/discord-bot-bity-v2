@@ -5,7 +5,7 @@ const remove_prefix_1 = require("./helpers/remove-prefix");
 const config_1 = require("../../config");
 const FLAGS_REGEX = /--[^\s]+(?:='[^']+'|=[^\s]+)|--[^\s]+/g;
 const isFlagWithValue = (value) => value.includes("=");
-const isFlagWithContinuosValue = (value) => value.includes(config_1.Config.flagDelimiter);
+const isFlagWithContinuosValue = (value) => value.includes(config_1.CONFIG.flagDelimiter);
 const getFlagAndValue = (flag) => ({
     flag: flag.split("=").shift(),
     value: flag.split("=").pop(),
@@ -13,13 +13,13 @@ const getFlagAndValue = (flag) => ({
 const getFlagAndContinuosValue = (flag) => {
     const flagKey = flag.split("=").shift();
     const unformattedValue = flag.split("=").pop();
-    const formattedValue = unformattedValue.replace(new RegExp(config_1.Config.flagDelimiter, "g"), "");
+    const formattedValue = unformattedValue.replace(new RegExp(config_1.CONFIG.flagDelimiter, "g"), "");
     return {
         flag: flagKey,
         continuosValue: formattedValue,
     };
 };
-const getFlagKeyFormatted = (flagKey) => flagKey.slice(config_1.Config.flagPrefix.length);
+const getFlagKeyFormatted = (flagKey) => flagKey.slice(config_1.CONFIG.flagPrefix.length);
 const formatFlags = (flags) => flags.reduce((acc, cur) => {
     if (isFlagWithValue(cur)) {
         const { flag, continuosValue } = getFlagAndContinuosValue(cur);

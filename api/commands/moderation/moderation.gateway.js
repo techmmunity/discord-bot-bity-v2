@@ -19,16 +19,16 @@ const register_1 = require("./service/register");
 const set_emojis_1 = require("./service/set-emojis");
 const tech_team_guard_1 = require("../../common/tech-team.guard");
 let ModerationGateway = class ModerationGateway {
-    async clear(message) {
+    clear(message) {
         return clear_1.clear(message);
     }
-    async register(message) {
+    register(message) {
         return register_1.register(message);
     }
-    async setEmojis(message) {
+    setEmojis(message) {
         return set_emojis_1.setEmojis(message);
     }
-    async getChallenge(message) {
+    getChallenge(message) {
         return get_challenge_1.getChallenge(message);
     }
 };
@@ -36,25 +36,25 @@ __decorate([
     discord_nestjs_1.OnCommand({ name: "clear" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], ModerationGateway.prototype, "clear", null);
 __decorate([
     discord_nestjs_1.OnCommand({ name: "register" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], ModerationGateway.prototype, "register", null);
 __decorate([
     discord_nestjs_1.OnCommand({ name: "set-emojis" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], ModerationGateway.prototype, "setEmojis", null);
 __decorate([
     discord_nestjs_1.OnCommand({ name: "get-challenge" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], ModerationGateway.prototype, "getChallenge", null);
 ModerationGateway = __decorate([
     common_1.Injectable(),

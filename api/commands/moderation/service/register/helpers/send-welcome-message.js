@@ -10,11 +10,11 @@ const sendWelcomeMessage = (message, member, guildId) => {
     var _a;
     const TITLE = "Welcome to Techmmunity!";
     const DESCRIPTION = "{userMention} ({userTag}), say hi to everyone!";
-    const titleFormatted = member_1.MemberUtil.formatMessage(member, TITLE);
-    const descriptionFormatted = member_1.MemberUtil.formatMessage(member, DESCRIPTION);
-    const memberCount = member_1.MemberUtil.getGuildMemberCount(member);
+    const titleFormatted = member_1.memberUtil.formatMessage(member, TITLE);
+    const descriptionFormatted = member_1.memberUtil.formatMessage(member, DESCRIPTION);
+    const memberCount = member_1.memberUtil.getGuildMemberCount(member);
     const embed = new discord_js_1.MessageEmbed()
-        .setColor(colors_1.Colors.turquoise)
+        .setColor(colors_1.COLORS.turquoise)
         .setTitle(titleFormatted)
         .setDescription(descriptionFormatted)
         .addFields([

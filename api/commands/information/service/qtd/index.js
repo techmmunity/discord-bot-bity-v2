@@ -61,12 +61,12 @@ const getDescription = (message) => {
     ]
         .map(value => typeof value === "string" ? value : formatNameAndValue(value))
         .join("\n");
-    return markdown_1.MarkdownUtil.codeBlock(fields);
+    return markdown_1.markdownUtil.codeBlock(fields);
 };
 const qtd = async (message) => {
     const embed = new discord_js_1.MessageEmbed()
         .setTitle("Guild Quantities")
-        .setColor(colors_1.Colors.blue)
+        .setColor(colors_1.COLORS.blue)
         .setDescription(getDescription(message));
     await message.channel.send(embed);
 };

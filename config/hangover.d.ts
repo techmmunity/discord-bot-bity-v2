@@ -1,8 +1,6 @@
 import { CronDayOfWeekEnum } from "enums/cron-day-of-week";
 interface HangoverType {
-    day: {
-        [guildId: string]: CronDayOfWeekEnum;
-    };
+    day: Record<string, CronDayOfWeekEnum>;
 }
-export declare const Hangover: HangoverType;
+export declare const HANGOVER: HangoverType;
 export {};

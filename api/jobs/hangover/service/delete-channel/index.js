@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteChannel = void 0;
 const get_guild_1 = require("../helpers/get-guild");
-const deleteChannel = ({ DiscordClient, guildId, categoryName, channelName, }) => async () => {
-    const guild = get_guild_1.getGuild(DiscordClient, guildId);
+const deleteChannel = ({ discordClient, guildId, categoryName, channelName, }) => async () => {
+    const guild = get_guild_1.getGuild(discordClient, guildId);
     const textChannel = guild.channels.cache.find(channel => channel.name === channelName && channel.type === "text");
     const voiceChannel = guild.channels.cache.find(channel => channel.name === channelName && channel.type === "voice");
     const category = guild.channels.cache.find(channel => channel.name === categoryName);

@@ -1,2 +1,2 @@
 import { Challenge } from "types/challenge";
-export declare const Challenges: Array<Challenge>;
+export declare const CHALLENGES: Array<Challenge>;

@@ -1,4 +1,4 @@
-export declare const Emojis: {
+export declare const EMOJIS: {
     static: {
         bigbrain: string;
         coffe: string;

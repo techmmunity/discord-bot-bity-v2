@@ -1,8 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPromisesToUpdateGuildCounters = exports.getChannel = void 0;
-const getChannel = (guild, counter) => guild.channels.cache.get(counter.channelId);
-exports.getChannel = getChannel;
 const hasAllRoles = (rolesIds) => {
     return (memberRoles) => rolesIds.every((roleId) => memberRoles.includes(roleId));
 };
@@ -28,13 +26,18 @@ const getCounterQtd = (rolesIdsByMember, counterConfig) => {
     }
     return 0;
 };
-const getPromisesToUpdateGuildCounters = (guild, rolesIdsByMember, countersConfig) => countersConfig.map(counterConfig => {
+const getChannel = (guild, counter) => guild.channels.cache.get(counter.channelId);
+exports.getChannel = getChannel;
+const getPromisesToUpdateGuildCounters = (guild, rolesIdsByMember, countersConfig) => countersConfig
+    .map(counterConfig => {
     const qtd = getCounterQtd(rolesIdsByMember, counterConfig);
     const channel = exports.getChannel(guild, counterConfig);
     const newChannelName = `${counterConfig.channelName} Count: ${qtd}`;
     if (channel.name !== newChannelName) {
         return channel.setName(newChannelName);
     }
-});
+    return null;
+})
+    .filter(Boolean);
 exports.getPromisesToUpdateGuildCounters = getPromisesToUpdateGuildCounters;
 //# sourceMappingURL=get-promises-to-update-counters.js.map

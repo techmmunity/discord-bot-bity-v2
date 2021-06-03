@@ -4,11 +4,11 @@ exports.createChannel = void 0;
 const get_guild_1 = require("../helpers/get-guild");
 const guilds_1 = require("../../../../../enums/guilds");
 const roles_1 = require("../../../../../enums/roles");
-const createChannel = async ({ DiscordClient, guildId, categoryName, channelName, }) => {
-    const guild = get_guild_1.getGuild(DiscordClient, guildId);
+const createChannel = async ({ discordClient, guildId, categoryName, channelName, }) => {
+    const guild = get_guild_1.getGuild(discordClient, guildId);
     const registredRole = guild.roles.cache.get(roles_1.RolesEnum[guildId].REGISTRED);
     const everyoneRole = guild.roles.cache.find(role => role.name === "@everyone");
-    const HangoverFridayCategory = await guild.channels.create(categoryName, {
+    const hangoverFridayCategory = await guild.channels.create(categoryName, {
         type: "category",
         position: 0,
         permissionOverwrites: [
@@ -25,11 +25,11 @@ const createChannel = async ({ DiscordClient, guildId, categoryName, channelName
     const [textChannel] = await Promise.all([
         guild.channels.create(channelName, {
             type: "text",
-            parent: HangoverFridayCategory,
+            parent: hangoverFridayCategory,
         }),
         guild.channels.create(channelName, {
             type: "voice",
-            parent: HangoverFridayCategory,
+            parent: hangoverFridayCategory,
         }),
     ]);
     return textChannel;

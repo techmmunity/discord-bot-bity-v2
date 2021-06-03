@@ -22,11 +22,11 @@ const bump_guard_1 = require("./bump.guard");
 const sucess_1 = require("./service/sucess");
 const active_guild_guard_1 = require("../../common/active-guild.guard");
 let BumpEvent = class BumpEvent {
-    constructor(BumpRepository) {
-        this.BumpRepository = BumpRepository;
+    constructor(bumpRepository) {
+        this.bumpRepository = bumpRepository;
     }
     sucess(message) {
-        return sucess_1.success(this.BumpRepository, message);
+        return sucess_1.success(this.bumpRepository, message);
     }
 };
 __decorate([

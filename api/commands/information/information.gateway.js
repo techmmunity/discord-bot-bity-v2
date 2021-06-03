@@ -20,16 +20,16 @@ const ram_1 = require("./service/ram");
 const dev_guard_1 = require("../../common/dev.guard");
 const tech_team_guard_1 = require("../../common/tech-team.guard");
 let InformationGateway = class InformationGateway {
-    async counters(message) {
+    counters(message) {
         return counters_1.counters(message);
     }
-    async ping(message) {
+    ping(message) {
         return ping_1.ping(message);
     }
-    async qtd(message) {
+    qtd(message) {
         return qtd_1.qtd(message);
     }
-    async ram(message) {
+    ram(message) {
         return ram_1.ram(message);
     }
 };
@@ -38,25 +38,25 @@ __decorate([
     discord_nestjs_1.UseGuards(tech_team_guard_1.TechTeamGuard),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], InformationGateway.prototype, "counters", null);
 __decorate([
     discord_nestjs_1.OnCommand({ name: "ping" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], InformationGateway.prototype, "ping", null);
 __decorate([
     discord_nestjs_1.OnCommand({ name: "qtd" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], InformationGateway.prototype, "qtd", null);
 __decorate([
     discord_nestjs_1.OnCommand({ name: "ram" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], InformationGateway.prototype, "ram", null);
 InformationGateway = __decorate([
     common_1.Injectable(),

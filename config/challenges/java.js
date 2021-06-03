@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JavaChallenges = void 0;
+exports.JAVA_CHALLENGES = void 0;
 const make_description_1 = require("./helpers/make-description");
 const challenge_level_1 = require("../../enums/challenge-level");
 const challenge_1 = require("../../types/challenge");
-exports.JavaChallenges = [
+exports.JAVA_CHALLENGES = [
     {
         id: "JAVA-1-0001",
         title: "hUeHue!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "Java",
         description: make_description_1.makeDescription({
             language: "java",

@@ -12,8 +12,8 @@ const getEmbedDelete = ({ message, title, color, }) => {
         "**Nickname**: {userNickname}",
         `**Channel**: <#${message.channel.id}>`,
     ].join("\n");
-    const formmatedMessage = message_1.MessageUtil.formatMessage(message, messageContent);
-    const messageToSend = formmatedMessage + "\n**Message**:\n" + message.content;
+    const formmatedMessage = message_1.messageUtil.formatMessage(message, messageContent);
+    const messageToSend = `${formmatedMessage}\n**Message**:\n${message.content}`;
     const embed = new discord_js_1.MessageEmbed()
         .setColor(color)
         .setTitle(title)

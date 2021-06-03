@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JavascriptChallenges = void 0;
+exports.JAVASCRIPT_CHALLENGES = void 0;
 const make_description_1 = require("./helpers/make-description");
 const markdown_1 = require("../../utils/markdown");
 const challenge_level_1 = require("../../enums/challenge-level");
 const challenge_1 = require("../../types/challenge");
-exports.JavascriptChallenges = [
+exports.JAVASCRIPT_CHALLENGES = [
     {
         id: "JS-0-0001",
         title: "Crie uma função que retorne a soma de 2 numeros!",
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -29,7 +29,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-0-0002",
         title: "Crie uma função que converta segundos para minutos!",
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -49,7 +49,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-0-0003",
         title: "Crie uma função que converta minutos para segundos!",
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -69,7 +69,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-0-0004",
         title: "Crie uma função que retorne a area de um triangulo retangulo!",
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -89,14 +89,14 @@ exports.JavascriptChallenges = [
     {
         id: "JS-0-0005",
         title: "Corrija o bug! #1",
-        description: markdown_1.MarkdownUtil.codeBlock("function cubes(a) {\n	retunr a ** 3\n}"),
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        description: markdown_1.markdownUtil.codeBlock("function cubes(a) {\n	retunr a ** 3\n}"),
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
     },
     {
         id: "JS-0-0006",
         title: "Crie uma função que retorne o primeiro item de um array!",
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -116,7 +116,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-0-0007",
         title: "Crie uma função que retorne o ultimo item de um array!",
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -136,7 +136,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-0-0008",
         title: "Crie uma função que verifica se um numero é menor ou igual a zero!",
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -160,7 +160,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-0-0009",
         title: "Crie uma função que verifica se um numero é menor que 100!",
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -184,7 +184,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-0-0010",
         title: "Crie uma função que diga se a soma de 2 numeros é iguala a 10!",
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -208,7 +208,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0001",
         title: "Crie uma função que retorne a maior string de um array!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -232,7 +232,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0002",
         title: "Crie uma função que retorne a letra mais usada em uma string!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -256,7 +256,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0003",
         title: "Crie uma função que verifica se duas strings são anagramas uma da outra!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -280,7 +280,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0004",
         title: "Crie uma função que verifica se uma string é palíndroma!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -304,7 +304,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0005",
         title: "Crie uma função que converta segundos para minutos!",
-        level: challenge_level_1.ChallengeLevelEnum.Starter,
+        level: challenge_level_1.ChallengeLevelEnum.STARTER,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -328,7 +328,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0006",
         title: "Crie uma função que ordene números de um array! (crescente)",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -352,7 +352,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0007",
         title: "Crie uma função que ordene números de um array! (decrescente)",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -376,7 +376,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0008",
         title: "Crie uma função que retorne o nro de argumentos que foram passados!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -400,7 +400,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0009",
         title: "Crie uma função que converta a idade de uma pessoa para dias!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -420,15 +420,14 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0010",
         title: "Corrija o bug! #2",
-        description: "Nesse trecho existe um loop infinito, faça as alterações necessarias para corrigir o bug:\n" +
-            markdown_1.MarkdownUtil.codeBlock("function printArray(number) {\n  var newArray = [];\n\n  for(var i = 1; i <= number;) {\n    newArray.push(i);\n  }\n\n  return newArray;\n}"),
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        description: `Nesse trecho existe um loop infinito, faça as alterações necessarias para corrigir o bug:\n${markdown_1.markdownUtil.codeBlock("function printArray(number) {\n  var newArray = [];\n\n  for(var i = 1; i <= number;) {\n    newArray.push(i);\n  }\n\n  return newArray;\n}")}`,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
     },
     {
         id: "JS-1-0011",
         title: "Crie uma função que retorne a soma de todos os numeros de um array!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -448,7 +447,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0012",
         title: "Use o NPM!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -468,7 +467,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0013",
         title: "Random Element!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -492,7 +491,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0013",
         title: "Valid Date!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -516,7 +515,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0014",
         title: "Remove Spaces!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -536,7 +535,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0015",
         title: "How many times!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -560,7 +559,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0016",
         title: "Caesar's Cipher!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -588,7 +587,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0017",
         title: "Reverse Caesar's Cipher!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -616,7 +615,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-1-0018",
         title: "Crie uma função que retorne a menor string de um array!",
-        level: challenge_level_1.ChallengeLevelEnum.Junior,
+        level: challenge_level_1.ChallengeLevelEnum.JUNIOR,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",
@@ -640,7 +639,7 @@ exports.JavascriptChallenges = [
     {
         id: "JS-2-0001",
         title: "Maxie And Minnie!",
-        level: challenge_level_1.ChallengeLevelEnum.Middle,
+        level: challenge_level_1.ChallengeLevelEnum.MIDDLE,
         language: "JavaScript",
         description: make_description_1.makeDescription({
             language: "js",

@@ -10,7 +10,7 @@ const getMembers = (message) => message.mentions.members;
 const register = async (message) => {
     var _a;
     const members = getMembers(message);
-    const flags = message_1.MessageUtil.getFlags(message);
+    const flags = message_1.messageUtil.getFlags(message);
     if (members.size < 1) {
         throw new Error("MISSING_ARGUMENT");
     }

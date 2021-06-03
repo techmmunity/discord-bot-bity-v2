@@ -1,4 +1,4 @@
-export declare const JobsSchedule: {
+export declare const JOBS_SCHEDULE: {
     SET_BOT_STATUS: string;
     UPDATE_COUNTERS: string;
     HANGOVER: string;

@@ -1,6 +1,6 @@
 interface MakeDescriptionParams {
     text: string;
-    language?: "ts" | "js" | "java";
+    language?: "java" | "js" | "ts";
     examples: Array<{
         example: string;
         returnedValue: string;

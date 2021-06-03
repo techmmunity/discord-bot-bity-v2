@@ -7,8 +7,8 @@ const images_1 = require("../../../../../assets/images");
 const ping = async (message) => {
     const embed = new discord_js_1.MessageEmbed()
         .setTitle("Pong!")
-        .setColor(colors_1.Colors.blue)
-        .setThumbnail(images_1.Images.lattency)
+        .setColor(colors_1.COLORS.blue)
+        .setThumbnail(images_1.IMAGES.lattency)
         .addField("Bot Latency", `${Date.now() - message.createdTimestamp}ms`);
     await message.channel.send(embed);
 };

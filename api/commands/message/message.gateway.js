@@ -16,7 +16,7 @@ const discord_js_1 = require("discord.js");
 const emoji_1 = require("./service/emoji");
 const dev_guard_1 = require("../../common/dev.guard");
 let MessageGateway = class MessageGateway {
-    async emoji(message) {
+    emoji(message) {
         return emoji_1.emoji(message);
     }
 };
@@ -24,7 +24,7 @@ __decorate([
     discord_nestjs_1.OnCommand({ name: "emoji" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], MessageGateway.prototype, "emoji", null);
 MessageGateway = __decorate([
     common_1.Injectable(),

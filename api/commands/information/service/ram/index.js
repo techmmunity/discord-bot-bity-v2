@@ -7,10 +7,10 @@ const images_1 = require("../../../../../assets/images");
 const calcMemory = (memory) => Math.round((memory / 1024 / 1024) * 100) / 100;
 const getColor = (memoryUsage) => {
     if (memoryUsage < 30)
-        return colors_1.Colors.green;
+        return colors_1.COLORS.green;
     if (memoryUsage < 50)
-        return colors_1.Colors.yellow;
-    return colors_1.Colors.red;
+        return colors_1.COLORS.yellow;
+    return colors_1.COLORS.red;
 };
 const ram = async (message) => {
     const memoryUsage = process.memoryUsage();
@@ -22,7 +22,7 @@ const ram = async (message) => {
     const embed = new discord_js_1.MessageEmbed()
         .setTitle("I use about:")
         .setColor(getColor(heapTotal))
-        .setThumbnail(images_1.Images.performance)
+        .setThumbnail(images_1.IMAGES.performance)
         .addFields([
         {
             name: "RSS",

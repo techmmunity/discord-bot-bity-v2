@@ -1,4 +1,4 @@
-export declare const Config: {
+export declare const CONFIG: {
     version: string;
     prefix: string;
     flagPrefix: string;

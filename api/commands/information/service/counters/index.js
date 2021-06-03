@@ -7,7 +7,7 @@ const getVoiceChannels = (message) => {
     var _a, _b;
     return (_b = (_a = message.guild) === null || _a === void 0 ? void 0 : _a.channels.cache.array()) === null || _b === void 0 ? void 0 : _b.filter(channel => channel.type === "voice");
 };
-const getCountersChannels = (channels) => channels === null || channels === void 0 ? void 0 : channels.filter(voiceChannel => voiceChannel.name.match(channels_patterns_1.ChannelsPatterns.counters.name));
+const getCountersChannels = (channels) => channels === null || channels === void 0 ? void 0 : channels.filter(voiceChannel => voiceChannel.name.match(channels_patterns_1.CHANNELS_PATTERNS.counters.name));
 const formatCounters = (channels) => channels
     .map(counter => {
     const name = counter.name.split(" ").shift();
@@ -18,7 +18,7 @@ const counters = async (message) => {
     const voiceChannels = getVoiceChannels(message);
     const counterChannels = getCountersChannels(voiceChannels);
     const countersFormatted = formatCounters(counterChannels);
-    await message.channel.send(markdown_1.MarkdownUtil.codeBlock(countersFormatted));
+    await message.channel.send(markdown_1.markdownUtil.codeBlock(countersFormatted));
 };
 exports.counters = counters;
 //# sourceMappingURL=index.js.map

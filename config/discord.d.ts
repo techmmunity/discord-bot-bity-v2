@@ -1,2 +1,2 @@
 import { DiscordModuleOption } from "discord-nestjs";
-export declare const DiscordConfig: DiscordModuleOption;
+export declare const DISCORD_CONFIG: DiscordModuleOption;

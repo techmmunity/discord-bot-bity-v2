@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Config = void 0;
+exports.CONFIG = void 0;
 const { NODE_ENV } = process.env;
-exports.Config = {
+exports.CONFIG = {
     version: "v1",
     prefix: NODE_ENV === "production" ? "bty " : "btt ",
     flagPrefix: "--",

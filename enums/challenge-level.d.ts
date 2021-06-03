@@ -1,7 +1,7 @@
 export declare enum ChallengeLevelEnum {
-    Starter = "Iniciante",
-    Junior = "Junior",
-    Middle = "Pleno",
-    Senior = "S\u00EAnior",
-    Specialist = "Especialista"
+    STARTER = "Iniciante",
+    JUNIOR = "Junior",
+    MIDDLE = "Pleno",
+    SENIOR = "S\u00EAnior",
+    SPECIALIST = "Especialista"
 }

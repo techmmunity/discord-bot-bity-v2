@@ -24,14 +24,14 @@ const channels_1 = require("../../../enums/channels");
 const guilds_1 = require("../../../enums/guilds");
 const colors_1 = require("../../../assets/colors");
 let BumpRushJob = class BumpRushJob {
-    constructor(BumpRepository) {
-        this.BumpRepository = BumpRepository;
+    constructor(bumpRepository) {
+        this.bumpRepository = bumpRepository;
     }
     setCron() {
-        cron.schedule(jobs_schedule_1.JobsSchedule.BUMP_RANK, () => this.setup(guilds_1.GuildEnum.PROGRAMMING));
+        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.BUMP_RANK, () => this.setup(guilds_1.GuildEnum.PROGRAMMING));
     }
     async getChannel(guildId) {
-        const guild = await this.DiscordClient.getClient().guilds.fetch(guildId);
+        const guild = await this.discordClient.getClient().guilds.fetch(guildId);
         if (!guild)
             return;
         const channelId = channels_1.ChannelEnum[guildId].BUMP_RUSH;
@@ -39,20 +39,20 @@ let BumpRushJob = class BumpRushJob {
         return channel;
     }
     formatBumps(bumps) {
-        const ranks = bumps.map(({ bumps, discordUserId }, index) => {
+        const ranks = bumps.map(({ bumps: bumpsCount, discordUserId }, index) => {
             const rank = String(index + 1).padStart(2, "0");
-            return `**#${rank} |** <@${discordUserId}> --- **${bumps}**`;
+            return `**#${rank} |** <@${discordUserId}> --- **${bumpsCount}**`;
         });
         return new discord_js_1.MessageEmbed()
             .setTitle("Bump Rush Rank!")
-            .setColor(colors_1.Colors.turquoise)
+            .setColor(colors_1.COLORS.turquoise)
             .setDescription(ranks.join("\n"));
     }
     async setup(guildId) {
         const channel = await this.getChannel(guildId);
         if (!channel)
             return;
-        const bumps = await this.BumpRepository.find({
+        const bumps = await this.bumpRepository.find({
             order: {
                 bumps: "DESC",
             },
@@ -65,7 +65,7 @@ let BumpRushJob = class BumpRushJob {
 __decorate([
     discord_nestjs_1.Client(),
     __metadata("design:type", Object)
-], BumpRushJob.prototype, "DiscordClient", void 0);
+], BumpRushJob.prototype, "discordClient", void 0);
 __decorate([
     discord_nestjs_1.Once({ event: "ready" }),
     __metadata("design:type", Function),
