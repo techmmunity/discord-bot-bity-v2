@@ -1,6 +1,6 @@
 import { GuildMember, MessageEmbed } from "discord.js";
 
-import { MemberUtil } from "utils/member";
+import { memberUtil } from "utils/member";
 
 interface GetEmbedParams {
 	member: GuildMember;
@@ -23,7 +23,7 @@ export const getEmbed = ({ member, title, color }: GetEmbedParams) => {
 		"**Creation**: {userCreation}",
 	].join("\n");
 
-	const formmatedMessage = MemberUtil.formatMessage(member, message);
+	const formmatedMessage = memberUtil.formatMessage(member, message);
 
 	const embed = new MessageEmbed()
 		.setColor(color)

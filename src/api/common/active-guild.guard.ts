@@ -8,7 +8,7 @@ import { getActiveGuilds } from "config/active-guilds";
 export class ActiveGuildGuard implements DiscordGuard {
 	public canActive(
 		_: keyof ClientEvents,
-		[context]: [Message | Invite | GuildMember],
+		[context]: [GuildMember | Invite | Message],
 	) {
 		const guildId = context.guild?.id as GuildEnum;
 

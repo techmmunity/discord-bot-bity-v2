@@ -10,7 +10,7 @@ import { underline } from "./underline";
 import { underlineBold } from "./underline-bold";
 import { underlineItalic } from "./underline-italic";
 
-export const MarkdownUtil = {
+export const markdownUtil = {
 	boldItalic,
 	bold,
 	codeBlock,

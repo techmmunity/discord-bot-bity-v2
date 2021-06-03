@@ -1,9 +1,9 @@
 import { GuildMember, Message, MessageEmbed } from "discord.js";
 
-import { MemberUtil } from "utils/member";
+import { memberUtil } from "utils/member";
 
-import { Colors } from "assets/colors";
-import { Images } from "assets/images";
+import { COLORS } from "assets/colors";
+import { IMAGES } from "assets/images";
 
 interface SendSuccessEmbedParams {
 	message: Message;
@@ -16,15 +16,15 @@ export const sendSuccessEmbed = ({
 	message,
 	userBumpsTotal,
 }: SendSuccessEmbedParams) => {
-	const description = MemberUtil.formatMessage(
+	const description = memberUtil.formatMessage(
 		member,
 		"Thanks for bump the server {userMention} ({userTag})!",
 	);
 
 	const embed = new MessageEmbed()
 		.setTitle("Thanks!")
-		.setColor(Colors.turquoise)
-		.setThumbnail(Images.treasure)
+		.setColor(COLORS.turquoise)
+		.setThumbnail(IMAGES.treasure)
 		.setDescription(description)
 		.addFields([
 			{

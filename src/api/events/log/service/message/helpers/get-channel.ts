@@ -6,20 +6,20 @@ import { getChannelToLog } from "../../helpers/get-channel-to-log";
 import { GuildEnum } from "enums/guilds";
 
 interface GetChannelParams {
-	DiscordClient: ClientProvider;
+	discordClient: ClientProvider;
 	message?: Message;
 	newMessage?: Message;
 }
 
 export const getChannel = ({
-	DiscordClient,
+	discordClient,
 	message,
 	newMessage,
 }: GetChannelParams) => {
 	const guildId = (message?.guild?.id || newMessage?.guild?.id) as GuildEnum;
 
 	return getChannelToLog({
-		DiscordClient,
+		discordClient,
 		guildId,
 		type: "message",
 	});

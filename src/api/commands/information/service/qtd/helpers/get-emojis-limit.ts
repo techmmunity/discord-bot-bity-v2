@@ -24,7 +24,7 @@ export const getEmojisLimit = (message: Message) => {
 		};
 	}
 
-	// boosts >= 30
+	// Boosts >= 30
 	return {
 		regular: 250,
 		animated: 250,

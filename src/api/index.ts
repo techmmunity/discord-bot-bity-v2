@@ -1,6 +1,6 @@
-import { Commands } from "./commands";
-import { Events } from "./events";
+import { COMMANDS } from "./commands";
+import { EVENTS } from "./events";
 
-import { Jobs } from "./jobs";
+import { JOBS } from "./jobs";
 
-export const Api = [...Commands, ...Events, ...Jobs];
+export const API = [...COMMANDS, ...EVENTS, ...JOBS];

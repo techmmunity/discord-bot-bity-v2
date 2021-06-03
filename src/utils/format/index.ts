@@ -1,5 +1,5 @@
 import { formatMessage } from "./format-message";
 
-export const FormatUtil = {
+export const formatUtil = {
 	formatMessage,
 };

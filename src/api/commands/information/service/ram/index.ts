@@ -1,17 +1,17 @@
 import { Message, MessageEmbed } from "discord.js";
 
-import { Colors } from "assets/colors";
-import { Images } from "assets/images";
+import { COLORS } from "assets/colors";
+import { IMAGES } from "assets/images";
 
 const calcMemory = (memory: number) =>
 	Math.round((memory / 1024 / 1024) * 100) / 100;
 
 const getColor = (memoryUsage: number) => {
-	if (memoryUsage < 30) return Colors.green;
+	if (memoryUsage < 30) return COLORS.green;
 
-	if (memoryUsage < 50) return Colors.yellow;
+	if (memoryUsage < 50) return COLORS.yellow;
 
-	return Colors.red;
+	return COLORS.red;
 };
 
 export const ram = async (message: Message) => {
@@ -26,7 +26,7 @@ export const ram = async (message: Message) => {
 	const embed = new MessageEmbed()
 		.setTitle("I use about:")
 		.setColor(getColor(heapTotal))
-		.setThumbnail(Images.performance)
+		.setThumbnail(IMAGES.performance)
 		.addFields([
 			{
 				name: "RSS",

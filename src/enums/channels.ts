@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import { GuildEnum } from "./guilds";
 
 export const ChannelEnum = {

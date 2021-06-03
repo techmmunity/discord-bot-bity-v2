@@ -4,18 +4,18 @@ import { getChannelQtdByType } from "./helpers/get-channel-qtd-by-type";
 import { getEmojisByType } from "./helpers/get-emojis-by-type";
 import { getEmojisLimit } from "./helpers/get-emojis-limit";
 
-import { MarkdownUtil } from "utils/markdown";
+import { markdownUtil } from "utils/markdown";
 
-import { Colors } from "assets/colors";
+import { COLORS } from "assets/colors";
 
-interface IParams {
+interface FormatNameAndValueParams {
 	name: string;
-	value: string | number;
+	value: number | string;
 }
 
 const LINE_LENGTH = 28;
 
-const formatNameAndValue = ({ name, value }: IParams) => {
+const formatNameAndValue = ({ name, value }: FormatNameAndValueParams) => {
 	const limit = LINE_LENGTH - String(value).length;
 
 	return `${name.padEnd(limit, " ")}${value}`;
@@ -73,13 +73,13 @@ const getDescription = (message: Message) => {
 		)
 		.join("\n");
 
-	return MarkdownUtil.codeBlock(fields);
+	return markdownUtil.codeBlock(fields);
 };
 
 export const qtd = async (message: Message) => {
 	const embed = new MessageEmbed()
 		.setTitle("Guild Quantities")
-		.setColor(Colors.blue)
+		.setColor(COLORS.blue)
 		.setDescription(getDescription(message));
 
 	await message.channel.send(embed);

@@ -6,6 +6,7 @@ import { RolesEnum } from "enums/roles";
 import { UsersEnum } from "enums/users";
 
 export class TechTeamGuard implements DiscordGuard {
+	// eslint-disable-next-line require-await
 	public async canActive(
 		event: keyof ClientEvents,
 		[context]: [Message],

@@ -12,11 +12,11 @@ const getEmojiUrl = (emoji: string) =>
 const getAnimatedEmojiUrl = (emoji: string) =>
 	`https://cdn.discordapp.com/emojis/${emoji}.gif?v=1`;
 
-export const emoji = async (message: Message) => {
-	const emoji = getEmoji(message.content);
+export const emoji = (message: Message) => {
+	const emojiData = getEmoji(message.content);
 
-	if (emoji) {
-		const emojiUrl = getEmojiUrl(emoji);
+	if (emojiData) {
+		const emojiUrl = getEmojiUrl(emojiData);
 
 		return message.channel.send(emojiUrl);
 	}

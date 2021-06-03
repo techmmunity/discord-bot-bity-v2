@@ -4,7 +4,7 @@ import { addRoles } from "./helpers/add-roles";
 import { sendServerExplanationMessage } from "./helpers/send-server-explanation-message";
 import { sendWelcomeMessage } from "./helpers/send-welcome-message";
 
-import { MessageUtil } from "utils/message";
+import { messageUtil } from "utils/message";
 
 import { GuildEnum } from "enums/guilds";
 
@@ -14,7 +14,7 @@ const getMembers = (message: Message) =>
 export const register = async (message: Message) => {
 	const members = getMembers(message);
 
-	const flags = MessageUtil.getFlags(message);
+	const flags = messageUtil.getFlags(message);
 
 	if (members.size < 1) {
 		throw new Error("MISSING_ARGUMENT");

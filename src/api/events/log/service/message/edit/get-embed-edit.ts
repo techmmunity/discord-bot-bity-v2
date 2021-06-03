@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from "discord.js";
 
-import { MessageUtil } from "utils/message";
+import { messageUtil } from "utils/message";
 
 interface GetEmbedEditParams {
 	oldMessage: Message;
@@ -25,13 +25,13 @@ export const getEmbedEdit = ({
 		`**Channel**: <#${newMessage.channel.id}>`,
 	].join("\n");
 
-	const formmatedMessage = MessageUtil.formatMessage(
+	const formmatedMessage = messageUtil.formatMessage(
 		newMessage,
 		messageContent,
 	);
 
-	const oldMessageToSend = "\n**Old Message**:\n" + oldMessage.content;
-	const newMessageToSend = "\n\n**New Message**:\n" + newMessage.content;
+	const oldMessageToSend = `\n**Old Message**:\n${oldMessage.content}`;
+	const newMessageToSend = `\n\n**New Message**:\n${newMessage.content}`;
 
 	const messageToSend = formmatedMessage + oldMessageToSend + newMessageToSend;
 

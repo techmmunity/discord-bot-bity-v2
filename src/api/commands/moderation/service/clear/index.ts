@@ -1,22 +1,22 @@
 import { Collection, Message, MessageEmbed, TextChannel } from "discord.js";
 
-import { MessageUtil } from "utils/message";
+import { messageUtil } from "utils/message";
 
-import { Colors } from "assets/colors";
+import { COLORS } from "assets/colors";
 
 const filterMessages = (messages: Collection<string, Message>) =>
 	messages.filter(message => !message.pinned);
 
 const sendEmbedMessage = async (message: Message, qtd: number) => {
 	const embed = new MessageEmbed()
-		.setColor(Colors.blue)
+		.setColor(COLORS.blue)
 		.setTitle(`${qtd} messages have been successfully deleted!`);
 
-	await MessageUtil.sendAndDelete(message, embed, 2.5);
+	await messageUtil.sendAndDelete(message, embed, 2.5);
 };
 
 export const clear = async (message: Message) => {
-	const args = MessageUtil.getArgs(message);
+	const args = messageUtil.getArgs(message);
 
 	const qtdToDelete = Number(args.shift() as string);
 

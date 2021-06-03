@@ -7,14 +7,14 @@ import { getEmbed } from "./get-embed";
 import { GuildEnum } from "enums/guilds";
 
 interface InviteParams {
-	DiscordClient: ClientProvider;
+	discordClient: ClientProvider;
 	invite: Invite;
 	title: string;
 	color: string;
 }
 
-export const invite = ({
-	DiscordClient,
+export const inviteLog = ({
+	discordClient,
 	invite,
 	title,
 	color,
@@ -22,7 +22,7 @@ export const invite = ({
 	const guildId = invite.guild?.id as GuildEnum;
 
 	const channel = getChannelToLog({
-		DiscordClient,
+		discordClient,
 		guildId,
 		type: "invite",
 	});

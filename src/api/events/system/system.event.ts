@@ -5,7 +5,7 @@ import { ready } from "./service/ready";
 
 @Injectable()
 export class SystemEvent {
-	private logger = new Logger("System");
+	private readonly logger = new Logger("System");
 
 	@Once({ event: "ready" })
 	public ready() {

@@ -3,14 +3,15 @@
 declare global {
 	namespace NodeJS {
 		interface ProcessEnv {
-			NODE_ENV: "dev" | "production" | "homolog" | "test";
+			NODE_ENV: "dev" | "homolog" | "production" | "test";
 			DISCORD_TOKEN: string;
 			MONGODB_URL: string;
 		}
 	}
 }
 
-// If this file has no import/export statements (i.e. is a script)
-// convert it into a module by adding an empty export statement.
-// eslint-disable-next-line prettier/prettier
+/*
+ * If this file has no import/export statements (i.e. is a script)
+ * convert it into a module by adding an empty export statement.
+ */
 export {};

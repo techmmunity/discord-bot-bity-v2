@@ -1,21 +1,21 @@
 import { MessageEmbed } from "discord.js";
 
-import { Urls } from "config/url";
+import { URLS } from "config/url";
 
-import { Colors } from "assets/colors";
-import { Images } from "assets/images";
+import { COLORS } from "assets/colors";
+import { IMAGES } from "assets/images";
 
 import { Challenge } from "types/challenge";
 
 export const makeEmbed = (challenge: Challenge) => {
 	const embed = new MessageEmbed()
 		.setTitle(challenge.title)
-		.setColor(Colors.turquoise)
+		.setColor(COLORS.turquoise)
 		.setDescription(challenge.description)
 		.setAuthor(
 			"Techmmunity",
-			Images.techmmunityLogo,
-			Urls.LANDING_PAGE_COMPLETE,
+			IMAGES.techmmunityLogo,
+			URLS.LANDING_PAGE_COMPLETE,
 		)
 		.addFields([
 			{

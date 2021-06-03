@@ -4,6 +4,7 @@ import { ClientEvents, Message } from "discord.js";
 import { BotsEnum } from "enums/bots";
 
 export class BumpGuard implements DiscordGuard {
+	// eslint-disable-next-line require-await
 	public async canActive(_: keyof ClientEvents, [context]: [Message]) {
 		const authorId = context.author.id;
 

@@ -1,11 +1,11 @@
 import { GuildMember, Message, MessageEmbed, TextChannel } from "discord.js";
 
-import { MemberUtil } from "utils/member";
+import { memberUtil } from "utils/member";
 
 import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 
-import { Colors } from "assets/colors";
+import { COLORS } from "assets/colors";
 
 export const sendWelcomeMessage = (
 	message: Message,
@@ -15,13 +15,13 @@ export const sendWelcomeMessage = (
 	const TITLE = "Welcome to Techmmunity!";
 	const DESCRIPTION = "{userMention} ({userTag}), say hi to everyone!";
 
-	const titleFormatted = MemberUtil.formatMessage(member, TITLE);
-	const descriptionFormatted = MemberUtil.formatMessage(member, DESCRIPTION);
+	const titleFormatted = memberUtil.formatMessage(member, TITLE);
+	const descriptionFormatted = memberUtil.formatMessage(member, DESCRIPTION);
 
-	const memberCount = MemberUtil.getGuildMemberCount(member);
+	const memberCount = memberUtil.getGuildMemberCount(member);
 
 	const embed = new MessageEmbed()
-		.setColor(Colors.turquoise)
+		.setColor(COLORS.turquoise)
 		.setTitle(titleFormatted)
 		.setDescription(descriptionFormatted)
 		.addFields([

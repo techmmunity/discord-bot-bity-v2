@@ -17,7 +17,7 @@ const getBumpRole = (member: GuildMember) => {
 };
 
 export const success = async (
-	BumpRepository: BumpRepository,
+	bumpRepository: BumpRepository,
 	message: Message,
 ) => {
 	const member = message.mentions.members?.first();
@@ -33,7 +33,7 @@ export const success = async (
 	promises.push(deleteBotMessagePromise);
 
 	if (bumpRole) {
-		const userBumpsTotal = await incrementBumps(BumpRepository, message);
+		const userBumpsTotal = await incrementBumps(bumpRepository, message);
 
 		const succesMessagePromise = sendSuccessEmbed({
 			message,

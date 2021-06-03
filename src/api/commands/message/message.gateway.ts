@@ -10,7 +10,7 @@ import { DevGuard } from "api/common/dev.guard";
 @UseGuards(DevGuard)
 export class MessageGateway {
 	@OnCommand({ name: "emoji" })
-	public async emoji(message: Message) {
+	public emoji(message: Message) {
 		return emoji(message);
 	}
 }

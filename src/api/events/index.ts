@@ -4,7 +4,7 @@ import { MentionEvent } from "./mention/mention.event";
 import { SuggestionEvent } from "./suggestion/suggestion.event";
 import { SystemEvent } from "./system/system.event";
 
-export const Events = [
+export const EVENTS = [
 	BumpEvent,
 	LogEvent,
 	MentionEvent,

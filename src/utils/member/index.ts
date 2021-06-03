@@ -6,7 +6,7 @@ import { getGuildRolesByRolesIds } from "./get-guild-roles-by-roles-ids";
 import { getGuildRolesByRolesNames } from "./get-guild-roles-by-roles-names";
 import { isBot } from "./is-bot";
 
-export const MemberUtil = {
+export const memberUtil = {
 	formatMessage,
 	getChannel,
 	getGuildInvitesUrls,

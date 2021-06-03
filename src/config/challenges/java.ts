@@ -4,7 +4,7 @@ import { ChallengeLevelEnum } from "enums/challenge-level";
 
 import { Challenge } from "types/challenge";
 
-export const JavaChallenges: Array<Challenge> = [
+export const JAVA_CHALLENGES: Array<Challenge> = [
 	/**
 	 *
 	 * Junior
@@ -13,12 +13,11 @@ export const JavaChallenges: Array<Challenge> = [
 	{
 		id: "JAVA-1-0001",
 		title: "hUeHue!",
-		level: ChallengeLevelEnum.Junior,
+		level: ChallengeLevelEnum.JUNIOR,
 		language: "Java",
 		description: makeDescription({
 			language: "java",
-			text:
-				'Dada uma String como "o rato roeu a roupa do rei de roma", transformar essa String para hUeHuE.\nConsiderar que somente entradas contendo texto devam ser aceitas.',
+			text: 'Dada uma String como "o rato roeu a roupa do rei de roma", transformar essa String para hUeHuE.\nConsiderar que somente entradas contendo texto devam ser aceitas.',
 			examples: [
 				{
 					example: 'huehueGenerator("o rato roeu")',

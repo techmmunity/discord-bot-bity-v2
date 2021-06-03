@@ -5,36 +5,36 @@ import * as cron from "node-cron";
 
 import { makeEmbed } from "api/commands/moderation/service/get-challenge/helpers/make-embed";
 
-import { JobsSchedule } from "config/jobs-schedule";
+import { JOBS_SCHEDULE } from "config/jobs-schedule";
 
 import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 import { RolesEnum } from "enums/roles";
 
-import { Challenges } from "config/challenges";
+import { CHALLENGES } from "config/challenges";
 
 const { NODE_ENV } = process.env;
 
 @Injectable()
 export class ChallengeJob {
 	@Client()
-	public DiscordClient: ClientProvider;
+	public discordClient: ClientProvider;
 
 	@Once({ event: "ready" })
 	public setCron() {
-		cron.schedule(JobsSchedule.CHALLENGE, () =>
+		cron.schedule(JOBS_SCHEDULE.CHALLENGE, () =>
 			this.setup(GuildEnum.PROGRAMMING),
 		);
 	}
 
 	public getChallenge() {
-		const randomIndex = Math.floor(Math.random() * Challenges.length);
+		const randomIndex = Math.floor(Math.random() * CHALLENGES.length);
 
-		return Challenges[randomIndex];
+		return CHALLENGES[randomIndex];
 	}
 
 	public async getChannel(guildId: GuildEnum) {
-		const client = this.DiscordClient.getClient();
+		const client = this.discordClient.getClient();
 
 		const guild = await client.guilds.fetch(guildId);
 

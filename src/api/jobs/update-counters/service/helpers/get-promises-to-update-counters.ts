@@ -4,15 +4,6 @@ import { RolesIds, CounterConfig } from "../types";
 
 /**
  *
- * Get Channel
- *
- */
-
-export const getChannel = (guild: Guild, counter: CounterConfig) =>
-	guild.channels.cache.get(counter.channelId) as VoiceChannel;
-
-/**
- *
  * Has roles
  *
  */
@@ -83,6 +74,15 @@ const getCounterQtd = (
 
 /**
  *
+ * Get Channel
+ *
+ */
+
+export const getChannel = (guild: Guild, counter: CounterConfig) =>
+	guild.channels.cache.get(counter.channelId) as VoiceChannel;
+
+/**
+ *
  * Get Promises To Update Counters
  *
  */
@@ -92,14 +92,18 @@ export const getPromisesToUpdateGuildCounters = (
 	rolesIdsByMember: Array<RolesIds>,
 	countersConfig: Array<CounterConfig>,
 ) =>
-	countersConfig.map(counterConfig => {
-		const qtd = getCounterQtd(rolesIdsByMember, counterConfig);
+	countersConfig
+		.map(counterConfig => {
+			const qtd = getCounterQtd(rolesIdsByMember, counterConfig);
 
-		const channel = getChannel(guild, counterConfig);
+			const channel = getChannel(guild, counterConfig);
 
-		const newChannelName = `${counterConfig.channelName} Count: ${qtd}`;
+			const newChannelName = `${counterConfig.channelName} Count: ${qtd}`;
 
-		if (channel.name !== newChannelName) {
-			return channel.setName(newChannelName);
-		}
-	});
+			if (channel.name !== newChannelName) {
+				return channel.setName(newChannelName);
+			}
+
+			return null;
+		})
+		.filter(Boolean);

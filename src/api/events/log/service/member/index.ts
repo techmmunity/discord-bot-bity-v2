@@ -7,22 +7,22 @@ import { getEmbed } from "./get-embed";
 import { GuildEnum } from "enums/guilds";
 
 interface MemberParams {
-	DiscordClient: ClientProvider;
-	member: GuildMember;
+	discordClient: ClientProvider;
+	memberData: GuildMember;
 	title: string;
 	color: string;
 }
 
 export const member = ({
-	DiscordClient,
-	member,
+	discordClient,
+	memberData,
 	title,
 	color,
 }: MemberParams) => {
-	const guildId = member.guild?.id as GuildEnum;
+	const guildId = memberData.guild?.id as GuildEnum;
 
 	const channel = getChannelToLog({
-		DiscordClient,
+		discordClient,
 		guildId,
 		type: "member",
 	});
@@ -30,7 +30,7 @@ export const member = ({
 	const embed = getEmbed({
 		title,
 		color,
-		member,
+		member: memberData,
 	});
 
 	return channel.send(embed);

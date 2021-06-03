@@ -1,15 +1,15 @@
-import { JobsSchedule } from "config/jobs-schedule";
+import { JOBS_SCHEDULE } from "config/jobs-schedule";
 
-import { Hangover } from "config/hangover";
+import { HANGOVER } from "config/hangover";
 
 export const getClearHangoverSchedule = (guildId: string) => {
-	const hangoverDay = Hangover.day[guildId];
+	const hangoverDay = HANGOVER.day[guildId];
 
 	const nextDay = Number(hangoverDay) + 1;
 
 	if (nextDay < 7) {
-		return `${JobsSchedule.HANGOVER}${nextDay}`;
+		return `${JOBS_SCHEDULE.HANGOVER}${nextDay}`;
 	}
 
-	return `${JobsSchedule.HANGOVER}${0}`;
+	return `${JOBS_SCHEDULE.HANGOVER}${0}`;
 };

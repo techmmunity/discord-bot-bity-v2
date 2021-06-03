@@ -1,19 +1,19 @@
 import { Message, MessageEmbed } from "discord.js";
 
-import { Colors } from "assets/colors";
-import { Images } from "assets/images";
+import { COLORS } from "assets/colors";
+import { IMAGES } from "assets/images";
 
 interface SendStartEmbedParams {
 	message: Message;
 	emojisCreatedQtd: number;
 }
 
-export const sendEndEmbed = async ({
+export const sendEndEmbed = ({
 	message,
 	emojisCreatedQtd,
 }: SendStartEmbedParams) => {
 	const embed = new MessageEmbed()
-		.setColor(Colors.green)
+		.setColor(COLORS.green)
 		.setTitle("Done!")
 		.setDescription("All done!")
 		.addFields([
@@ -23,7 +23,7 @@ export const sendEndEmbed = async ({
 				inline: true,
 			},
 		])
-		.setThumbnail(Images.bityGif);
+		.setThumbnail(IMAGES.bityGif);
 
 	return message.channel.send(embed);
 };

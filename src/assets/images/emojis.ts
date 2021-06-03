@@ -1,4 +1,4 @@
-export const Emojis = {
+export const EMOJIS = {
 	static: {
 		bigbrain: "https://cdn.discordapp.com/emojis/806318401915846666.png?v=1",
 		coffe: "https://cdn.discordapp.com/emojis/806318403110436935.png?v=1",

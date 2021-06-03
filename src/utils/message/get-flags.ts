@@ -2,18 +2,14 @@ import { Message } from "discord.js";
 
 import { removePrefix } from "./helpers/remove-prefix";
 
-import { Config } from "config";
+import { CONFIG } from "config";
 
 const FLAGS_REGEX = /--[^\s]+(?:='[^']+'|=[^\s]+)|--[^\s]+/g;
-
-export interface Flags {
-	[flag: string]: string | boolean;
-}
 
 const isFlagWithValue = (value: string) => value.includes("=");
 
 const isFlagWithContinuosValue = (value: string) =>
-	value.includes(Config.flagDelimiter);
+	value.includes(CONFIG.flagDelimiter);
 
 const getFlagAndValue = (flag: string) => ({
 	flag: flag.split("=").shift() as string,
@@ -25,7 +21,7 @@ const getFlagAndContinuosValue = (flag: string) => {
 
 	const unformattedValue = flag.split("=").pop() as string;
 	const formattedValue = unformattedValue.replace(
-		new RegExp(Config.flagDelimiter, "g"),
+		new RegExp(CONFIG.flagDelimiter, "g"),
 		"",
 	);
 
@@ -36,24 +32,27 @@ const getFlagAndContinuosValue = (flag: string) => {
 };
 
 const getFlagKeyFormatted = (flagKey: string) =>
-	flagKey.slice(Config.flagPrefix.length);
+	flagKey.slice(CONFIG.flagPrefix.length);
 
 const formatFlags = (flags: RegExpMatchArray) =>
 	flags.reduce((acc, cur) => {
 		if (isFlagWithValue(cur)) {
 			const { flag, continuosValue } = getFlagAndContinuosValue(cur);
 			acc[flag] = continuosValue;
+
 			return acc;
 		}
 
 		if (isFlagWithContinuosValue(cur)) {
 			const { flag: flagC, value } = getFlagAndValue(cur);
 			acc[flagC] = value;
+
 			return acc;
 		}
 
 		const formatFlagKey = getFlagKeyFormatted(cur);
 		acc[formatFlagKey] = true;
+
 		return acc;
 	}, {} as Flags);
 
@@ -68,3 +67,5 @@ export const getFlags = (message: Message) => {
 
 	return formatFlags(flags);
 };
+
+export type Flags = Record<string, boolean | string>;

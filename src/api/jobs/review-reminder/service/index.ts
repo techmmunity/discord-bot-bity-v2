@@ -4,8 +4,8 @@ import { Guild, MessageEmbed, TextChannel } from "discord.js";
 import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 
-import { Colors } from "assets/colors";
-import { Images } from "assets/images";
+import { COLORS } from "assets/colors";
+import { IMAGES } from "assets/images";
 
 const getReviewUrl = {
 	[GuildEnum.PROGRAMMING]:
@@ -19,18 +19,18 @@ const getReviewUrl = {
 const makeEmbed = (guildId: GuildEnum) =>
 	new MessageEmbed()
 		.setTitle("Click here, please!")
-		.setColor(Colors.turquoise)
+		.setColor(COLORS.turquoise)
 		.setDescription(
 			"Guys, please, give a feedback to the server, it help us a lot! ❤️",
 		)
-		.setImage(Images.apesTogetherStrong)
+		.setImage(IMAGES.apesTogetherStrong)
 		.setURL(getReviewUrl[guildId]);
 
 export const sendReminder = async (
-	DiscordClient: ClientProvider,
+	discordClient: ClientProvider,
 	guildId: GuildEnum,
 ) => {
-	const guild = DiscordClient.getClient().guilds.cache.get(guildId) as Guild;
+	const guild = discordClient.getClient().guilds.cache.get(guildId) as Guild;
 
 	const channel = guild.channels.cache.get(
 		ChannelEnum[guildId].GENERAL,

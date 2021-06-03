@@ -2,19 +2,19 @@ import { Message } from "discord.js";
 import { BumpRepository } from "entities/bump.entity";
 
 export const incrementBumps = async (
-	BumpRepository: BumpRepository,
+	bumpRepository: BumpRepository,
 	message: Message,
 ) => {
 	const userId = message.mentions.users.first()?.id;
 
 	if (!userId) return 0;
 
-	const userBump = await BumpRepository.findOne({
+	const userBump = await bumpRepository.findOne({
 		discordUserId: userId,
 	});
 
 	if (userBump) {
-		await BumpRepository.update(
+		await bumpRepository.update(
 			{
 				discordUserId: userId,
 			},
@@ -26,7 +26,7 @@ export const incrementBumps = async (
 		return userBump.bumps + 1;
 	}
 
-	await BumpRepository.save({
+	await bumpRepository.save({
 		discordUserId: userId,
 		bumps: 1,
 	});

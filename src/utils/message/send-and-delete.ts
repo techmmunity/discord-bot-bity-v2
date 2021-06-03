@@ -1,14 +1,14 @@
 import { Message, MessageEmbed } from "discord.js";
 
-import { TimeUtil } from "utils/time";
+import { timeUtil } from "utils/time";
 
 export const sendAndDelete = (
 	message: Message,
-	messageToSend: string | MessageEmbed,
+	messageToSend: MessageEmbed | string,
 	secondsToWait = 5,
 ) =>
 	message.channel.send(messageToSend).then(async inviteBlockedMessage => {
-		await TimeUtil.delay(secondsToWait);
+		await timeUtil.delay(secondsToWait);
 
 		inviteBlockedMessage.delete();
 	});
