@@ -6,7 +6,7 @@
  * You must add 3 hours to be the same timezone that Brazil
  *
  */
-export const JobsSchedule = {
+export const JOBS_SCHEDULE = {
 	// Every 10 seconds
 	SET_BOT_STATUS: "*/10 * * * * *",
 	// Every Hour

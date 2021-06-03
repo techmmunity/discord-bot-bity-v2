@@ -14,11 +14,11 @@ import { ActiveGuildGuard } from "api/common/active-guild.guard";
 export class BumpEvent {
 	public constructor(
 		@InjectRepository(BumpEntity)
-		private readonly BumpRepository: BumpRepository,
+		private readonly bumpRepository: BumpRepository,
 	) {}
 
 	@On({ event: "message" })
 	public sucess(message: Message) {
-		return success(this.BumpRepository, message);
+		return success(this.bumpRepository, message);
 	}
 }

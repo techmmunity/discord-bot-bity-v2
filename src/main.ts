@@ -6,11 +6,11 @@ import {
 
 import { AppModule } from "./app.module";
 
-async function server() {
+const server = async () => {
 	initializeTransactionalContext();
 	patchTypeORMRepositoryWithBaseRepository();
 
 	await NestFactory.createApplicationContext(AppModule);
-}
+};
 
 server();

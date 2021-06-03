@@ -4,18 +4,18 @@ import * as cron from "node-cron";
 
 import { sendReminder } from "./service";
 
-import { JobsSchedule } from "config/jobs-schedule";
+import { JOBS_SCHEDULE } from "config/jobs-schedule";
 
 import { getActiveGuilds } from "config/active-guilds";
 
 @Injectable()
 export class ReviewReminderJob {
 	@Client()
-	public DiscordClient: ClientProvider;
+	public discordClient: ClientProvider;
 
 	@Once({ event: "ready" })
 	public setCron() {
-		cron.schedule(JobsSchedule.REVIEW_REMINDER, this.sendReminder);
+		cron.schedule(JOBS_SCHEDULE.REVIEW_REMINDER, this.sendReminder);
 	}
 
 	public sendReminder() {
@@ -23,7 +23,7 @@ export class ReviewReminderJob {
 
 		return () =>
 			Promise.all(
-				guilds.map(guildId => sendReminder(this.DiscordClient, guildId)),
+				guilds.map(guildId => sendReminder(this.discordClient, guildId)),
 			);
 	}
 }

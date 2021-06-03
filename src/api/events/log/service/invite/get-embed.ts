@@ -1,7 +1,7 @@
 import { Invite, MessageEmbed } from "discord.js";
 
-import { InviteUtil } from "utils/invite";
-import { TimeUtil } from "utils/time";
+import { inviteUtil } from "utils/invite";
+import { timeUtil } from "utils/time";
 
 interface GetEmbedParams {
 	invite: Invite;
@@ -11,7 +11,7 @@ interface GetEmbedParams {
 
 const getExpiresAt = (invite: Invite) => {
 	if (invite.expiresAt) {
-		return TimeUtil.getDateFormatted(invite.expiresAt);
+		return timeUtil.getDateFormatted(invite.expiresAt);
 	}
 
 	return "--";
@@ -20,7 +20,7 @@ const getExpiresAt = (invite: Invite) => {
 const isTemporary = (invite: Invite) => (invite.expiresAt ? "Yes" : "No");
 
 export const getEmbed = ({ invite, title, color }: GetEmbedParams) => {
-	const messageToSend = InviteUtil.formatMessage(
+	const messageToSend = inviteUtil.formatMessage(
 		invite,
 		[
 			"**Inviter ID**: {userId}",

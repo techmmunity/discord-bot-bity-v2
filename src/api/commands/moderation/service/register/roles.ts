@@ -1,12 +1,12 @@
 import { GuildEnum } from "enums/guilds";
 import { RolesEnum } from "enums/roles";
 
-export type keys =
-	| "PROGRAMMING"
+export type Keys =
 	| "GRAPHIC"
-	| "SOUND"
+	| "MANAGEMENT"
+	| "PROGRAMMING"
 	| "ROBOTIC"
-	| "MANAGEMENT";
+	| "SOUND";
 
 export const getRoles = (guildId: GuildEnum) => {
 	const defaultRoles = [
@@ -28,10 +28,12 @@ export const getRoles = (guildId: GuildEnum) => {
 			return [...defaultRoles, RolesEnum[guildId].ROBOTIC];
 		case GuildEnum.MANAGEMENT:
 			return [...defaultRoles, RolesEnum[guildId].MANAGEMENT];
+		default:
+			return [];
 	}
 };
 
-export const getForeignRoles = (guildId: GuildEnum, flag: keys) => [
+export const getForeignRoles = (guildId: GuildEnum, flag: Keys) => [
 	RolesEnum[guildId].HEADLINE,
 	RolesEnum[guildId].INTERESTS,
 	RolesEnum[guildId].ETC,

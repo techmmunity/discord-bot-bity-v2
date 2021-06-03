@@ -1,7 +1,7 @@
 import { Message, PartialMessage } from "discord.js";
 
-import { FormatUtil } from "utils/format";
-import { TimeUtil } from "utils/time";
+import { formatUtil } from "utils/format";
+import { timeUtil } from "utils/time";
 
 export const formatMessage = (
 	message: Message | PartialMessage,
@@ -13,7 +13,7 @@ export const formatMessage = (
 	const userDiscriminator = message.author?.discriminator;
 	const userNickname = message.member?.displayName;
 	const userCreation = message.author?.createdAt
-		? TimeUtil.getDateFormatted(message.author?.createdAt)
+		? timeUtil.getDateFormatted(message.author?.createdAt)
 		: "";
 
 	// Server
@@ -23,7 +23,7 @@ export const formatMessage = (
 	// Guild
 	const guildName = message.guild?.name;
 
-	return FormatUtil.formatMessage(text, {
+	return formatUtil.formatMessage(text, {
 		userId,
 		userName,
 		userDiscriminator,

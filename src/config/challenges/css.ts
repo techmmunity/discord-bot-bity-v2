@@ -2,7 +2,7 @@ import { ChallengeLevelEnum } from "enums/challenge-level";
 
 import { Challenge } from "types/challenge";
 
-export const CssChallenges: Array<Challenge> = [
+export const CSS_CHALLENGES: Array<Challenge> = [
 	/**
 	 *
 	 * Starter
@@ -11,7 +11,7 @@ export const CssChallenges: Array<Challenge> = [
 	{
 		id: "CSS-0-0001",
 		title: "Black And White!",
-		level: ChallengeLevelEnum.Starter,
+		level: ChallengeLevelEnum.STARTER,
 		language: "CSS",
 		image:
 			"https://css-challenges.com/wp-content/uploads/2020/05/Black-or-White.png",
@@ -26,7 +26,7 @@ export const CssChallenges: Array<Challenge> = [
 	{
 		id: "CSS-1-0001",
 		title: "Social buttons!",
-		level: ChallengeLevelEnum.Junior,
+		level: ChallengeLevelEnum.JUNIOR,
 		language: "CSS",
 		image:
 			"https://www.peengler.com/wp-content/uploads/2020/04/Stylish-Social-Buttons-min.jpg",
@@ -41,7 +41,7 @@ export const CssChallenges: Array<Challenge> = [
 	{
 		id: "CSS-2-0001",
 		title: "Colorful Word!",
-		level: ChallengeLevelEnum.Middle,
+		level: ChallengeLevelEnum.MIDDLE,
 		language: "CSS",
 		image:
 			"https://css-challenges.com/wp-content/uploads/2018/09/A-colorful-world.png",

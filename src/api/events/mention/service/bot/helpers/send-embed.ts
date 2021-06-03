@@ -1,20 +1,20 @@
 import { Message, MessageEmbed, User } from "discord.js";
 
-import { MessageUtil } from "utils/message";
+import { messageUtil } from "utils/message";
 
-import { Config } from "config";
+import { CONFIG } from "config";
 
-import { Colors } from "assets/colors";
-import { Images } from "assets/images";
+import { COLORS } from "assets/colors";
+import { IMAGES } from "assets/images";
 
 const { NODE_ENV } = process.env;
 
 const isProduction = NODE_ENV === "production";
 
-const getEmbedColor = () => (isProduction ? Colors.turquoise : Colors.red);
+const getEmbedColor = () => (isProduction ? COLORS.turquoise : COLORS.red);
 
 const getEmbedImage = (user: User) =>
-	isProduction ? Images.bityGif : (user.avatarURL() as string);
+	isProduction ? IMAGES.bityGif : (user.avatarURL() as string);
 
 export const sendEmbed = (message: Message) => {
 	const user = message.author;
@@ -22,8 +22,8 @@ export const sendEmbed = (message: Message) => {
 	const embed = new MessageEmbed()
 		.setColor(getEmbedColor())
 		.setTitle(`Hello, I'm ${user.username}!`)
-		.setDescription(`My prefix is: \`${Config.prefix}\``)
+		.setDescription(`My prefix is: \`${CONFIG.prefix}\``)
 		.setThumbnail(getEmbedImage(user));
 
-	return MessageUtil.sendAndDelete(message, embed, 2.5);
+	return messageUtil.sendAndDelete(message, embed, 2.5);
 };

@@ -12,10 +12,10 @@ import { sendMessage } from "./service/send-message";
 import { GuildEnum } from "enums/guilds";
 
 import { getActiveGuilds } from "config/active-guilds";
-import { Hangover } from "config/hangover";
+import { HANGOVER } from "config/hangover";
 
 interface HangoverParams {
-	DiscordClient: ClientProvider;
+	discordClient: ClientProvider;
 	guildId: GuildEnum;
 	categoryName: string;
 	channelName: string;
@@ -24,7 +24,7 @@ interface HangoverParams {
 @Injectable()
 export class HangoverJob {
 	@Client()
-	public DiscordClient: ClientProvider;
+	public discordClient: ClientProvider;
 
 	@Once({ event: "ready" })
 	public setCron() {
@@ -37,11 +37,11 @@ export class HangoverJob {
 		const hangoverShedule = getHangoverScheduleByGuild(guildId);
 		const clearHangoutSchedule = getClearHangoverSchedule(guildId);
 
-		const categoryName = getCategoryName(Hangover.day[guildId]);
-		const channelName = getChannelName(Hangover.day[guildId]);
+		const categoryName = getCategoryName(HANGOVER.day[guildId]);
+		const channelName = getChannelName(HANGOVER.day[guildId]);
 
 		const params: HangoverParams = {
-			DiscordClient: this.DiscordClient,
+			discordClient: this.discordClient,
 			guildId,
 			categoryName,
 			channelName,

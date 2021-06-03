@@ -7,7 +7,7 @@ import { RolesEnum } from "enums/roles";
 const { NODE_ENV } = process.env;
 
 export class DevGuard implements DiscordGuard {
-	public async canActive(event: keyof ClientEvents, [context]: [Message]) {
+	public canActive(event: keyof ClientEvents, [context]: [Message]) {
 		const notDevEnv = NODE_ENV !== "dev";
 
 		if (notDevEnv) return true;

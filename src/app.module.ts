@@ -3,18 +3,18 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { DiscordModule } from "discord-nestjs";
 import { BumpEntity } from "entities/bump.entity";
 
-import { Api } from "api";
+import { API } from "api";
 
-import { DiscordConfig } from "config/discord";
-import { MongoDbConnect } from "config/mongodb";
+import { DISCORD_CONFIG } from "config/discord";
+import { MONGO_DB_CONNECT } from "config/mongodb";
 
 @Module({
 	imports: [
-		MongoDbConnect,
+		MONGO_DB_CONNECT,
 		TypeOrmModule.forFeature([BumpEntity]),
-		DiscordModule.forRoot(DiscordConfig),
+		DiscordModule.forRoot(DISCORD_CONFIG),
 	],
-	providers: Api,
+	providers: API,
 })
 export class AppModule {
 	//

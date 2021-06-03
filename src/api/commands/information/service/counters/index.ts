@@ -1,8 +1,8 @@
 import { Message, VoiceChannel } from "discord.js";
 
-import { MarkdownUtil } from "utils/markdown";
+import { markdownUtil } from "utils/markdown";
 
-import { ChannelsPatterns } from "config/channels-patterns";
+import { CHANNELS_PATTERNS } from "config/channels-patterns";
 
 const getVoiceChannels = (message: Message) =>
 	message.guild?.channels.cache
@@ -11,7 +11,7 @@ const getVoiceChannels = (message: Message) =>
 
 const getCountersChannels = (channels: Array<VoiceChannel>) =>
 	channels?.filter(voiceChannel =>
-		voiceChannel.name.match(ChannelsPatterns.counters.name),
+		voiceChannel.name.match(CHANNELS_PATTERNS.counters.name),
 	);
 
 const formatCounters = (channels: Array<VoiceChannel>) =>
@@ -30,5 +30,5 @@ export const counters = async (message: Message) => {
 
 	const countersFormatted = formatCounters(counterChannels);
 
-	await message.channel.send(MarkdownUtil.codeBlock(countersFormatted));
+	await message.channel.send(markdownUtil.codeBlock(countersFormatted));
 };

@@ -8,9 +8,10 @@ export const getArgs = (message: Message) => {
 
 	const messageContent = removePrefix(message.content);
 
-	const messageWithoutflags = flags.reduce((message, flag) => {
-		return message.replace(flag, "");
-	}, messageContent);
+	const messageWithoutflags = flags.reduce(
+		(newMessageContent, flag) => newMessageContent.replace(flag, ""),
+		messageContent,
+	);
 
 	return messageWithoutflags.split(" ");
 };

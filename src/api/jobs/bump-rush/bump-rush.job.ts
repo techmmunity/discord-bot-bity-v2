@@ -5,32 +5,32 @@ import { MessageEmbed, TextChannel } from "discord.js";
 import { BumpEntity, BumpRepository } from "entities/bump.entity";
 import * as cron from "node-cron";
 
-import { JobsSchedule } from "config/jobs-schedule";
+import { JOBS_SCHEDULE } from "config/jobs-schedule";
 
 import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 
-import { Colors } from "assets/colors";
+import { COLORS } from "assets/colors";
 
 @Injectable()
 export class BumpRushJob {
 	public constructor(
 		@InjectRepository(BumpEntity)
-		private readonly BumpRepository: BumpRepository,
+		private readonly bumpRepository: BumpRepository,
 	) {}
 
 	@Client()
-	public DiscordClient: ClientProvider;
+	public discordClient: ClientProvider;
 
 	@Once({ event: "ready" })
 	public setCron() {
-		cron.schedule(JobsSchedule.BUMP_RANK, () =>
+		cron.schedule(JOBS_SCHEDULE.BUMP_RANK, () =>
 			this.setup(GuildEnum.PROGRAMMING),
 		);
 	}
 
 	public async getChannel(guildId: GuildEnum) {
-		const guild = await this.DiscordClient.getClient().guilds.fetch(guildId);
+		const guild = await this.discordClient.getClient().guilds.fetch(guildId);
 
 		if (!guild) return;
 
@@ -42,16 +42,16 @@ export class BumpRushJob {
 	}
 
 	public formatBumps(bumps: Array<BumpEntity>) {
-		const ranks = bumps.map(({ bumps, discordUserId }, index) => {
+		const ranks = bumps.map(({ bumps: bumpsCount, discordUserId }, index) => {
 			const rank = String(index + 1).padStart(2, "0");
 
 			// #01 | @Jose123 --- 10
-			return `**#${rank} |** <@${discordUserId}> --- **${bumps}**`;
+			return `**#${rank} |** <@${discordUserId}> --- **${bumpsCount}**`;
 		});
 
 		return new MessageEmbed()
 			.setTitle("Bump Rush Rank!")
-			.setColor(Colors.turquoise)
+			.setColor(COLORS.turquoise)
 			.setDescription(ranks.join("\n"));
 	}
 
@@ -60,7 +60,7 @@ export class BumpRushJob {
 
 		if (!channel) return;
 
-		const bumps = await this.BumpRepository.find({
+		const bumps = await this.bumpRepository.find({
 			order: {
 				bumps: "DESC",
 			},

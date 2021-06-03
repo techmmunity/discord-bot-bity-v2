@@ -2,14 +2,16 @@ import { Message } from "discord.js";
 
 import { makeEmbed } from "./helpers/make-embed";
 
-import { MessageUtil } from "utils/message";
+import { messageUtil } from "utils/message";
 
-import { Challenges } from "config/challenges";
+import { CHALLENGES } from "config/challenges";
 
 export const getChallenge = async (message: Message) => {
-	const challengeId = MessageUtil.getArgs(message).shift();
+	const challengeId = messageUtil.getArgs(message).shift();
 
-	const challenge = Challenges.find(challenge => challenge.id === challengeId);
+	const challenge = CHALLENGES.find(
+		challengeData => challengeData.id === challengeId,
+	);
 
 	if (challenge) {
 		const embed = makeEmbed(challenge);

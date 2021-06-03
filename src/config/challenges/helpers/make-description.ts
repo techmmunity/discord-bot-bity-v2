@@ -1,8 +1,8 @@
-import { MarkdownUtil } from "utils/markdown";
+import { markdownUtil } from "utils/markdown";
 
 interface MakeDescriptionParams {
 	text: string;
-	language?: "ts" | "js" | "java";
+	language?: "java" | "js" | "ts";
 	examples: Array<{
 		example: string;
 		returnedValue: string;
@@ -18,9 +18,8 @@ export const makeDescription = ({
 		.map(({ example, returnedValue }) => `${example} -> ${returnedValue}`)
 		.join("\n\n");
 
-	return (
-		text +
-		"\n\n**Exemplos:**\n" +
-		MarkdownUtil.codeBlock(examplesFormatted, language)
-	);
+	return `${text}\n\n**Exemplos:**\n${markdownUtil.codeBlock(
+		examplesFormatted,
+		language,
+	)}`;
 };

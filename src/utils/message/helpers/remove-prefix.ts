@@ -1,7 +1,7 @@
-import { Config } from "config";
+import { CONFIG } from "config";
 
 export const removePrefix = (content: string) => {
-	const prefix = Config.prefix;
+	const prefix = CONFIG.prefix;
 
 	const messageWithoutPrefix = content.replace(prefix, "");
 

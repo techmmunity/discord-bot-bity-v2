@@ -1,9 +1,9 @@
 import { Message, MessageEmbed } from "discord.js";
 
-import { MarkdownUtil } from "utils/markdown";
+import { markdownUtil } from "utils/markdown";
 
-import { Colors } from "assets/colors";
-import { Images } from "assets/images";
+import { COLORS } from "assets/colors";
+import { IMAGES } from "assets/images";
 
 interface SendDoesntHasRoleEmbedParams {
 	message: Message;
@@ -12,14 +12,14 @@ interface SendDoesntHasRoleEmbedParams {
 export const sendDoesntHasRoleEmbed = ({
 	message,
 }: SendDoesntHasRoleEmbedParams) => {
-	const roleName = MarkdownUtil.bold("Bump Rush");
+	const roleName = markdownUtil.bold("Bump Rush");
 
-	const channelName = MarkdownUtil.bold("🔓┊unlock-channels");
+	const channelName = markdownUtil.bold("🔓┊unlock-channels");
 
 	const embed = new MessageEmbed()
 		.setTitle("Thanks, but you aren't one of our warriors")
-		.setColor(Colors.red)
-		.setImage(Images.noWayJose)
+		.setColor(COLORS.red)
+		.setImage(IMAGES.noWayJose)
 		.setDescription(
 			`You need have the ${roleName} role to get rewards for the bump.\n Unlock it on ${channelName} channel.`,
 		);

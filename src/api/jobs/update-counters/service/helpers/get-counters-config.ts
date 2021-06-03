@@ -2,7 +2,7 @@ import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 import { RolesEnum } from "enums/roles";
 
-export interface ICounterConfig {
+export interface CounterConfig {
 	channelId: string;
 	channelName: string;
 	hasAllRoles?: Array<string>;

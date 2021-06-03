@@ -5,6 +5,7 @@ import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 
 export class SuggestionGuard implements DiscordGuard {
+	// eslint-disable-next-line require-await
 	public async canActive(_: keyof ClientEvents, [context]: [Message]) {
 		const isBot = context.author.bot;
 

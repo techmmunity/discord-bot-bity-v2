@@ -7,7 +7,7 @@ import { GuildEnum, SpecialGuildEnum } from "enums/guilds";
 type LogType = "invite" | "member" | "message";
 
 interface GetChannelToLogParams {
-	DiscordClient: ClientProvider;
+	discordClient: ClientProvider;
 	guildId: GuildEnum;
 	type: LogType;
 }
@@ -19,18 +19,19 @@ const getChannelId = (guildId: GuildEnum, type: LogType) => {
 		case "member":
 			return ChannelEnum[guildId].LOG_MEMBER;
 		case "message":
+		default:
 			return ChannelEnum[guildId].LOG_MESSAGE;
 	}
 };
 
 export const getChannelToLog = ({
-	DiscordClient,
+	discordClient,
 	guildId,
 	type,
 }: GetChannelToLogParams) => {
-	const guild = DiscordClient.getClient().guilds.cache.get(
-		SpecialGuildEnum.LOGS,
-	) as Guild;
+	const guild = discordClient
+		.getClient()
+		.guilds.cache.get(SpecialGuildEnum.LOGS) as Guild;
 
 	const channelId = getChannelId(guildId, type);
 

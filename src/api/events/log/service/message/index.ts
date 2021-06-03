@@ -6,7 +6,7 @@ import { logEdit, EditMessageLogParams } from "./edit/edit";
 import { getChannel } from "./helpers/get-channel";
 
 interface MessageParams {
-	DiscordClient: ClientProvider;
+	discordClient: ClientProvider;
 	message?: Message;
 	oldMessage?: Message;
 	newMessage?: Message;
@@ -14,7 +14,7 @@ interface MessageParams {
 	color: string;
 }
 
-export const message = (params: MessageParams) => {
+export const messageLog = (params: MessageParams) => {
 	const { message, newMessage, oldMessage } = params;
 
 	const channel = getChannel(params);

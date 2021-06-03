@@ -6,23 +6,23 @@ import { getGuild } from "../helpers/get-guild";
 import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 
-import { Urls } from "config/url";
+import { URLS } from "config/url";
 
-import { Colors } from "assets/colors";
-import { Images } from "assets/images";
+import { COLORS } from "assets/colors";
+import { IMAGES } from "assets/images";
 
 interface SendMessageParams {
-	DiscordClient: ClientProvider;
+	discordClient: ClientProvider;
 	guildId: GuildEnum;
 	hangoverChannel: TextChannel;
 }
 
 export const sendMessage = async ({
-	DiscordClient,
+	discordClient,
 	guildId,
 	hangoverChannel,
 }: SendMessageParams) => {
-	const guild = getGuild(DiscordClient, guildId);
+	const guild = getGuild(discordClient, guildId);
 
 	const channel = guild.channels.cache.get(
 		ChannelEnum[guildId].EVENTS,
@@ -31,9 +31,9 @@ export const sendMessage = async ({
 	const embed = new MessageEmbed()
 		.setTitle("Hey guys, guess what day it is?")
 		.setDescription("That's right, chatting day!")
-		.setColor(Colors.blue)
-		.setThumbnail(Images.bityGif)
-		.addField("Join us on twitch!", Urls.TWITCH)
+		.setColor(COLORS.blue)
+		.setThumbnail(IMAGES.bityGif)
+		.addField("Join us on twitch!", URLS.TWITCH)
 		.addField("Or at the discord", `<#${hangoverChannel.id}>`);
 
 	const message = await channel.send(embed);

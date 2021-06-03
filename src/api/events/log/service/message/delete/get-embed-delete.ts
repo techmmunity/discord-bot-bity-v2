@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from "discord.js";
 
-import { MessageUtil } from "utils/message";
+import { messageUtil } from "utils/message";
 
 interface GetEmbedDeleteParams {
 	message: Message;
@@ -23,9 +23,9 @@ export const getEmbedDelete = ({
 		`**Channel**: <#${message.channel.id}>`,
 	].join("\n");
 
-	const formmatedMessage = MessageUtil.formatMessage(message, messageContent);
+	const formmatedMessage = messageUtil.formatMessage(message, messageContent);
 
-	const messageToSend = formmatedMessage + "\n**Message**:\n" + message.content;
+	const messageToSend = `${formmatedMessage}\n**Message**:\n${message.content}`;
 
 	const embed = new MessageEmbed()
 		.setColor(color)

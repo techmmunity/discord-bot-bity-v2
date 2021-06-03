@@ -7,19 +7,19 @@ import { GuildEnum } from "enums/guilds";
 import { RolesEnum } from "enums/roles";
 
 interface CreateChannelParams {
-	DiscordClient: ClientProvider;
+	discordClient: ClientProvider;
 	guildId: GuildEnum;
 	categoryName: string;
 	channelName: string;
 }
 
 export const createChannel = async ({
-	DiscordClient,
+	discordClient,
 	guildId,
 	categoryName,
 	channelName,
 }: CreateChannelParams) => {
-	const guild = getGuild(DiscordClient, guildId);
+	const guild = getGuild(discordClient, guildId);
 
 	const registredRole = guild.roles.cache.get(
 		RolesEnum[guildId].REGISTRED,
@@ -29,7 +29,7 @@ export const createChannel = async ({
 		role => role.name === "@everyone",
 	) as Role;
 
-	const HangoverFridayCategory = await guild.channels.create(categoryName, {
+	const hangoverFridayCategory = await guild.channels.create(categoryName, {
 		type: "category",
 		position: 0,
 		permissionOverwrites: [
@@ -47,11 +47,11 @@ export const createChannel = async ({
 	const [textChannel] = await Promise.all([
 		guild.channels.create(channelName, {
 			type: "text",
-			parent: HangoverFridayCategory,
+			parent: hangoverFridayCategory,
 		}),
 		guild.channels.create(channelName, {
 			type: "voice",
-			parent: HangoverFridayCategory,
+			parent: hangoverFridayCategory,
 		}),
 	]);
 

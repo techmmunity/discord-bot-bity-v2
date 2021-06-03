@@ -13,22 +13,22 @@ import { TechTeamGuard } from "api/common/tech-team.guard";
 @UseGuards(TechTeamGuard)
 export class ModerationGateway {
 	@OnCommand({ name: "clear" })
-	public async clear(message: Message) {
+	public clear(message: Message) {
 		return clear(message);
 	}
 
 	@OnCommand({ name: "register" })
-	public async register(message: Message) {
+	public register(message: Message) {
 		return register(message);
 	}
 
 	@OnCommand({ name: "set-emojis" })
-	public async setEmojis(message: Message) {
+	public setEmojis(message: Message) {
 		return setEmojis(message);
 	}
 
 	@OnCommand({ name: "get-challenge" })
-	public async getChallenge(message: Message) {
+	public getChallenge(message: Message) {
 		return getChallenge(message);
 	}
 }

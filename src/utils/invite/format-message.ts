@@ -1,7 +1,7 @@
 import { Invite } from "discord.js";
 
-import { FormatUtil } from "utils/format";
-import { TimeUtil } from "utils/time";
+import { formatUtil } from "utils/format";
+import { timeUtil } from "utils/time";
 
 export const formatMessage = (invite: Invite, text: string) => {
 	// User
@@ -10,14 +10,14 @@ export const formatMessage = (invite: Invite, text: string) => {
 	const userDiscriminator = invite.inviter?.discriminator as string;
 	const userNickname = "";
 	const userCreation = invite.inviter?.createdAt
-		? TimeUtil.getDateFormatted(invite.inviter?.createdAt)
+		? timeUtil.getDateFormatted(invite.inviter?.createdAt)
 		: "";
 
 	// Server
 	const serverName = invite.guild?.name;
 	const memberCount = invite.guild?.memberCount;
 
-	return FormatUtil.formatMessage(text, {
+	return formatUtil.formatMessage(text, {
 		userId,
 		userName,
 		userDiscriminator,

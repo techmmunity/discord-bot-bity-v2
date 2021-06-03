@@ -2,36 +2,36 @@ import { Injectable } from "@nestjs/common";
 import { Client, ClientProvider, On, UseGuards } from "discord-nestjs";
 import { GuildMember, Invite, Message } from "discord.js";
 
-import { invite } from "./service/invite";
+import { inviteLog } from "./service/invite";
 import { member } from "./service/member";
-import { message } from "./service/message";
+import { messageLog } from "./service/message";
 
 import { ActiveGuildGuard } from "api/common/active-guild.guard";
 
-import { Colors } from "assets/colors";
+import { COLORS } from "assets/colors";
 
 @Injectable()
 @UseGuards(ActiveGuildGuard)
 export class LogEvent {
 	@Client()
-	public DiscordClient: ClientProvider;
+	public discordClient: ClientProvider;
 
 	@On({ event: "inviteCreate" })
 	public inviteCreate(guildInvite: Invite) {
-		return invite({
-			DiscordClient: this.DiscordClient,
+		return inviteLog({
+			discordClient: this.discordClient,
 			title: "INVITE CREATE",
-			color: Colors.green,
+			color: COLORS.green,
 			invite: guildInvite,
 		});
 	}
 
 	@On({ event: "inviteDelete" })
 	public inviteDelete(guildInvite: Invite) {
-		return invite({
-			DiscordClient: this.DiscordClient,
+		return inviteLog({
+			discordClient: this.discordClient,
 			title: "INVITE DELETE",
-			color: Colors.red,
+			color: COLORS.red,
 			invite: guildInvite,
 		});
 	}
@@ -39,39 +39,39 @@ export class LogEvent {
 	@On({ event: "guildMemberAdd" })
 	public memberAdd(guildMember: GuildMember) {
 		return member({
-			DiscordClient: this.DiscordClient,
+			discordClient: this.discordClient,
 			title: "MEMBER ADD",
-			color: Colors.green,
-			member: guildMember,
+			color: COLORS.green,
+			memberData: guildMember,
 		});
 	}
 
 	@On({ event: "guildMemberRemove" })
 	public memberRemove(guildMember: GuildMember) {
 		return member({
-			DiscordClient: this.DiscordClient,
+			discordClient: this.discordClient,
 			title: "MEMBER REMOVE",
-			color: Colors.red,
-			member: guildMember,
+			color: COLORS.red,
+			memberData: guildMember,
 		});
 	}
 
 	@On({ event: "messageDelete" })
-	public messageDelete(messageLog: Message) {
-		return message({
-			DiscordClient: this.DiscordClient,
+	public messageDelete(message: Message) {
+		return messageLog({
+			discordClient: this.discordClient,
 			title: "MESSAGE DELETE",
-			color: Colors.red,
-			message: messageLog,
+			color: COLORS.red,
+			message,
 		});
 	}
 
 	@On({ event: "messageUpdate" })
 	public messageEdit(oldMessageLog: Message, newMessageLog: Message) {
-		return message({
-			DiscordClient: this.DiscordClient,
+		return messageLog({
+			discordClient: this.discordClient,
 			title: "MESSAGE EDIT",
-			color: Colors.blue,
+			color: COLORS.blue,
 			oldMessage: oldMessageLog,
 			newMessage: newMessageLog,
 		});
