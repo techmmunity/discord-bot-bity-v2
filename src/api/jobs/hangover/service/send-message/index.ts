@@ -3,10 +3,10 @@ import { MessageEmbed, TextChannel } from "discord.js";
 
 import { getGuild } from "../helpers/get-guild";
 
+import { join } from "utils/join";
+
 import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
-
-import { URLS } from "config/url";
 
 import { COLORS } from "assets/colors";
 import { IMAGES } from "assets/images";
@@ -29,12 +29,22 @@ export const sendMessage = async ({
 	) as TextChannel;
 
 	const embed = new MessageEmbed()
-		.setTitle("Hey guys, guess what day it is?")
-		.setDescription("That's right, chatting day!")
+		.setTitle(
+			join(
+				":flag_us: Hey guys, guess what day it is?",
+				":flag_br: Ei pessoal, adivinhem que dia é hoje?",
+			),
+		)
+		.setDescription(
+			join(
+				":flag_us: That's right, chatting day!",
+				":flag_br: É isso ai, dia de conversar!",
+			),
+		)
 		.setColor(COLORS.blue)
 		.setThumbnail(IMAGES.bityGif)
-		.addField("Join us on twitch!", URLS.TWITCH)
-		.addField("Or at the discord", `<#${hangoverChannel.id}>`);
+		.addField(":flag_us: Join us at:", `<#${hangoverChannel.id}>`)
+		.addField(":flag_br: Chegae no:", `<#${hangoverChannel.id}>`);
 
 	const message = await channel.send(embed);
 

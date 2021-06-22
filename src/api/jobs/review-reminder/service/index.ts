@@ -1,6 +1,8 @@
 import { ClientProvider } from "discord-nestjs";
 import { Guild, MessageEmbed, TextChannel } from "discord.js";
 
+import { join } from "utils/join";
+
 import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 
@@ -15,8 +17,6 @@ const getReviewUrl = {
 	[GuildEnum.ROBOTIC]: "",
 	[GuildEnum.MANAGEMENT]: "",
 };
-
-const join = (...strings: Array<string>) => strings.join("\n");
 
 const makeEmbed = (guildId: GuildEnum) =>
 	new MessageEmbed()
