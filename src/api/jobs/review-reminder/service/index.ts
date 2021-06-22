@@ -16,12 +16,22 @@ const getReviewUrl = {
 	[GuildEnum.MANAGEMENT]: "",
 };
 
+const join = (...strings: Array<string>) => strings.join("\n");
+
 const makeEmbed = (guildId: GuildEnum) =>
 	new MessageEmbed()
-		.setTitle("Click here, please!")
+		.setTitle(
+			join(
+				":flag_us: Click here, please!",
+				":flag_br: Clique aqui, por favor!",
+			),
+		)
 		.setColor(COLORS.turquoise)
 		.setDescription(
-			"Guys, please, give a feedback to the server, it help us a lot! ❤️",
+			join(
+				":flag_us: Guys, please, give a feedback to the server, it help us a lot! ❤️",
+				":flag_br: Pessoal, por favor, avaliem o servidor, isso ajuda de mais! ❤️",
+			),
 		)
 		.setImage(IMAGES.apesTogetherStrong)
 		.setURL(getReviewUrl[guildId]);
