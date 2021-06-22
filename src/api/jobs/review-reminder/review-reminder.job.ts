@@ -21,9 +21,8 @@ export class ReviewReminderJob {
 	public sendReminder() {
 		const guilds = getActiveGuilds();
 
-		return () =>
-			Promise.all(
-				guilds.map(guildId => sendReminder(this.discordClient, guildId)),
-			);
+		return Promise.all(
+			guilds.map(guildId => sendReminder(this.discordClient, guildId)),
+		);
 	}
 }
