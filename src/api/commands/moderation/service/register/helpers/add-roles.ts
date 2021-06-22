@@ -1,12 +1,29 @@
 import { GuildMember, Role } from "discord.js";
 
-import { getRoles, getForeignRoles } from "../roles";
+import { getRoles, getForeignRoles, Seniority } from "../roles";
 
 import { Flags } from "utils/message";
 
 import { GuildEnum } from "enums/guilds";
 
-const getMemberRoles = (guildId: GuildEnum, flags: Flags) => {
+interface AddRolesParams {
+	member: GuildMember;
+	guildId: GuildEnum;
+	flags: Flags;
+	seniority: Seniority;
+}
+
+interface GetMemberRolesParams {
+	guildId: GuildEnum;
+	flags: Flags;
+	seniority: Seniority;
+}
+
+const getMemberRoles = ({
+	guildId,
+	flags,
+	seniority,
+}: GetMemberRolesParams) => {
 	const { dev, graphic, sound, robotic, management } = flags;
 
 	switch (true) {
@@ -21,16 +38,17 @@ const getMemberRoles = (guildId: GuildEnum, flags: Flags) => {
 		case management && guildId !== GuildEnum.MANAGEMENT:
 			return getForeignRoles(guildId, "MANAGEMENT");
 		default:
-			return getRoles(guildId);
+			return getRoles(guildId, seniority);
 	}
 };
 
-export const addRoles = (
-	member: GuildMember,
-	guildId: GuildEnum,
-	flags: Flags,
-) => {
-	const roles = getMemberRoles(guildId, flags);
+export const addRoles = ({
+	guildId,
+	flags,
+	member,
+	seniority,
+}: AddRolesParams) => {
+	const roles = getMemberRoles({ guildId, flags, seniority });
 
 	const rolesToAdd = roles.map(
 		roleId => member.guild.roles.cache.get(roleId) as Role,

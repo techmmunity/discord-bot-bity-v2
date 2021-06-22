@@ -15,7 +15,7 @@ export const DISCORD_CONFIG: DiscordModuleOption = {
 	allowGuilds: [...getActiveGuilds(), SpecialGuildEnum.STAFF],
 	presence: {
 		activity: {
-			name: URLS.LANDING_PAGE_SHORT,
+			name: URLS.SITE_SHORT,
 			type: "PLAYING",
 		},
 	},
