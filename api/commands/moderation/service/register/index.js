@@ -16,7 +16,7 @@ const register = async (message) => {
     }
     const guildId = (_a = message.guild) === null || _a === void 0 ? void 0 : _a.id;
     const promises = [];
-    const addRolesPromises = Promise.all(members.map(member => add_roles_1.addRoles(member, guildId, flags)));
+    const addRolesPromises = Promise.all(members.map(member => add_roles_1.addRoles({ member, guildId, flags, seniority: "STARTER" })));
     promises.push(addRolesPromises);
     if (!flags.silent) {
         const sendWelcomeMessagesPromises = Promise.all(members.map(member => send_welcome_message_1.sendWelcomeMessage(message, member, guildId)));

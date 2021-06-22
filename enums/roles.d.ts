@@ -14,6 +14,11 @@ export declare const RolesEnum: {
         REGISTRED: string;
         BUMP: string;
         CHALLENGES: string;
+        STARTER: string;
+        JUNIOR: string;
+        MIDDLE: string;
+        SENIOR: string;
+        SPECIALIST: string;
     };
     "": {
         STAFF: string;
@@ -30,5 +35,10 @@ export declare const RolesEnum: {
         REGISTRED: string;
         BUMP: string;
         CHALLENGES: string;
+        STARTER: string;
+        JUNIOR: string;
+        MIDDLE: string;
+        SENIOR: string;
+        SPECIALIST: string;
     };
 };

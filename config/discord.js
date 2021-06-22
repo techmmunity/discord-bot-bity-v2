@@ -12,7 +12,7 @@ exports.DISCORD_CONFIG = {
     allowGuilds: [...active_guilds_1.getActiveGuilds(), guilds_1.SpecialGuildEnum.STAFF],
     presence: {
         activity: {
-            name: url_1.URLS.LANDING_PAGE_SHORT,
+            name: url_1.URLS.SITE_SHORT,
             type: "PLAYING",
         },
     },
