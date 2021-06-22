@@ -13,10 +13,11 @@ const getReviewUrl = {
     [guilds_1.GuildEnum.ROBOTIC]: "",
     [guilds_1.GuildEnum.MANAGEMENT]: "",
 };
+const join = (...strings) => strings.join("\n");
 const makeEmbed = (guildId) => new discord_js_1.MessageEmbed()
-    .setTitle("Click here, please!")
+    .setTitle(join(":flag_us: Click here, please!", ":flag_br: Clique aqui, por favor!"))
     .setColor(colors_1.COLORS.turquoise)
-    .setDescription("Guys, please, give a feedback to the server, it help us a lot! ❤️")
+    .setDescription(join(":flag_us: Guys, please, give a feedback to the server, it help us a lot! ❤️", ":flag_br: Pessoal, por favor, avaliem o servidor, isso ajuda de mais! ❤️"))
     .setImage(images_1.IMAGES.apesTogetherStrong)
     .setURL(getReviewUrl[guildId]);
 const sendReminder = async (discordClient, guildId) => {

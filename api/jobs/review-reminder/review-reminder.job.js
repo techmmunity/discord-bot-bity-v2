@@ -22,7 +22,7 @@ let ReviewReminderJob = class ReviewReminderJob {
     }
     sendReminder() {
         const guilds = active_guilds_1.getActiveGuilds();
-        return () => Promise.all(guilds.map(guildId => service_1.sendReminder(this.discordClient, guildId)));
+        return Promise.all(guilds.map(guildId => service_1.sendReminder(this.discordClient, guildId)));
     }
 };
 __decorate([

@@ -6,7 +6,7 @@ exports.JOBS_SCHEDULE = {
     UPDATE_COUNTERS: "0 * * * *",
     HANGOVER: "0 23 * * ",
     GRAPHIC_AGENCY: "0 15 * * 1",
-    REVIEW_REMINDER: "0 15 * * 2",
+    REVIEW_REMINDER: "0 17 * * *",
     CHALLENGE: "0 15 * * 1,2,3,4,5",
     BUMP_RANK: "0 11,17,23 * * *",
 };
