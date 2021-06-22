@@ -8,13 +8,21 @@ export type Keys =
 	| "ROBOTIC"
 	| "SOUND";
 
-export const getRoles = (guildId: GuildEnum) => {
+export type Seniority =
+	| "JUNIOR"
+	| "MIDDLE"
+	| "SENIOR"
+	| "SPECIALIST"
+	| "STARTER";
+
+export const getRoles = (guildId: GuildEnum, seniority: Seniority) => {
 	const defaultRoles = [
 		RolesEnum[guildId].SENIORITY,
 		RolesEnum[guildId].HEADLINE,
 		RolesEnum[guildId].INTERESTS,
 		RolesEnum[guildId].ETC,
 		RolesEnum[guildId].REGISTRED,
+		RolesEnum[guildId][seniority],
 	];
 
 	switch (guildId) {

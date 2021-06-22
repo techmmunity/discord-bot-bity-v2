@@ -29,7 +29,9 @@ export const register = async (message: Message) => {
 	 */
 
 	const addRolesPromises = Promise.all(
-		members.map(member => addRoles(member, guildId, flags)),
+		members.map(member =>
+			addRoles({ member, guildId, flags, seniority: "STARTER" }),
+		),
 	);
 	promises.push(addRolesPromises);
 

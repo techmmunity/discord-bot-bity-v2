@@ -12,11 +12,7 @@ export const makeEmbed = (challenge: Challenge) => {
 		.setTitle(challenge.title)
 		.setColor(COLORS.turquoise)
 		.setDescription(challenge.description)
-		.setAuthor(
-			"Techmmunity",
-			IMAGES.techmmunityLogo,
-			URLS.LANDING_PAGE_COMPLETE,
-		)
+		.setAuthor("Techmmunity", IMAGES.techmmunityLogo, URLS.SITE_COMPLETE)
 		.addFields([
 			{
 				name: "Como funcionam os desafios?",
