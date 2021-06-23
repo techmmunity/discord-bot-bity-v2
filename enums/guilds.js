@@ -8,6 +8,7 @@ var GuildEnum;
     GuildEnum["SOUND"] = "";
     GuildEnum["ROBOTIC"] = "";
     GuildEnum["MANAGEMENT"] = "";
+    GuildEnum["MARKETING"] = "";
 })(GuildEnum = exports.GuildEnum || (exports.GuildEnum = {}));
 var SpecialGuildEnum;
 (function (SpecialGuildEnum) {

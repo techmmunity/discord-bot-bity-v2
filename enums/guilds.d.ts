@@ -3,7 +3,8 @@ export declare enum GuildEnum {
     GRAPHIC = "",
     SOUND = "",
     ROBOTIC = "",
-    MANAGEMENT = ""
+    MANAGEMENT = "",
+    MARKETING = ""
 }
 export declare enum SpecialGuildEnum {
     STAFF = "803576193462566943",

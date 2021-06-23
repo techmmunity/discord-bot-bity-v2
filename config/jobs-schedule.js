@@ -2,9 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JOBS_SCHEDULE = void 0;
 exports.JOBS_SCHEDULE = {
-    SET_BOT_STATUS: "*/10 * * * * *",
     UPDATE_COUNTERS: "0 * * * *",
-    HANGOVER: "0 23 * * ",
+    HANGOVER: "30 22 * * ",
     GRAPHIC_AGENCY: "0 15 * * 1",
     REVIEW_REMINDER: "0 17 * * *",
     CHALLENGE: "0 15 * * 1,2,3,4,5",
