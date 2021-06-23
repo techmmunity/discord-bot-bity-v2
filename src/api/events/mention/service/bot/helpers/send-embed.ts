@@ -9,6 +9,11 @@ import { IMAGES } from "assets/images";
 
 const { NODE_ENV } = process.env;
 
+interface SendEmbedParams {
+	message: Message;
+	user: User;
+}
+
 const isProduction = NODE_ENV === "production";
 
 const getEmbedColor = () => (isProduction ? COLORS.turquoise : COLORS.red);
@@ -16,9 +21,7 @@ const getEmbedColor = () => (isProduction ? COLORS.turquoise : COLORS.red);
 const getEmbedImage = (user: User) =>
 	isProduction ? IMAGES.bityGif : (user.avatarURL() as string);
 
-export const sendEmbed = (message: Message) => {
-	const user = message.author;
-
+export const sendEmbed = ({ message, user }: SendEmbedParams) => {
 	const embed = new MessageEmbed()
 		.setColor(getEmbedColor())
 		.setTitle(`Hello, I'm ${user.username}!`)
