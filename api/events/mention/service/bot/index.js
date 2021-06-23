@@ -8,11 +8,16 @@ const isProduction = NODE_ENV === "production";
 const getBotId = () => (isProduction ? bots_1.BotsEnum.BITY : bots_1.BotsEnum.BITY_TEST);
 const bot = (message) => {
     var _a;
+    if (message.reference)
+        return;
     const botId = getBotId();
-    const user = (_a = message === null || message === void 0 ? void 0 : message.mentions.users) === null || _a === void 0 ? void 0 : _a.get(botId);
+    const user = (_a = message.mentions.users) === null || _a === void 0 ? void 0 : _a.get(botId);
     if (!user)
         return;
-    return send_embed_1.sendEmbed(message);
+    return send_embed_1.sendEmbed({
+        message,
+        user,
+    });
 };
 exports.bot = bot;
 //# sourceMappingURL=index.js.map

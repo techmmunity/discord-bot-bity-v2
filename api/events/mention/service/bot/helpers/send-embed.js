@@ -10,8 +10,7 @@ const { NODE_ENV } = process.env;
 const isProduction = NODE_ENV === "production";
 const getEmbedColor = () => (isProduction ? colors_1.COLORS.turquoise : colors_1.COLORS.red);
 const getEmbedImage = (user) => isProduction ? images_1.IMAGES.bityGif : user.avatarURL();
-const sendEmbed = (message) => {
-    const user = message.author;
+const sendEmbed = ({ message, user }) => {
     const embed = new discord_js_1.MessageEmbed()
         .setColor(getEmbedColor())
         .setTitle(`Hello, I'm ${user.username}!`)
