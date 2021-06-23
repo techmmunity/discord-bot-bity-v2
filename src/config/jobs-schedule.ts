@@ -1,18 +1,16 @@
 /**
  *
- * Remeber: Cron Schedules works with timezone 0,
+ * Remember: Cron Schedules works with timezone 0,
  * and Brazil is timezone -3.
  *
  * You must add 3 hours to be the same timezone that Brazil
  *
  */
 export const JOBS_SCHEDULE = {
-	// Every 10 seconds
-	SET_BOT_STATUS: "*/10 * * * * *",
 	// Every Hour
 	UPDATE_COUNTERS: "0 * * * *",
-	// 20h
-	HANGOVER: "0 23 * * ", // DOESN'T HAS DAY OF WEEK BECAUSE IT'S SETTED DYNAMICALY
+	// 19h30
+	HANGOVER: "30 22 * * ", // DOESN'T HAS DAY OF WEEK BECAUSE IT'S SET DYNAMICALLY
 	// Every Monday, 12h
 	GRAPHIC_AGENCY: "0 15 * * 1",
 	// Every Day, 14h

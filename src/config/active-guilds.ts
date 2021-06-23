@@ -9,5 +9,6 @@ export const getActiveGuilds = () => [
 	 * GuildsEnum.SOUND,
 	 * GuildsEnum.ROBOTIC,
 	 * GuildsEnum.MANAGEMENT,
+	 * GuildsEnum.MARKETING,
 	 */
 ];

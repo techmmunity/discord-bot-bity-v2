@@ -13,6 +13,7 @@ export const HANGOVER: HangoverType = {
 		 * [GuildsEnum.SOUND]: "",
 		 * [GuildsEnum.ROBOTIC]: "",
 		 * [GuildsEnum.MANAGEMENT]: "",
+		 * [GuildsEnum.MARKETING]: "",
 		 */
 	},
 };

@@ -4,6 +4,7 @@ export enum GuildEnum {
 	SOUND = "",
 	ROBOTIC = "",
 	MANAGEMENT = "",
+	MARKETING = "",
 }
 
 export enum SpecialGuildEnum {
