@@ -3,5 +3,4 @@ export declare class ModerationGateway {
     clear(message: Message): Promise<void>;
     register(message: Message): Promise<void>;
     setEmojis(message: Message): Promise<void>;
-    getChallenge(message: Message): Promise<void>;
 }

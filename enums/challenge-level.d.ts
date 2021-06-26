@@ -1,7 +1,8 @@
 export declare enum ChallengeLevelEnum {
-    STARTER = "Iniciante",
-    JUNIOR = "Junior",
-    MIDDLE = "Pleno",
-    SENIOR = "S\u00EAnior",
-    SPECIALIST = "Especialista"
+    STARTER = "STARTER",
+    JUNIOR = "JUNIOR",
+    MIDDLE = "MIDDLE",
+    SENIOR = "SENIOR",
+    SPECIALIST = "SPECIALIST"
 }
+export declare const ChallengeLevelValues: () => ChallengeLevelEnum[];

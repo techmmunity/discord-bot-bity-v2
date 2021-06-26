@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.makeEmbed = void 0;
 const discord_js_1 = require("discord.js");
-const url_1 = require("../../../../../../config/url");
-const colors_1 = require("../../../../../../assets/colors");
-const images_1 = require("../../../../../../assets/images");
-const challenge_1 = require("../../../../../../types/challenge");
+const challenge_entity_1 = require("../../../../entities/challenge.entity");
+const url_1 = require("../../../../config/url");
+const colors_1 = require("../../../../assets/colors");
+const images_1 = require("../../../../assets/images");
 const makeEmbed = (challenge) => {
     const embed = new discord_js_1.MessageEmbed()
         .setTitle(challenge.title)

@@ -14,7 +14,6 @@ const common_1 = require("@nestjs/common");
 const discord_nestjs_1 = require("discord-nestjs");
 const discord_js_1 = require("discord.js");
 const clear_1 = require("./service/clear");
-const get_challenge_1 = require("./service/get-challenge");
 const register_1 = require("./service/register");
 const set_emojis_1 = require("./service/set-emojis");
 const tech_team_guard_1 = require("../../common/tech-team.guard");
@@ -27,9 +26,6 @@ let ModerationGateway = class ModerationGateway {
     }
     setEmojis(message) {
         return set_emojis_1.setEmojis(message);
-    }
-    getChallenge(message) {
-        return get_challenge_1.getChallenge(message);
     }
 };
 __decorate([
@@ -50,12 +46,6 @@ __decorate([
     __metadata("design:paramtypes", [discord_js_1.Message]),
     __metadata("design:returntype", void 0)
 ], ModerationGateway.prototype, "setEmojis", null);
-__decorate([
-    discord_nestjs_1.OnCommand({ name: "get-challenge" }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", void 0)
-], ModerationGateway.prototype, "getChallenge", null);
 ModerationGateway = __decorate([
     common_1.Injectable(),
     discord_nestjs_1.UseGuards(tech_team_guard_1.TechTeamGuard)

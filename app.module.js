@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const discord_nestjs_1 = require("discord-nestjs");
 const bump_entity_1 = require("./entities/bump.entity");
+const challenge_entity_1 = require("./entities/challenge.entity");
 const api_1 = require("./api");
 const discord_1 = require("./config/discord");
 const mongodb_1 = require("./config/mongodb");
@@ -20,7 +21,7 @@ AppModule = __decorate([
     common_1.Module({
         imports: [
             mongodb_1.MONGO_DB_CONNECT,
-            typeorm_1.TypeOrmModule.forFeature([bump_entity_1.BumpEntity]),
+            typeorm_1.TypeOrmModule.forFeature([bump_entity_1.BumpEntity, challenge_entity_1.ChallengesEntity]),
             discord_nestjs_1.DiscordModule.forRoot(discord_1.DISCORD_CONFIG),
         ],
         providers: api_1.API,
