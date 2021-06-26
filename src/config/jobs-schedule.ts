@@ -11,10 +11,10 @@ export const JOBS_SCHEDULE = {
 	UPDATE_COUNTERS: "0 * * * *",
 	// 19h30
 	HANGOVER: "30 22 * * ", // DOESN'T HAS DAY OF WEEK BECAUSE IT'S SET DYNAMICALLY
-	// Every Monday, 12h
-	GRAPHIC_AGENCY: "0 15 * * 1",
 	// Every Day, 14h
 	REVIEW_REMINDER: "0 17 * * *",
+	// Every Day, 19h
+	SOCIO_REMINDER: "0 21 * * *",
 	// Every Week Day, 12h
 	CHALLENGE: "0 15 * * 1,2,3,4,5",
 	// Every Day, 8h,14h,20h
