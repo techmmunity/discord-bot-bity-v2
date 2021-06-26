@@ -36,9 +36,14 @@ export const getCountersConfig = (guildId: GuildEnum) => [
 		hasAllRoles: [RolesEnum[guildId].MANAGEMENT],
 	},
 	{
-		channelId: ChannelEnum[guildId].COUNTER_UNREGISTRED,
-		channelName: "Unregistred",
-		doesntHasAnyOfRoles: [RolesEnum[guildId].REGISTRED],
+		channelId: ChannelEnum[guildId].COUNTER_MANAGEMENT,
+		channelName: "Marketing",
+		hasAllRoles: [RolesEnum[guildId].MARKETING],
+	},
+	{
+		channelId: ChannelEnum[guildId].COUNTER_UNREGISTERED,
+		channelName: "Unregistered",
+		doesntHasAnyOfRoles: [RolesEnum[guildId].REGISTERED],
 	},
 	{
 		channelId: ChannelEnum[guildId].COUNTER_TOTAL,

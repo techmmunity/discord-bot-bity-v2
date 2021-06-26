@@ -6,7 +6,7 @@ export const COLORS = {
 	sound: "#6500ea",
 	robotic: "#007deb",
 	management: "#ff9901",
-	marketing: "",
+	marketing: "#f40428",
 	turquoise: "#2BA097",
 	green: "#07ed1e",
 	yellow: "#ffc800",
@@ -27,6 +27,8 @@ export const getMainColor = (guildId: string) => {
 			return COLORS.robotic;
 		case GuildEnum.MANAGEMENT:
 			return COLORS.management;
+		case GuildEnum.MARKETING:
+			return COLORS.marketing;
 		default:
 			return "";
 	}

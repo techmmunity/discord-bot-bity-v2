@@ -21,8 +21,8 @@ export const createChannel = async ({
 }: CreateChannelParams) => {
 	const guild = getGuild(discordClient, guildId);
 
-	const registredRole = guild.roles.cache.get(
-		RolesEnum[guildId].REGISTRED,
+	const registeredRole = guild.roles.cache.get(
+		RolesEnum[guildId].REGISTERED,
 	) as Role;
 
 	const everyoneRole = guild.roles.cache.find(
@@ -34,7 +34,7 @@ export const createChannel = async ({
 		position: 0,
 		permissionOverwrites: [
 			{
-				id: registredRole,
+				id: registeredRole,
 				allow: ["VIEW_CHANNEL"],
 			},
 			{

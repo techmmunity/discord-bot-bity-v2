@@ -15,8 +15,13 @@ export const JOBS_SCHEDULE = {
 	REVIEW_REMINDER: "0 17 * * *",
 	// Every Day, 19h
 	SOCIO_REMINDER: "0 21 * * *",
-	// Every Week Day, 12h
-	CHALLENGE: "0 15 * * 1,2,3,4,5",
 	// Every Day, 8h,14h,20h
 	BUMP_RANK: "0 11,17,23 * * *",
+	/**
+	 * Challenges
+	 */
+	// Every Week Day, 12h
+	CHALLENGE_DEV: "0 15 * * 1,2,3,4,5",
+	// Every Monday, 12h
+	CHALLENGE_GRAPHIC: "0 15 * * 1",
 };
