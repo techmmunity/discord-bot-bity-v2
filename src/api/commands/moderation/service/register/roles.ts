@@ -26,7 +26,7 @@ export const getRoles = (guildId: GuildEnum, seniority: Seniority) => {
 	];
 
 	switch (guildId) {
-		case GuildEnum.PROGRAMMING:
+		case GuildEnum.DEV:
 			return [...defaultRoles, RolesEnum[guildId].PROGRAMMING];
 		case GuildEnum.GRAPHIC:
 			return [...defaultRoles, RolesEnum[guildId].GRAPHIC];

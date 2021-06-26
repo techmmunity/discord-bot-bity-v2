@@ -7,7 +7,7 @@ interface HangoverType {
 
 export const HANGOVER: HangoverType = {
 	day: {
-		[GuildEnum.PROGRAMMING]: CronDayOfWeekEnum.FRIDAY,
+		[GuildEnum.DEV]: CronDayOfWeekEnum.FRIDAY,
 		/*
 		 * [GuildsEnum.GRAPHIC]: "",
 		 * [GuildsEnum.SOUND]: "",

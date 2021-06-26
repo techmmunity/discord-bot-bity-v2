@@ -3,7 +3,7 @@
 import { GuildEnum } from "./guilds";
 
 export const ChannelEnum = {
-	[GuildEnum.PROGRAMMING]: {
+	[GuildEnum.DEV]: {
 		// Logs
 		LOG_MEMBER: "824252395038965781",
 		LOG_REGISTER: "824252395038965782",

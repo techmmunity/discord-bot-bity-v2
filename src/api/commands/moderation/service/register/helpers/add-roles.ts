@@ -27,7 +27,7 @@ const getMemberRoles = ({
 	const { dev, graphic, sound, robotic, management } = flags;
 
 	switch (true) {
-		case dev && guildId !== GuildEnum.PROGRAMMING:
+		case dev && guildId !== GuildEnum.DEV:
 			return getForeignRoles(guildId, "PROGRAMMING");
 		case graphic && guildId !== GuildEnum.GRAPHIC:
 			return getForeignRoles(guildId, "GRAPHIC");

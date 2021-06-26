@@ -3,7 +3,7 @@
 import { GuildEnum } from "./guilds";
 
 export const RolesEnum = {
-	[GuildEnum.PROGRAMMING]: {
+	[GuildEnum.DEV]: {
 		STAFF: "785116737971683368",
 		PROGRAMMING: "796424366459060225",
 		GRAPHIC: "805834793752854528",
