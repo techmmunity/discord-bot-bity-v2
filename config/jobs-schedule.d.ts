@@ -3,6 +3,7 @@ export declare const JOBS_SCHEDULE: {
     HANGOVER: string;
     REVIEW_REMINDER: string;
     SOCIO_REMINDER: string;
-    CHALLENGE: string;
     BUMP_RANK: string;
+    CHALLENGE_DEV: string;
+    CHALLENGE_GRAPHIC: string;
 };

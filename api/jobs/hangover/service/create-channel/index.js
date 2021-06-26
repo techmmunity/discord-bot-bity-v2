@@ -6,14 +6,14 @@ const guilds_1 = require("../../../../../enums/guilds");
 const roles_1 = require("../../../../../enums/roles");
 const createChannel = async ({ discordClient, guildId, categoryName, channelName, }) => {
     const guild = get_guild_1.getGuild(discordClient, guildId);
-    const registredRole = guild.roles.cache.get(roles_1.RolesEnum[guildId].REGISTRED);
+    const registeredRole = guild.roles.cache.get(roles_1.RolesEnum[guildId].REGISTERED);
     const everyoneRole = guild.roles.cache.find(role => role.name === "@everyone");
     const hangoverFridayCategory = await guild.channels.create(categoryName, {
         type: "category",
         position: 0,
         permissionOverwrites: [
             {
-                id: registredRole,
+                id: registeredRole,
                 allow: ["VIEW_CHANNEL"],
             },
             {

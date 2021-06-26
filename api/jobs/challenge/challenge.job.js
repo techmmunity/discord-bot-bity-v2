@@ -24,13 +24,15 @@ const jobs_schedule_1 = require("../../../config/jobs-schedule");
 const channels_1 = require("../../../enums/channels");
 const guilds_1 = require("../../../enums/guilds");
 const roles_1 = require("../../../enums/roles");
+const active_guilds_1 = require("../../../config/active-guilds");
 const { NODE_ENV } = process.env;
 let ChallengeJob = class ChallengeJob {
     constructor(challengesRepository) {
         this.challengesRepository = challengesRepository;
     }
     setCron() {
-        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.CHALLENGE, () => this.setup(guilds_1.GuildEnum.DEV));
+        const guilds = active_guilds_1.getActiveGuilds();
+        guilds.forEach(guildId => this.set(guildId));
     }
     async getChallenge(message) {
         const challenge = await this.challengesRepository.findOne({
@@ -51,7 +53,7 @@ let ChallengeJob = class ChallengeJob {
         }
         return guild.channels.cache.get(channels_1.ChannelEnum[guildId].TESTS);
     }
-    async setup(guildId) {
+    async sendChallenge(guildId) {
         const challenge = (await this.getChallenge());
         const embed = make_embed_1.makeEmbed(challenge, guildId);
         const channel = await this.getChannel(guildId);
@@ -63,6 +65,20 @@ let ChallengeJob = class ChallengeJob {
             challenge.count++;
             await Promise.all([challenge.save(), message.crosspost()]);
         }
+    }
+    set(guildId) {
+        let schedule;
+        switch (guildId) {
+            case guilds_1.GuildEnum.DEV:
+                schedule = jobs_schedule_1.JOBS_SCHEDULE.CHALLENGE_DEV;
+                break;
+            case guilds_1.GuildEnum.GRAPHIC:
+                schedule = jobs_schedule_1.JOBS_SCHEDULE.CHALLENGE_GRAPHIC;
+                break;
+            default:
+                return;
+        }
+        cron.schedule(schedule, () => this.sendChallenge(guildId));
     }
 };
 __decorate([

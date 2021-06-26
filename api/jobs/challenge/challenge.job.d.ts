@@ -9,5 +9,6 @@ export declare class ChallengeJob {
     setCron(): void;
     getChallenge(message?: Message): Promise<Message | ChallengesEntity>;
     getChannel(guildId: GuildEnum): Promise<TextChannel>;
-    setup(guildId: GuildEnum): Promise<void>;
+    sendChallenge(guildId: GuildEnum): Promise<void>;
+    private set;
 }

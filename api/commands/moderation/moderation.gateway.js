@@ -14,15 +14,11 @@ const common_1 = require("@nestjs/common");
 const discord_nestjs_1 = require("discord-nestjs");
 const discord_js_1 = require("discord.js");
 const clear_1 = require("./service/clear");
-const register_1 = require("./service/register");
 const set_emojis_1 = require("./service/set-emojis");
 const tech_team_guard_1 = require("../../common/tech-team.guard");
 let ModerationGateway = class ModerationGateway {
     clear(message) {
         return clear_1.clear(message);
-    }
-    register(message) {
-        return register_1.register(message);
     }
     setEmojis(message) {
         return set_emojis_1.setEmojis(message);
@@ -34,12 +30,6 @@ __decorate([
     __metadata("design:paramtypes", [discord_js_1.Message]),
     __metadata("design:returntype", void 0)
 ], ModerationGateway.prototype, "clear", null);
-__decorate([
-    discord_nestjs_1.OnCommand({ name: "register" }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [discord_js_1.Message]),
-    __metadata("design:returntype", void 0)
-], ModerationGateway.prototype, "register", null);
 __decorate([
     discord_nestjs_1.OnCommand({ name: "set-emojis" }),
     __metadata("design:type", Function),

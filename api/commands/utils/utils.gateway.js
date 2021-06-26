@@ -13,11 +13,15 @@ exports.UtilsGateway = void 0;
 const common_1 = require("@nestjs/common");
 const discord_nestjs_1 = require("discord-nestjs");
 const discord_js_1 = require("discord.js");
+const register_1 = require("./service/register");
 const suggest_1 = require("./service/suggest");
 const dev_guard_1 = require("../../common/dev.guard");
 let UtilsGateway = class UtilsGateway {
     suggest(message) {
         return suggest_1.suggest(message);
+    }
+    register(message) {
+        return register_1.register(message);
     }
 };
 __decorate([
@@ -26,6 +30,12 @@ __decorate([
     __metadata("design:paramtypes", [discord_js_1.Message]),
     __metadata("design:returntype", void 0)
 ], UtilsGateway.prototype, "suggest", null);
+__decorate([
+    discord_nestjs_1.OnCommand({ name: "register" }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [discord_js_1.Message]),
+    __metadata("design:returntype", void 0)
+], UtilsGateway.prototype, "register", null);
 UtilsGateway = __decorate([
     common_1.Injectable(),
     discord_nestjs_1.UseGuards(dev_guard_1.DevGuard)

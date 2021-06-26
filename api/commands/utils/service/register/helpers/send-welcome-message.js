@@ -8,8 +8,8 @@ const guilds_1 = require("../../../../../../enums/guilds");
 const colors_1 = require("../../../../../../assets/colors");
 const sendWelcomeMessage = (message, member, guildId) => {
     var _a;
-    const TITLE = "Welcome to Techmmunity!";
-    const DESCRIPTION = "{userMention} ({userTag}), say hi to everyone!";
+    const TITLE = ":flag_us: Welcome to Techmmunity!\n:flag_br: Bem vindo a Techmmunity!";
+    const DESCRIPTION = ":flag_us: {userMention} ({userTag}), say hi to everyone!\n:flag_br: {userMention} ({userTag}), manda um oi pro pessoal!";
     const titleFormatted = member_1.memberUtil.formatMessage(member, TITLE);
     const descriptionFormatted = member_1.memberUtil.formatMessage(member, DESCRIPTION);
     const memberCount = member_1.memberUtil.getGuildMemberCount(member);

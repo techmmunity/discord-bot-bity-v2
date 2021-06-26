@@ -13,6 +13,7 @@ const getReviewUrl = {
     [guilds_1.GuildEnum.SOUND]: "",
     [guilds_1.GuildEnum.ROBOTIC]: "",
     [guilds_1.GuildEnum.MANAGEMENT]: "",
+    [guilds_1.GuildEnum.MARKETING]: "",
 };
 const makeEmbed = (guildId) => new discord_js_1.MessageEmbed()
     .setTitle(join_1.join(":flag_us: Click here, please!", ":flag_br: Clique aqui, por favor!"))
