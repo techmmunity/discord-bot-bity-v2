@@ -16,6 +16,8 @@ import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 import { RolesEnum } from "enums/roles";
 
+import { getActiveGuilds } from "config/active-guilds";
+
 const { NODE_ENV } = process.env;
 
 @Injectable()
@@ -30,7 +32,9 @@ export class ChallengeJob {
 
 	@Once({ event: "ready" })
 	public setCron() {
-		cron.schedule(JOBS_SCHEDULE.CHALLENGE, () => this.setup(GuildEnum.DEV));
+		const guilds = getActiveGuilds();
+
+		guilds.forEach(guildId => this.set(guildId));
 	}
 
 	@OnCommand({ name: "random-challenge" })
@@ -62,7 +66,7 @@ export class ChallengeJob {
 		return guild.channels.cache.get(ChannelEnum[guildId].TESTS) as TextChannel;
 	}
 
-	public async setup(guildId: GuildEnum) {
+	public async sendChallenge(guildId: GuildEnum) {
 		const challenge = (await this.getChallenge()) as ChallengesEntity;
 
 		const embed = makeEmbed(challenge, guildId);
@@ -79,5 +83,22 @@ export class ChallengeJob {
 
 			await Promise.all([challenge.save(), message.crosspost()]);
 		}
+	}
+
+	private set(guildId: GuildEnum) {
+		let schedule;
+
+		switch (guildId) {
+			case GuildEnum.DEV:
+				schedule = JOBS_SCHEDULE.CHALLENGE_DEV;
+				break;
+			case GuildEnum.GRAPHIC:
+				schedule = JOBS_SCHEDULE.CHALLENGE_GRAPHIC;
+				break;
+			default:
+				return;
+		}
+
+		cron.schedule(schedule, () => this.sendChallenge(guildId));
 	}
 }

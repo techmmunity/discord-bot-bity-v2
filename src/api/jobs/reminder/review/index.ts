@@ -15,6 +15,7 @@ const getReviewUrl = {
 	[GuildEnum.SOUND]: "",
 	[GuildEnum.ROBOTIC]: "",
 	[GuildEnum.MANAGEMENT]: "",
+	[GuildEnum.MARKETING]: "",
 };
 
 const makeEmbed = (guildId: GuildEnum) =>
