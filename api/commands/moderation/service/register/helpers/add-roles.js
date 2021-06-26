@@ -7,7 +7,7 @@ const guilds_1 = require("../../../../../../enums/guilds");
 const getMemberRoles = ({ guildId, flags, seniority, }) => {
     const { dev, graphic, sound, robotic, management } = flags;
     switch (true) {
-        case dev && guildId !== guilds_1.GuildEnum.PROGRAMMING:
+        case dev && guildId !== guilds_1.GuildEnum.DEV:
             return roles_1.getForeignRoles(guildId, "PROGRAMMING");
         case graphic && guildId !== guilds_1.GuildEnum.GRAPHIC:
             return roles_1.getForeignRoles(guildId, "GRAPHIC");

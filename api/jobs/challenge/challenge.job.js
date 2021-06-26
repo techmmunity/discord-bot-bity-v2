@@ -30,7 +30,7 @@ let ChallengeJob = class ChallengeJob {
         this.challengesRepository = challengesRepository;
     }
     setCron() {
-        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.CHALLENGE, () => this.setup(guilds_1.GuildEnum.PROGRAMMING));
+        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.CHALLENGE, () => this.setup(guilds_1.GuildEnum.DEV));
     }
     async getChallenge(message) {
         const challenge = await this.challengesRepository.findOne({
@@ -53,7 +53,7 @@ let ChallengeJob = class ChallengeJob {
     }
     async setup(guildId) {
         const challenge = (await this.getChallenge());
-        const embed = make_embed_1.makeEmbed(challenge);
+        const embed = make_embed_1.makeEmbed(challenge, guildId);
         const channel = await this.getChannel(guildId);
         const message = await channel.send({
             content: `<@&${roles_1.RolesEnum[guildId].CHALLENGES}>`,

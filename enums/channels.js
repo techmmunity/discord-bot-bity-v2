@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChannelEnum = void 0;
 const guilds_1 = require("./guilds");
 exports.ChannelEnum = {
-    [guilds_1.GuildEnum.PROGRAMMING]: {
+    [guilds_1.GuildEnum.DEV]: {
         LOG_MEMBER: "824252395038965781",
         LOG_REGISTER: "824252395038965782",
         LOG_INVITE: "824252395038965784",

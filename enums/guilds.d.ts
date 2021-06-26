@@ -1,5 +1,5 @@
 export declare enum GuildEnum {
-    PROGRAMMING = "784050272263471145",
+    DEV = "784050272263471145",
     GRAPHIC = "",
     SOUND = "",
     ROBOTIC = "",

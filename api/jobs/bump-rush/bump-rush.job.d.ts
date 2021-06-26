@@ -8,6 +8,6 @@ export declare class BumpRushJob {
     discordClient: ClientProvider;
     setCron(): void;
     getChannel(guildId: GuildEnum): Promise<TextChannel | undefined>;
-    formatBumps(bumps: Array<BumpEntity>): MessageEmbed;
+    formatBumps(bumps: Array<BumpEntity>, guildId: GuildEnum): MessageEmbed;
     setup(guildId: GuildEnum): Promise<void>;
 }

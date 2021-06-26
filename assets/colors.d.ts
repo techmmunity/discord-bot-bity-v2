@@ -1,4 +1,10 @@
 export declare const COLORS: {
+    dev: string;
+    graphic: string;
+    sound: string;
+    robotic: string;
+    management: string;
+    marketing: string;
     turquoise: string;
     green: string;
     yellow: string;
@@ -6,3 +12,4 @@ export declare const COLORS: {
     blue: string;
     twitch: string;
 };
+export declare const getMainColor: (guildId: string) => string;

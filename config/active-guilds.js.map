@@ -1,1 +1,1 @@
-{"version":3,"file":"active-guilds.js","sourceRoot":"","sources":["../../src/config/active-guilds.ts"],"names":[],"mappings":";;;AAAA,4CAAyC;AAGlC,MAAM,eAAe,GAAG,GAAG,EAAE,CAAC;IACpC,kBAAS,CAAC,WAAW;CASrB,CAAC;AAVW,QAAA,eAAe,mBAU1B"}
+{"version":3,"file":"active-guilds.js","sourceRoot":"","sources":["../../src/config/active-guilds.ts"],"names":[],"mappings":";;;AAAA,4CAAyC;AAGlC,MAAM,eAAe,GAAG,GAAG,EAAE,CAAC;IACpC,kBAAS,CAAC,GAAG;CASb,CAAC;AAVW,QAAA,eAAe,mBAU1B"}

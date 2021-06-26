@@ -28,7 +28,7 @@ let BumpRushJob = class BumpRushJob {
         this.bumpRepository = bumpRepository;
     }
     setCron() {
-        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.BUMP_RANK, () => this.setup(guilds_1.GuildEnum.PROGRAMMING));
+        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.BUMP_RANK, () => this.setup(guilds_1.GuildEnum.DEV));
     }
     async getChannel(guildId) {
         const guild = await this.discordClient.getClient().guilds.fetch(guildId);
@@ -38,14 +38,14 @@ let BumpRushJob = class BumpRushJob {
         const channel = guild.channels.cache.get(channelId);
         return channel;
     }
-    formatBumps(bumps) {
+    formatBumps(bumps, guildId) {
         const ranks = bumps.map(({ bumps: bumpsCount, discordUserId }, index) => {
             const rank = String(index + 1).padStart(2, "0");
             return `**#${rank} |** <@${discordUserId}> --- **${bumpsCount}**`;
         });
         return new discord_js_1.MessageEmbed()
             .setTitle("Bump Rush Rank!")
-            .setColor(colors_1.COLORS.turquoise)
+            .setColor(colors_1.getMainColor(guildId))
             .setDescription(ranks.join("\n"));
     }
     async setup(guildId) {
@@ -58,7 +58,7 @@ let BumpRushJob = class BumpRushJob {
             },
             take: 10,
         });
-        const bumpsFormatted = this.formatBumps(bumps);
+        const bumpsFormatted = this.formatBumps(bumps, guildId);
         await channel.send(bumpsFormatted);
     }
 };

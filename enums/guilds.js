@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpecialGuildEnum = exports.GuildEnum = void 0;
 var GuildEnum;
 (function (GuildEnum) {
-    GuildEnum["PROGRAMMING"] = "784050272263471145";
+    GuildEnum["DEV"] = "784050272263471145";
     GuildEnum["GRAPHIC"] = "";
     GuildEnum["SOUND"] = "";
     GuildEnum["ROBOTIC"] = "";

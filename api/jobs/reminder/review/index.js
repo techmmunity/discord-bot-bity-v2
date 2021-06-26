@@ -8,7 +8,7 @@ const guilds_1 = require("../../../../enums/guilds");
 const colors_1 = require("../../../../assets/colors");
 const images_1 = require("../../../../assets/images");
 const getReviewUrl = {
-    [guilds_1.GuildEnum.PROGRAMMING]: "https://disboard.org/review/create/784050272263471145",
+    [guilds_1.GuildEnum.DEV]: "https://disboard.org/review/create/784050272263471145",
     [guilds_1.GuildEnum.GRAPHIC]: "",
     [guilds_1.GuildEnum.SOUND]: "",
     [guilds_1.GuildEnum.ROBOTIC]: "",
@@ -16,7 +16,7 @@ const getReviewUrl = {
 };
 const makeEmbed = (guildId) => new discord_js_1.MessageEmbed()
     .setTitle(join_1.join(":flag_us: Click here, please!", ":flag_br: Clique aqui, por favor!"))
-    .setColor(colors_1.COLORS.turquoise)
+    .setColor(colors_1.getMainColor(guildId))
     .setDescription(join_1.join(":flag_us: Guys, please, give a feedback to the server, it help us a lot! ❤️", ":flag_br: Pessoal, por favor, avaliem o servidor, isso ajuda de mais! ❤️"))
     .setImage(images_1.IMAGES.apesTogetherStrong)
     .setURL(getReviewUrl[guildId]);

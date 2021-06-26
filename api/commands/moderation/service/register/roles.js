@@ -13,7 +13,7 @@ const getRoles = (guildId, seniority) => {
         roles_1.RolesEnum[guildId][seniority],
     ];
     switch (guildId) {
-        case guilds_1.GuildEnum.PROGRAMMING:
+        case guilds_1.GuildEnum.DEV:
             return [...defaultRoles, roles_1.RolesEnum[guildId].PROGRAMMING];
         case guilds_1.GuildEnum.GRAPHIC:
             return [...defaultRoles, roles_1.RolesEnum[guildId].GRAPHIC];

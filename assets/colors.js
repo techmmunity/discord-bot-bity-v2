@@ -1,7 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.COLORS = void 0;
+exports.getMainColor = exports.COLORS = void 0;
+const guilds_1 = require("../enums/guilds");
 exports.COLORS = {
+    dev: "#01d2ce",
+    graphic: "#fe0077",
+    sound: "#6500ea",
+    robotic: "#007deb",
+    management: "#ff9901",
+    marketing: "",
     turquoise: "#2BA097",
     green: "#07ed1e",
     yellow: "#ffc800",
@@ -9,4 +16,21 @@ exports.COLORS = {
     blue: "#4287f5",
     twitch: "#9146FF",
 };
+const getMainColor = (guildId) => {
+    switch (guildId) {
+        case guilds_1.GuildEnum.DEV:
+            return exports.COLORS.dev;
+        case guilds_1.GuildEnum.GRAPHIC:
+            return exports.COLORS.graphic;
+        case guilds_1.GuildEnum.SOUND:
+            return exports.COLORS.sound;
+        case guilds_1.GuildEnum.ROBOTIC:
+            return exports.COLORS.robotic;
+        case guilds_1.GuildEnum.MANAGEMENT:
+            return exports.COLORS.management;
+        default:
+            return "";
+    }
+};
+exports.getMainColor = getMainColor;
 //# sourceMappingURL=colors.js.map

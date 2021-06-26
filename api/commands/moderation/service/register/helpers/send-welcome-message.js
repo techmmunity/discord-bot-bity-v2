@@ -14,7 +14,7 @@ const sendWelcomeMessage = (message, member, guildId) => {
     const descriptionFormatted = member_1.memberUtil.formatMessage(member, DESCRIPTION);
     const memberCount = member_1.memberUtil.getGuildMemberCount(member);
     const embed = new discord_js_1.MessageEmbed()
-        .setColor(colors_1.COLORS.turquoise)
+        .setColor(colors_1.getMainColor(guildId))
         .setTitle(titleFormatted)
         .setDescription(descriptionFormatted)
         .addFields([
