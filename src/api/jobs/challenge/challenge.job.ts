@@ -1,9 +1,14 @@
 import { Injectable } from "@nestjs/common";
-import { ClientProvider, Client, Once } from "discord-nestjs";
-import { TextChannel } from "discord.js";
+import { InjectRepository } from "@nestjs/typeorm";
+import { ClientProvider, Client, Once, OnCommand } from "discord-nestjs";
+import { Message, TextChannel } from "discord.js";
+import {
+	ChallengesEntity,
+	ChallengesRepository,
+} from "entities/challenge.entity";
 import * as cron from "node-cron";
 
-import { makeEmbed } from "api/commands/moderation/service/get-challenge/helpers/make-embed";
+import { makeEmbed } from "./helpers/make-embed";
 
 import { JOBS_SCHEDULE } from "config/jobs-schedule";
 
@@ -11,12 +16,15 @@ import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 import { RolesEnum } from "enums/roles";
 
-import { CHALLENGES } from "config/challenges";
-
 const { NODE_ENV } = process.env;
 
 @Injectable()
 export class ChallengeJob {
+	public constructor(
+		@InjectRepository(ChallengesEntity)
+		public readonly challengesRepository: ChallengesRepository,
+	) {}
+
 	@Client()
 	public discordClient: ClientProvider;
 
@@ -27,10 +35,19 @@ export class ChallengeJob {
 		);
 	}
 
-	public getChallenge() {
-		const randomIndex = Math.floor(Math.random() * CHALLENGES.length);
+	@OnCommand({ name: "random-challenge" })
+	public async getChallenge(message?: Message) {
+		const challenge = await this.challengesRepository.findOne({
+			order: {
+				count: "DESC",
+			},
+		});
 
-		return CHALLENGES[randomIndex];
+		if (message) {
+			return message.channel.send(JSON.stringify(challenge));
+		}
+
+		return challenge as ChallengesEntity;
 	}
 
 	public async getChannel(guildId: GuildEnum) {
@@ -48,7 +65,7 @@ export class ChallengeJob {
 	}
 
 	public async setup(guildId: GuildEnum) {
-		const challenge = this.getChallenge();
+		const challenge = (await this.getChallenge()) as ChallengesEntity;
 
 		const embed = makeEmbed(challenge);
 
@@ -60,7 +77,9 @@ export class ChallengeJob {
 		});
 
 		if (NODE_ENV === "production") {
-			await message.crosspost();
+			challenge.count++;
+
+			await Promise.all([challenge.save(), message.crosspost()]);
 		}
 	}
 }
