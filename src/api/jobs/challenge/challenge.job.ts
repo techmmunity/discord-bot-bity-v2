@@ -30,9 +30,7 @@ export class ChallengeJob {
 
 	@Once({ event: "ready" })
 	public setCron() {
-		cron.schedule(JOBS_SCHEDULE.CHALLENGE, () =>
-			this.setup(GuildEnum.PROGRAMMING),
-		);
+		cron.schedule(JOBS_SCHEDULE.CHALLENGE, () => this.setup(GuildEnum.DEV));
 	}
 
 	@OnCommand({ name: "random-challenge" })
@@ -67,7 +65,7 @@ export class ChallengeJob {
 	public async setup(guildId: GuildEnum) {
 		const challenge = (await this.getChallenge()) as ChallengesEntity;
 
-		const embed = makeEmbed(challenge);
+		const embed = makeEmbed(challenge, guildId);
 
 		const channel = await this.getChannel(guildId);
 

@@ -5,7 +5,7 @@ import { memberUtil } from "utils/member";
 import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 
-import { COLORS } from "assets/colors";
+import { getMainColor } from "assets/colors";
 
 export const sendWelcomeMessage = (
 	message: Message,
@@ -21,7 +21,7 @@ export const sendWelcomeMessage = (
 	const memberCount = memberUtil.getGuildMemberCount(member);
 
 	const embed = new MessageEmbed()
-		.setColor(COLORS.turquoise)
+		.setColor(getMainColor(guildId))
 		.setTitle(titleFormatted)
 		.setDescription(descriptionFormatted)
 		.addFields([

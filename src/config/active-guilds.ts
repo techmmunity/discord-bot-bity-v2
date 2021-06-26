@@ -2,7 +2,7 @@ import { GuildEnum } from "enums/guilds";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const getActiveGuilds = () => [
-	GuildEnum.PROGRAMMING,
+	GuildEnum.DEV,
 	/*
 	 * TODO: Remover comentário
 	 * GuildsEnum.GRAPHIC,

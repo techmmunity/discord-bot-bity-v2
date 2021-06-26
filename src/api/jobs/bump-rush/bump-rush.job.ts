@@ -10,7 +10,7 @@ import { JOBS_SCHEDULE } from "config/jobs-schedule";
 import { ChannelEnum } from "enums/channels";
 import { GuildEnum } from "enums/guilds";
 
-import { COLORS } from "assets/colors";
+import { getMainColor } from "assets/colors";
 
 @Injectable()
 export class BumpRushJob {
@@ -24,9 +24,7 @@ export class BumpRushJob {
 
 	@Once({ event: "ready" })
 	public setCron() {
-		cron.schedule(JOBS_SCHEDULE.BUMP_RANK, () =>
-			this.setup(GuildEnum.PROGRAMMING),
-		);
+		cron.schedule(JOBS_SCHEDULE.BUMP_RANK, () => this.setup(GuildEnum.DEV));
 	}
 
 	public async getChannel(guildId: GuildEnum) {
@@ -41,7 +39,7 @@ export class BumpRushJob {
 		return channel as TextChannel | undefined;
 	}
 
-	public formatBumps(bumps: Array<BumpEntity>) {
+	public formatBumps(bumps: Array<BumpEntity>, guildId: GuildEnum) {
 		const ranks = bumps.map(({ bumps: bumpsCount, discordUserId }, index) => {
 			const rank = String(index + 1).padStart(2, "0");
 
@@ -51,7 +49,7 @@ export class BumpRushJob {
 
 		return new MessageEmbed()
 			.setTitle("Bump Rush Rank!")
-			.setColor(COLORS.turquoise)
+			.setColor(getMainColor(guildId))
 			.setDescription(ranks.join("\n"));
 	}
 
@@ -67,7 +65,7 @@ export class BumpRushJob {
 			take: 10,
 		});
 
-		const bumpsFormatted = this.formatBumps(bumps);
+		const bumpsFormatted = this.formatBumps(bumps, guildId);
 
 		await channel.send(bumpsFormatted);
 	}

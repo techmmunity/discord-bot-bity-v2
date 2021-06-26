@@ -1,15 +1,17 @@
 import { MessageEmbed } from "discord.js";
 import { ChallengesEntity } from "entities/challenge.entity";
 
+import { GuildEnum } from "enums/guilds";
+
 import { URLS } from "config/url";
 
-import { COLORS } from "assets/colors";
+import { getMainColor } from "assets/colors";
 import { IMAGES } from "assets/images";
 
-export const makeEmbed = (challenge: ChallengesEntity) => {
+export const makeEmbed = (challenge: ChallengesEntity, guildId: GuildEnum) => {
 	const embed = new MessageEmbed()
 		.setTitle(challenge.title)
-		.setColor(COLORS.turquoise)
+		.setColor(getMainColor(guildId))
 		.setDescription(challenge.description)
 		.setAuthor("Techmmunity", IMAGES.techmmunityLogo, URLS.SITE_COMPLETE)
 		.addFields([
