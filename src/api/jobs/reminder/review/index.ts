@@ -36,7 +36,7 @@ const makeEmbed = (guildId: GuildEnum) =>
 		.setImage(IMAGES.apesTogetherStrong)
 		.setURL(getReviewUrl[guildId]);
 
-export const sendReminder = async (
+export const sendReviewReminder = async (
 	discordClient: ClientProvider,
 	guildId: GuildEnum,
 ) => {
