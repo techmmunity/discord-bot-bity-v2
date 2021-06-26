@@ -9,34 +9,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ReviewReminderJob = void 0;
+exports.ReminderJob = void 0;
 const common_1 = require("@nestjs/common");
 const discord_nestjs_1 = require("discord-nestjs");
 const cron = require("node-cron");
-const service_1 = require("./service");
+const review_1 = require("./review");
+const socio_1 = require("./socio");
 const jobs_schedule_1 = require("../../../config/jobs-schedule");
 const active_guilds_1 = require("../../../config/active-guilds");
-let ReviewReminderJob = class ReviewReminderJob {
+let ReminderJob = class ReminderJob {
     setCron() {
-        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.REVIEW_REMINDER, this.sendReminder);
+        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.REVIEW_REMINDER, this.sendReviewReminder);
+        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.SOCIO_REMINDER, this.sendSocioReminder);
     }
-    sendReminder() {
+    sendReviewReminder() {
         const guilds = active_guilds_1.getActiveGuilds();
-        return Promise.all(guilds.map(guildId => service_1.sendReminder(this.discordClient, guildId)));
+        return Promise.all(guilds.map(guildId => review_1.sendReviewReminder(this.discordClient, guildId)));
+    }
+    sendSocioReminder() {
+        const guilds = active_guilds_1.getActiveGuilds();
+        return Promise.all(guilds.map(guildId => socio_1.sendSocioReminder(this.discordClient, guildId)));
     }
 };
 __decorate([
     discord_nestjs_1.Client(),
     __metadata("design:type", Object)
-], ReviewReminderJob.prototype, "discordClient", void 0);
+], ReminderJob.prototype, "discordClient", void 0);
 __decorate([
     discord_nestjs_1.Once({ event: "ready" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], ReviewReminderJob.prototype, "setCron", null);
-ReviewReminderJob = __decorate([
+], ReminderJob.prototype, "setCron", null);
+ReminderJob = __decorate([
     common_1.Injectable()
-], ReviewReminderJob);
-exports.ReviewReminderJob = ReviewReminderJob;
-//# sourceMappingURL=review-reminder.job.js.map
+], ReminderJob);
+exports.ReminderJob = ReminderJob;
+//# sourceMappingURL=reminder.job.js.map

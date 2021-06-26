@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendReminder = void 0;
+exports.sendReviewReminder = void 0;
 const discord_js_1 = require("discord.js");
 const join_1 = require("../../../../utils/join");
 const channels_1 = require("../../../../enums/channels");
@@ -20,11 +20,11 @@ const makeEmbed = (guildId) => new discord_js_1.MessageEmbed()
     .setDescription(join_1.join(":flag_us: Guys, please, give a feedback to the server, it help us a lot! ❤️", ":flag_br: Pessoal, por favor, avaliem o servidor, isso ajuda de mais! ❤️"))
     .setImage(images_1.IMAGES.apesTogetherStrong)
     .setURL(getReviewUrl[guildId]);
-const sendReminder = async (discordClient, guildId) => {
+const sendReviewReminder = async (discordClient, guildId) => {
     const guild = discordClient.getClient().guilds.cache.get(guildId);
     const channel = guild.channels.cache.get(channels_1.ChannelEnum[guildId].GENERAL);
     const embed = makeEmbed(guildId);
     await channel.send(embed);
 };
-exports.sendReminder = sendReminder;
+exports.sendReviewReminder = sendReviewReminder;
 //# sourceMappingURL=index.js.map
