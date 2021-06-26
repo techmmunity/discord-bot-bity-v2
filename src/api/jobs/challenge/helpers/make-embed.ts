@@ -1,13 +1,12 @@
 import { MessageEmbed } from "discord.js";
+import { ChallengesEntity } from "entities/challenge.entity";
 
 import { URLS } from "config/url";
 
 import { COLORS } from "assets/colors";
 import { IMAGES } from "assets/images";
 
-import { Challenge } from "types/challenge";
-
-export const makeEmbed = (challenge: Challenge) => {
+export const makeEmbed = (challenge: ChallengesEntity) => {
 	const embed = new MessageEmbed()
 		.setTitle(challenge.title)
 		.setColor(COLORS.turquoise)

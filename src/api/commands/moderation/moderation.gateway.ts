@@ -3,7 +3,6 @@ import { OnCommand, UseGuards } from "discord-nestjs";
 import { Message } from "discord.js";
 
 import { clear } from "./service/clear";
-import { getChallenge } from "./service/get-challenge";
 import { register } from "./service/register";
 import { setEmojis } from "./service/set-emojis";
 
@@ -25,10 +24,5 @@ export class ModerationGateway {
 	@OnCommand({ name: "set-emojis" })
 	public setEmojis(message: Message) {
 		return setEmojis(message);
-	}
-
-	@OnCommand({ name: "get-challenge" })
-	public getChallenge(message: Message) {
-		return getChallenge(message);
 	}
 }

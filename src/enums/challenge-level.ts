@@ -1,7 +1,13 @@
+import { getValues } from "./helpers/get-values";
+
 export enum ChallengeLevelEnum {
-	STARTER = "Iniciante",
-	JUNIOR = "Junior",
-	MIDDLE = "Pleno",
-	SENIOR = "Sênior",
-	SPECIALIST = "Especialista",
+	STARTER = "STARTER",
+	JUNIOR = "JUNIOR",
+	MIDDLE = "MIDDLE",
+	SENIOR = "SENIOR",
+	SPECIALIST = "SPECIALIST",
 }
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ChallengeLevelValues = () =>
+	getValues<ChallengeLevelEnum>(ChallengeLevelEnum);
