@@ -41,7 +41,7 @@ export class ChallengeJob {
 	public async getChallenge(message?: Message) {
 		const challenge = await this.challengesRepository.findOne({
 			order: {
-				count: "DESC",
+				count: "ASC",
 			},
 		});
 
