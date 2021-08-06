@@ -19,16 +19,16 @@ const jobs_schedule_1 = require("../../../config/jobs-schedule");
 const active_guilds_1 = require("../../../config/active-guilds");
 let ReminderJob = class ReminderJob {
     setCron() {
-        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.REVIEW_REMINDER, this.sendReviewReminder);
-        cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.SOCIO_REMINDER, this.sendSocioReminder);
+        this.sendReviewReminder();
+        this.sendSocioReminder();
     }
     sendReviewReminder() {
         const guilds = active_guilds_1.getActiveGuilds();
-        return Promise.all(guilds.map(guildId => review_1.sendReviewReminder(this.discordClient, guildId)));
+        guilds.forEach(guildId => cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.REVIEW_REMINDER, () => review_1.sendReviewReminder(this.discordClient, guildId)));
     }
     sendSocioReminder() {
         const guilds = active_guilds_1.getActiveGuilds();
-        return Promise.all(guilds.map(guildId => socio_1.sendSocioReminder(this.discordClient, guildId)));
+        guilds.forEach(guildId => cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.REVIEW_REMINDER, () => socio_1.sendSocioReminder(this.discordClient, guildId)));
     }
 };
 __decorate([
