@@ -16,24 +16,28 @@ export class ReminderJob {
 
 	@Once({ event: "ready" })
 	public setCron() {
-		cron.schedule(JOBS_SCHEDULE.REVIEW_REMINDER, this.sendReviewReminder);
+		this.sendReviewReminder();
 
-		cron.schedule(JOBS_SCHEDULE.SOCIO_REMINDER, this.sendSocioReminder);
+		this.sendSocioReminder();
 	}
 
 	public sendReviewReminder() {
 		const guilds = getActiveGuilds();
 
-		return Promise.all(
-			guilds.map(guildId => sendReviewReminder(this.discordClient, guildId)),
+		guilds.forEach(guildId =>
+			cron.schedule(JOBS_SCHEDULE.REVIEW_REMINDER, () =>
+				sendReviewReminder(this.discordClient, guildId),
+			),
 		);
 	}
 
 	public sendSocioReminder() {
 		const guilds = getActiveGuilds();
 
-		return Promise.all(
-			guilds.map(guildId => sendSocioReminder(this.discordClient, guildId)),
+		guilds.forEach(guildId =>
+			cron.schedule(JOBS_SCHEDULE.REVIEW_REMINDER, () =>
+				sendSocioReminder(this.discordClient, guildId),
+			),
 		);
 	}
 }
