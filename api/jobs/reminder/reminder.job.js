@@ -28,7 +28,7 @@ let ReminderJob = class ReminderJob {
     }
     sendSocioReminder() {
         const guilds = active_guilds_1.getActiveGuilds();
-        guilds.forEach(guildId => cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.REVIEW_REMINDER, () => socio_1.sendSocioReminder(this.discordClient, guildId)));
+        guilds.forEach(guildId => cron.schedule(jobs_schedule_1.JOBS_SCHEDULE.SOCIO_REMINDER, () => socio_1.sendSocioReminder(this.discordClient, guildId)));
     }
 };
 __decorate([
