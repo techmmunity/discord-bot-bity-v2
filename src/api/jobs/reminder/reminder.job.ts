@@ -35,7 +35,7 @@ export class ReminderJob {
 		const guilds = getActiveGuilds();
 
 		guilds.forEach(guildId =>
-			cron.schedule(JOBS_SCHEDULE.REVIEW_REMINDER, () =>
+			cron.schedule(JOBS_SCHEDULE.SOCIO_REMINDER, () =>
 				sendSocioReminder(this.discordClient, guildId),
 			),
 		);
