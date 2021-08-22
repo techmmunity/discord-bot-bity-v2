@@ -20,7 +20,6 @@ const active_guilds_1 = require("../../../config/active-guilds");
 let ReminderJob = class ReminderJob {
     setCron() {
         this.sendReviewReminder();
-        this.sendSocioReminder();
     }
     sendReviewReminder() {
         const guilds = active_guilds_1.getActiveGuilds();
